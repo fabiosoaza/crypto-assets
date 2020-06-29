@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Crypto Assets</string>
+    <string name="txtTotalBalance">Balance</string>
+    <string name="txtToday">Today</string>
+    <string name="labelTituloAdicionarAtivo">Buy Asset</string>
+    <string name="contentDescriptionValor">Amount</string>
+    <string name="labelValor">Amount</string>
+    <string name="contentDescriptionQuantidade">Quantity</string>
+    <string name="labelQuantidade">Quantity</string>
+    <string name="labelCotacao">Price</string>
+    <string name="labelValorTotal">Total Amount</string>
+    <string name="contentDescriptionAtivo">Asset</string>
+    <string name="labelAtivo">Asset</string>
+    <string name="txtBuyAsset">Buy Asset</string>
+    <string name="txtSellAsset">Sell Asset</string>
+    <string name="bottomMenuHome">Balance</string>
+    <string name="bottomMenuTransactions">Transactions</string>
+    <string name="bottomMenuAssets">Assets</string>
+
+    <string name="contentDescriptionBuyAsset">Buy Asset</string>
+    <string name="contentDescriptionSellAsset">Sell Asset</string>
+    <string name="labelTotalAtivos">Total Assets</string>
+    <string name="labelTickerAtivo">Ticker</string>
+    <string name="labelNomeAtivo">Name</string>
+    <string name="contentDescriptionNomeAtivo">Asset Name</string>
+    <string name="contentDescriptionTickerAtivo">Asset Ticker</string>
+
+
+    <string name="contentDescriptionAddAsset">Add Asset</string>
+    <string name="contentDescriptionTituloAdicionarAtivo">Add Asset</string>
+
+    <string name="txtBotaoSalvarAtivo">Save</string>
+    <string name="contentDescriptionBotaoSalvarAtivo">Save Asset</string>
+    <string name="txtBotaoCriarAtivo">Create</string>
+    <string name="contentDescriptionCriarAtivo">Create Asset</string>
+    <string name="msgAtivoSalvoComSucesso">Asset saved successfully</string>
+    <string name="labelMessageErrorMandatory">Field {0} is required</string>
+    <string name="msgErroSalvarAtivoJaCadastrado">An Asset with this ticker already exists</string>
+
+
+
+</resources>

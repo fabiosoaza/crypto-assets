@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Crypto Assets</string>
+    <string name="txtTotalBalance">Saldo</string>
+    <string name="txtToday">Hoje</string>
+
+    <string name="contentDescriptionValor">Valor</string>
+    <string name="labelValor">Valor</string>
+    <string name="contentDescriptionQuantidade">Quantidade</string>
+    <string name="labelQuantidade">Quantidade</string>
+    <string name="labelCotacao">Preço</string>
+    <string name="labelValorTotal">Total</string>
+    <string name="contentDescriptionAtivo">Ativo</string>
+    <string name="labelAtivo">Ativo</string>
+    <string name="txtBuyAsset">Comprar Ativo</string>
+    <string name="txtSellAsset">Vender Ativo</string>
+    <string name="bottomMenuHome">Investimentos</string>
+    <string name="bottomMenuTransactions">Operações</string>
+    <string name="bottomMenuAssets">Ativos</string>
+    <string name="contentDescriptionBuyAsset">Comprar</string>
+    <string name="contentDescriptionSellAsset">Vender</string>
+    <string name="labelTotalAtivos">Total Ativos</string>
+    <string name="labelTickerAtivo">Código(ticker)</string>
+    <string name="labelNomeAtivo">Nome</string>
+    <string name="contentDescriptionNomeAtivo">Nome do Ativo</string>
+    <string name="contentDescriptionTickerAtivo">Código do Ativo</string>
+    <string name="contentDescriptionAddAsset">Adicionar Ativo</string>
+    <string name="contentDescriptionTituloAdicionarAtivo">Comprar Ativo</string>
+    <string name="labelTituloAdicionarAtivo">Adicionar Ativo</string>
+    <string name="txtBotaoSalvarAtivo">Salvar</string>
+    <string name="contentDescriptionBotaoSalvarAtivo">Salvar Ativo</string>
+    <string name="txtBotaoCriarAtivo">Novo Ativo</string>
+    <string name="contentDescriptionCriarAtivo">Adicionar Novo Ativo</string>
+    <string name="msgAtivoSalvoComSucesso">Ativo salvo com sucesso</string>
+    <string name="msgErroSalvarAtivoJaCadastrado">Já existe um ativo cadastrado com esse ticker</string>
+    <string name="labelMessageErrorMandatory">O campo {0} deve ser preenchido</string>
+
+</resources>
