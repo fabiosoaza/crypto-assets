@@ -5,6 +5,6 @@ interface ListAtivosCarteiraView : AdaptableListItemsView {
     fun getSaldoFormatado(): String
     fun getVariacaoTotalFormatada(): String
     fun getVariacaoPorcentagemFormatada(): String
-    fun getAtivos(): List<AtivoCarteiraView>
+    fun getAtivos(): List<AtivoCarteiraListViewItem>
 
 }

@@ -1,4 +1,4 @@
-package com.example.cryptoassets
+package com.example.cryptoassets.presenter
 
 import com.example.cryptoassets.ui.interactor.AtivoInteractor
 import com.example.cryptoassets.ui.view.AtivoView

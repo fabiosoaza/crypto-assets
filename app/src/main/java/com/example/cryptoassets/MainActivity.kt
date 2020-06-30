@@ -9,7 +9,7 @@ import com.example.cryptoassets.core.domain.TipoTransacao
 import com.example.cryptoassets.fragment.AdicaoTransacaoFragment
 import com.example.cryptoassets.fragment.ListagemAtivosFragment
 import com.example.cryptoassets.fragment.ListagemTransacoesFragment
-import com.example.cryptoassets.fragment.ResumoFragment
+import com.example.cryptoassets.fragment.ListagemAtivosCarteiraFragment
 import com.example.cryptoassets.ui.util.UiUtils
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -26,10 +26,10 @@ class MainActivity : AppCompatActivity() {
         bottom_navigation.setOnNavigationItemSelectedListener { item: MenuItem ->
             val id = item.itemId
             val fragment = when (id) {
-                R.id.pageHome -> ResumoFragment()
+                R.id.pageHome -> ListagemAtivosCarteiraFragment()
                 R.id.pageTransactions -> ListagemTransacoesFragment()
                 R.id.pageAssets -> ListagemAtivosFragment()
-                else -> ResumoFragment()
+                else -> ListagemAtivosCarteiraFragment()
             }
             showFragment(fragment)
             true

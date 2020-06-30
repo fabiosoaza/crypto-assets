@@ -1,6 +1,6 @@
 package com.example.cryptoassets.ui.view.impl
 
-import com.example.cryptoassets.core.domain.CalculadorTransacoes
+import com.example.cryptoassets.core.util.CalculadorTransacoes
 import com.example.cryptoassets.core.domain.Transacao
 import com.example.cryptoassets.core.util.MoneyUtils
 import com.example.cryptoassets.ui.util.FormatadorUtils

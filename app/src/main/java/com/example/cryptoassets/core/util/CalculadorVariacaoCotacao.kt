@@ -1,13 +1,13 @@
-package com.example.cryptoassets.core.domain
+package com.example.cryptoassets.core.util
 
-import com.example.cryptoassets.core.util.BigDecimalUtils
-import com.example.cryptoassets.core.util.MoneyUtils
+import com.example.cryptoassets.core.domain.AtivoCarteira
+import com.example.cryptoassets.core.domain.Cotacao
 import org.javamoney.moneta.Money
 import java.math.BigDecimal
 
 class CalculadorVariacaoCotacao {
 
-    fun calcularVariacaoValorTotalPago(ativoCarteira:AtivoCarteira, cotacao:Cotacao) : Money {
+    fun calcularVariacaoValorTotalPago(ativoCarteira: AtivoCarteira, cotacao: Cotacao) : Money {
         if(ativoCarteira.quantidade == BigDecimal.ZERO){
             return MoneyUtils.zero()
         }
@@ -17,14 +17,14 @@ class CalculadorVariacaoCotacao {
         return totalCotacao.subtract(ativoCarteira.calcularTotalPago())
     }
 
-    fun calcularVariacaoPrecoMedio(ativoCarteira:AtivoCarteira, cotacao:Cotacao) : Money{
+    fun calcularVariacaoPrecoMedio(ativoCarteira: AtivoCarteira, cotacao: Cotacao) : Money{
         if(ativoCarteira.quantidade == BigDecimal.ZERO){
             return MoneyUtils.zero()
         }
         return cotacao.valor.subtract(ativoCarteira.precoMedio)
     }
 
-    fun calcularVariacaoPorcentagem(ativoCarteira:AtivoCarteira, cotacao:Cotacao) : BigDecimal{
+    fun calcularVariacaoPorcentagem(ativoCarteira: AtivoCarteira, cotacao: Cotacao) : BigDecimal{
         if(ativoCarteira.quantidade == BigDecimal.ZERO){
             return BigDecimal.ZERO
         }

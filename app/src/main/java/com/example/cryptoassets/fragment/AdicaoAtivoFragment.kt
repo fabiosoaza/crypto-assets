@@ -10,11 +10,10 @@ import android.widget.AutoCompleteTextView
 import android.widget.Button
 import androidx.activity.ComponentActivity
 import androidx.fragment.app.Fragment
-import com.example.cryptoassets.EdicaoAtivoPresenter
+import com.example.cryptoassets.presenter.EdicaoAtivoPresenter
 import com.example.cryptoassets.R
 import com.example.cryptoassets.configuration.BeansFactory
 import com.example.cryptoassets.core.domain.Ticker
-import com.example.cryptoassets.ui.interactor.AtivoInteractor
 import com.example.cryptoassets.ui.util.UiUtils
 import com.example.cryptoassets.ui.view.AtivoView
 import com.google.android.material.textfield.TextInputEditText
@@ -25,23 +24,18 @@ class AdicaoAtivoFragment : AtivoView, Fragment() {
 
     private lateinit var fragmentContext : Context
 
-    private lateinit var beanFactory  : BeansFactory
-
-    private lateinit var presenter : EdicaoAtivoPresenter
-
-    private lateinit var interactor : AtivoInteractor
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        beanFactory = BeansFactory(fragmentContext)
+       val  beanFactory = BeansFactory(fragmentContext)
 
         val root = inflater.inflate(R.layout.fragment_adicao_ativo, container, false)
 
-        interactor = AtivoInteractor(beanFactory.ativoRepository(), fragmentContext)
-
-        presenter = EdicaoAtivoPresenter(this, interactor)
+        val presenter = EdicaoAtivoPresenter(
+            this,
+            beanFactory.ativoInteractor()
+        )
 
         val spinner = root.findViewById<AutoCompleteTextView>(R.id.spinnerAtivo)
         spinner.setAdapter(tickersListAdapter())
@@ -59,7 +53,6 @@ class AdicaoAtivoFragment : AtivoView, Fragment() {
         val editNomeAtivo = root.findViewById<TextInputEditText>(R.id.editNome)
         val layoutEditNomeAtivo = root.findViewById<TextInputLayout>(R.id.layoutEditNome)
         editNomeAtivo.addTextChangedListener(UiUtils.createClearInputErrorMessageListener(layoutEditNomeAtivo))
-
 
         return root
     }

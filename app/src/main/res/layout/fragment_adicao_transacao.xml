@@ -34,7 +34,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:hint="@string/contentDescriptionAtivo"
             android:text="@string/labelAtivo"
-            android:labelFor="@id/editValor"
+            android:labelFor="@id/editPrecoMedio"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="@+id/textViewTituloForm"
             app:layout_constraintHorizontal_bias="0.0"
@@ -49,18 +49,17 @@
                 />
 
 
-            />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/layoutEditValor"
+            android:id="@+id/layoutEditPrecoMedio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:hint="@string/contentDescriptionValor"
             android:text="@string/labelValor"
-            android:labelFor="@id/editValor"
+            android:labelFor="@id/editPrecoMedio"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="@+id/layoutSpinnerAtivo"
             app:layout_constraintHorizontal_bias="0.0"
@@ -68,7 +67,7 @@
             app:layout_constraintTop_toBottomOf="@+id/layoutSpinnerAtivo">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editValor"
+                android:id="@+id/editPrecoMedio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal" />
@@ -85,10 +84,10 @@
             android:text="@string/labelQuantidade"
             android:labelFor="@id/editQuantidade"
             app:errorEnabled="true"
-            app:layout_constraintEnd_toEndOf="@+id/layoutEditValor"
+            app:layout_constraintEnd_toEndOf="@+id/layoutEditPrecoMedio"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/layoutEditValor"
-            app:layout_constraintTop_toBottomOf="@+id/layoutEditValor">
+            app:layout_constraintStart_toStartOf="@+id/layoutEditPrecoMedio"
+            app:layout_constraintTop_toBottomOf="@+id/layoutEditPrecoMedio">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editQuantidade"

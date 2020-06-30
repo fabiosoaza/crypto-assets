@@ -3,15 +3,12 @@ package com.example.cryptoassets.fragment
 import com.example.cryptoassets.R
 import com.example.cryptoassets.core.domain.AtivoCarteira
 import com.example.cryptoassets.core.domain.Cotacao
-import com.example.cryptoassets.core.util.MoneyUtils
 import com.example.cryptoassets.ui.adapter.ListAtivosCarteiraAdapter
 import com.example.cryptoassets.ui.view.ListAtivosCarteiraView
 import com.example.cryptoassets.ui.view.impl.builder.ListAtivosCarteiraViewBuilder
-import org.javamoney.moneta.Money
-import kotlin.random.Random
 
 
-class ResumoFragment : ListItemsFragmentBase() {
+class ListagemAtivosCarteiraFragment : ListItemsFragmentBase() {
 
     private var listAdapter =
         ListAtivosCarteiraAdapter(
@@ -33,25 +30,12 @@ class ResumoFragment : ListItemsFragmentBase() {
     }
 
     private fun cotacoes(): MutableList<Cotacao> {
-        return beanFactory().ativoRepository().ativos().map { ativo ->
-            Cotacao(
-                ativo,
-                randomMoney()
-            )
-        }.toMutableList()
+        return beanFactory().cotacaoRepository().cotacoes().toMutableList()
     }
 
     private fun ativos(): MutableList<AtivoCarteira> {
-        return beanFactory().ativoRepository().ativos().map { ativo ->
-            AtivoCarteira(
-                ativo,
-                Random.nextDouble(0.001, 3.0).toBigDecimal(),
-                randomMoney()
-            )
-        }.toMutableList()
+        return beanFactory().ativoCarteiraRepository().ativos().toMutableList()
     }
 
-    private fun randomMoney() =
-        Money.of(Random.nextDouble(140.0, 45_000.0), MoneyUtils.getCurrency())
-
 }
+

@@ -34,5 +34,9 @@
     <string name="msgAtivoSalvoComSucesso">Ativo salvo com sucesso</string>
     <string name="msgErroSalvarAtivoJaCadastrado">Já existe um ativo cadastrado com esse ticker</string>
     <string name="labelMessageErrorMandatory">O campo {0} deve ser preenchido</string>
+    <string name="msgTransacaoCompraSucesso">Compra do ativo {0} feita com sucesso</string>
+    <string name="msgTransacaoVendaSucesso">Venda do ativo {0} feita com sucesso</string>
+    <string name="labelDataTransacao">Data da Operação</string>
+    <string name="labelTipoTransacao">Tipo da Operação</string>
 
 </resources>

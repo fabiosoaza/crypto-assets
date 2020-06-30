@@ -1,6 +1,7 @@
 package com.example.cryptoassets.core.util
 
 import org.javamoney.moneta.Money
+import java.math.BigDecimal
 import java.util.*
 import javax.money.CurrencyUnit
 import javax.money.Monetary
@@ -32,6 +33,19 @@ class MoneyUtils {
         fun of(amount:Double, currency:CurrencyUnit): Money {
             return Money.of(amount, currency)
         }
+
+        fun of(amount:Double): Money {
+            return Money.of(amount, getCurrency())
+        }
+
+        fun of(amount:BigDecimal, currency:CurrencyUnit): Money {
+            return Money.of(amount, currency)
+        }
+
+        fun of(amount:BigDecimal): Money {
+            return Money.of(amount, getCurrency())
+        }
+
 
     }
 }

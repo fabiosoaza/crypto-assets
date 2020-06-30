@@ -18,7 +18,7 @@ class TransacaoDAO(private val dbHelper : DbHelper) : TransacaoRepository {
     override fun transacoes(): Set<Transacao> {
 
         val db = dbHelper.writableDatabase
-        val  sql = "SELECT * FROM $TABLE_TRANSACAO AS t INNER JOIN $TABLE_ATIVO AS a ON t.$TRANSACAO_ATIVO_ID = a.$ATIVO_ID ORDER BY $TRANSACAO_DATA ASC"
+        val  sql = "SELECT t.*, a.nome, a.ticker FROM $TABLE_TRANSACAO AS t INNER JOIN $TABLE_ATIVO AS a ON t.$TRANSACAO_ATIVO_ID = a.$ATIVO_ID ORDER BY $TRANSACAO_DATA ASC"
         val cursor = db.rawQuery(sql ,null)
         val transacaos =ArrayList<Transacao>()
         while (cursor.moveToNext()){
@@ -57,7 +57,7 @@ class TransacaoDAO(private val dbHelper : DbHelper) : TransacaoRepository {
         val nomeAtivo  = cursor.getString(cursor.getColumnIndex(ATIVO_NOME))
         val tickerAtivo  = cursor.getString(cursor.getColumnIndex(ATIVO_TICKER))
         val timestampTransacao = cursor.getLong(cursor.getColumnIndex(TRANSACAO_DATA))
-        val tipo = cursor.getInt(cursor.getColumnIndex(TRANSACAO_DATA))
+        val tipo = cursor.getInt(cursor.getColumnIndex(TRANSACAO_TIPO))
         val quantidade = cursor.getDouble(cursor.getColumnIndex(TRANSACAO_QUANTIDADE))
         val precoMedio = cursor.getDouble(cursor.getColumnIndex(TRANSACAO_PRECO_MEDIO))
         val ticker = Ticker.criar(tickerAtivo)!!

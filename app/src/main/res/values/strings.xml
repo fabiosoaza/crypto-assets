@@ -37,6 +37,10 @@
     <string name="labelMessageErrorMandatory">Field {0} is required</string>
     <string name="msgErroSalvarAtivoJaCadastrado">An Asset with this ticker already exists</string>
 
+    <string name="msgTransacaoCompraSucesso">Asset {0} bought successfully </string>
+    <string name="msgTransacaoVendaSucesso">Asset {0} sold successfully </string>
+    <string name="labelDataTransacao">Transaction Date</string>
+    <string name="labelTipoTransacao">Transaction Type</string>
 
 
 </resources>

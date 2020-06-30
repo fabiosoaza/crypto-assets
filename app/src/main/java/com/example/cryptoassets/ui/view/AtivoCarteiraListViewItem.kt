@@ -1,6 +1,6 @@
 package com.example.cryptoassets.ui.view
 
-interface AtivoCarteiraView {
+interface AtivoCarteiraListViewItem {
 
     fun getCodigoTicker(): String
     fun getQuantidadeFormatada(): String
@@ -10,4 +10,5 @@ interface AtivoCarteiraView {
     fun getVariacaoValorTotalPagoFormatada(): String
     fun getVariacaoPorcentagemFormatada(): String
     fun getVariacaoPrecoMedioFormatada():String
+
 }

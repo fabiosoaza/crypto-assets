@@ -1,6 +1,7 @@
-package com.example.cryptoassets.core.domain
+package com.example.cryptoassets.core.util
 
-import com.example.cryptoassets.core.util.MoneyUtils
+import com.example.cryptoassets.core.domain.TipoTransacao
+import com.example.cryptoassets.core.domain.Transacao
 import org.javamoney.moneta.Money
 
 class CalculadorTransacoes {

@@ -1,7 +1,6 @@
 package com.example.cryptoassets.ui.view.impl
 
 import com.example.cryptoassets.core.domain.Transacao
-import com.example.cryptoassets.ui.interactor.TransacaoInteractor
 import com.example.cryptoassets.ui.util.FormatadorUtils
 import com.example.cryptoassets.ui.view.TransacaoListViewItem
 
