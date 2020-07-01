@@ -10,12 +10,14 @@ class DbHelper(context: Context) :
     override fun onCreate(db: SQLiteDatabase) {
         criarTabelaAtivo(db)
         criarTabelaTransacao(db)
+        criarTabelaCarteira(db)
     }
 
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        dropTable(db, TABLE_ATIVO)
+        dropTable(db, TABLE_CARTEIRA)
         dropTable(db, TABLE_TRANSACAO)
+        dropTable(db, TABLE_ATIVO)
         onCreate(db)
     }
 
@@ -30,6 +32,13 @@ class DbHelper(context: Context) :
         val sql = "CREATE TABLE $TABLE_TRANSACAO ($TRANSACAO_ID  INTEGER PRIMARY KEY AUTOINCREMENT," +
                 " $TRANSACAO_ATIVO_ID INTEGER NOT NULL, $TRANSACAO_DATA INTEGER,$TRANSACAO_TIPO INTEGER, " +
                 "$TRANSACAO_QUANTIDADE REAL, $TRANSACAO_PRECO_MEDIO REAL, $TRANSACAO_CODIGO_MOEDA TEXT)"
+        db.execSQL(sql)
+    }
+
+    private fun criarTabelaCarteira(db: SQLiteDatabase) {
+        val sql = "CREATE TABLE $TABLE_CARTEIRA ($CARTEIRA_ID  INTEGER PRIMARY KEY AUTOINCREMENT," +
+                " $CARTEIRA_ATIVO_ID INTEGER NOT NULL, " +
+                "$CARTEIRA_QUANTIDADE REAL, $CARTEIRA_PRECO_MEDIO REAL, $CARTEIRA_CODIGO_MOEDA TEXT)"
         db.execSQL(sql)
     }
 

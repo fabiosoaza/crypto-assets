@@ -42,5 +42,11 @@
     <string name="labelDataTransacao">Transaction Date</string>
     <string name="labelTipoTransacao">Transaction Type</string>
 
+    <string name="cantConnectToHost">Coudn\'t connect to server</string>
+    <string name="noInternetPermissionWarning">You need to change app permission to allow internet connection</string>
+    <string name="labelDownloadingData">Loading data</string>
+    <string name="labelDownloadingDataComplete">Data loading complete</string>
+    <string name="labelDownloadData">Download data</string>
+
 
 </resources>

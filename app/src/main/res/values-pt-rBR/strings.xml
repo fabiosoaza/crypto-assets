@@ -39,4 +39,12 @@
     <string name="labelDataTransacao">Data da Operação</string>
     <string name="labelTipoTransacao">Tipo da Operação</string>
 
+    <string name="labelDownloadData">Atualizar dados</string>
+    <string name="labelDownloadingData">Atualizando dados</string>
+    <string name="labelDownloadingDataComplete">Atualização dos dados completa</string>
+    <string name="noInternetPermissionWarning">Você precisa habilitar as permissões de internet para que os resultados possam ser exibidos.</string>
+    <string name="cantConnectToHost">Não foi possível buscar os dados no servidor. Por favor tente mais tarde.</string>
+
+
+
 </resources>

@@ -26,12 +26,16 @@ abstract class ListItemsFragmentBase : Fragment() {
 
     abstract fun fragmentLayoutId() : Int
 
+    fun fragmentContext() : Context{
+        return fragmentContext
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         beanFactory = BeansFactory(fragmentContext)
-        updateAdapter()
+        updateAdapter(dataSet())
         val root = inflater.inflate(fragmentLayoutId(), container, false)
         val recycleView = root.findViewById<RecyclerView>(recyclerViewId())
         initRecyclerView(this.fragmentContext, recycleView)
@@ -60,9 +64,10 @@ abstract class ListItemsFragmentBase : Fragment() {
         recycleView.layoutManager = layoutManager
     }
 
-    open fun updateAdapter() {
-        listAdapter().update(dataSet())
+    open fun updateAdapter(dataSet: AdaptableListItemsView) {
+        listAdapter().update(dataSet)
         listAdapter().notifyDataSetChanged()
     }
+
 
 }

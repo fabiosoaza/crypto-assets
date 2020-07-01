@@ -1,7 +1,10 @@
 package com.example.cryptoassets.fragment
 
 import android.content.Context
+import android.os.AsyncTask
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,24 +17,35 @@ import androidx.fragment.app.Fragment
 import com.example.cryptoassets.R
 import com.example.cryptoassets.configuration.BeansFactory
 import com.example.cryptoassets.core.domain.Ativo
+import com.example.cryptoassets.core.domain.Cotacao
+import com.example.cryptoassets.core.domain.Ticker
 import com.example.cryptoassets.core.domain.TipoTransacao
+import com.example.cryptoassets.core.util.MoneyUtils
 import com.example.cryptoassets.ui.util.UiUtils
 import com.example.cryptoassets.ui.view.TransacaoView
 import com.example.cryptoassets.presenter.EdicaoTransacaoPresenter
+import com.example.cryptoassets.ui.BuscaCotacaoAsyncTask
+import com.example.cryptoassets.ui.component.ProgressBarComponent
+import com.example.cryptoassets.ui.util.FormatadorUtils
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import java.math.BigDecimal
 import java.time.LocalDateTime
 
 
 class AdicaoTransacaoFragment : TransacaoView, Fragment() {
 
     private lateinit var fragmentContext: Context
+    private var asyncTaskBuscaCotacao: BuscaCotacaoAsyncTask?= null
+    private var progressBarComponent: ProgressBarComponent?=null
+    private lateinit var beanFactory : BeansFactory
+    private var cotacoes  = arrayListOf<Cotacao>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val beanFactory = BeansFactory(fragmentContext)
+        beanFactory = BeansFactory(fragmentContext)
         val root = inflater.inflate(R.layout.fragment_adicao_transacao, container, false)
 
         val presenter =
@@ -64,6 +78,15 @@ class AdicaoTransacaoFragment : TransacaoView, Fragment() {
         val layoutTicker = root.findViewById<TextInputLayout>(R.id.layoutSpinnerAtivo)
         spinnerTicker.addTextChangedListener(UiUtils.createClearInputErrorMessageListener(layoutTicker))
 
+        spinnerTicker.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                updateTotais()
+            }
+        })
+
+
         val editPrecoMedio = root.findViewById<TextInputEditText>(R.id.editPrecoMedio)
         val layoutPrecoMedio = root.findViewById<TextInputLayout>(R.id.layoutEditPrecoMedio)
         editPrecoMedio.addTextChangedListener(UiUtils.createClearInputErrorMessageListener(layoutPrecoMedio))
@@ -72,7 +95,15 @@ class AdicaoTransacaoFragment : TransacaoView, Fragment() {
         val layoutQuantidade = root.findViewById<TextInputLayout>(R.id.layoutEditQuantidade)
         editQuantidade.addTextChangedListener(UiUtils.createClearInputErrorMessageListener(layoutQuantidade))
 
+        progressBarComponent = ProgressBarComponent(activity as ComponentActivity, R.id.container, R.id.progressOverlay )
+        carregarCotacoes()
+
         return root
+    }
+
+
+    private fun txtValorCotacao(): TextView? {
+        return view?.findViewById<TextView>(R.id.txtValorCotacao)
     }
 
     private fun layoutEditTicker(): TextInputLayout? {
@@ -176,6 +207,42 @@ class AdicaoTransacaoFragment : TransacaoView, Fragment() {
     override fun onSuccess(msg: String) {
         UiUtils.message(activity as ComponentActivity, msg)
         UiUtils.closeAndGoBack(fragmentManager, this)
+    }
+
+    override fun onErrorConnection(msg: String) {
+        UiUtils.message(activity as ComponentActivity, msg)
+    }
+
+    override fun onErrorBuscaCotacao(msg: String) {
+        UiUtils.message(activity as ComponentActivity, msg)
+    }
+
+    override fun onPreExecute() {
+        progressBarComponent?.show()
+    }
+
+    override fun onPostExecute(result: List<Cotacao>) {
+        progressBarComponent?.hide()
+        cotacoes.clear()
+        cotacoes.addAll(result)
+        updateTotais()
+    }
+
+    private fun carregarCotacoes() {
+        if (asyncTaskBuscaCotacao?.status != AsyncTask.Status.RUNNING) {
+            asyncTaskBuscaCotacao =
+                BuscaCotacaoAsyncTask(fragmentContext, beanFactory.cotacaoRepository(), this)
+            asyncTaskBuscaCotacao?.execute()
+        }
+    }
+
+    private fun updateTotais(){
+        val ticker = Ticker.criar(ticker())
+        if(ticker!=null){
+            val cotacao = cotacoes.filter { cotacao -> cotacao.ticker ==  ticker}.first()
+            txtValorCotacao()?.text = FormatadorUtils.formatarValor(cotacao.valor.numberStripped)
+        }
+
     }
 
 }

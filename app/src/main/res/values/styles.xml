@@ -16,6 +16,10 @@
 
     </style>
 
+    <style name="progressBarCustomStyle" parent="@style/Widget.AppCompat.ProgressBar">
+        <item name="android:indeterminateTint">@color/colorPrimary</item>
+    </style>
+
     <style name="styleTituloSecao" parent="@style/Widget.MaterialComponents.TextView">
         <item name="android:textAppearance">?attr/textAppearanceHeadline6</item>
     </style>

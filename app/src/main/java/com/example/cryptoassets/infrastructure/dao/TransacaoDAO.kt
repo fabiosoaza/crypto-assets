@@ -18,7 +18,7 @@ class TransacaoDAO(private val dbHelper : DbHelper) : TransacaoRepository {
     override fun transacoes(): Set<Transacao> {
 
         val db = dbHelper.writableDatabase
-        val  sql = "SELECT t.*, a.nome, a.ticker FROM $TABLE_TRANSACAO AS t INNER JOIN $TABLE_ATIVO AS a ON t.$TRANSACAO_ATIVO_ID = a.$ATIVO_ID ORDER BY $TRANSACAO_DATA ASC"
+        val  sql = "SELECT t.*, a.$ATIVO_NOME, a.$ATIVO_TICKER FROM $TABLE_TRANSACAO AS t INNER JOIN $TABLE_ATIVO AS a ON t.$TRANSACAO_ATIVO_ID = a.$ATIVO_ID ORDER BY $TRANSACAO_DATA ASC"
         val cursor = db.rawQuery(sql ,null)
         val transacaos =ArrayList<Transacao>()
         while (cursor.moveToNext()){
@@ -67,10 +67,6 @@ class TransacaoDAO(private val dbHelper : DbHelper) : TransacaoRepository {
         val data = LocalDateTime.ofInstant(Instant.ofEpochSecond(timestampTransacao), ZoneOffset.UTC)
         val ativoCarteira = AtivoCarteira(Ativo(ativoId, ticker, nomeAtivo ), BigDecimalUtils.ofDouble(quantidade), preco)
         return Transacao(id, ativoCarteira, data, tipoTransacao)
-
-
-
-
     }
 
 }

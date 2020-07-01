@@ -7,6 +7,7 @@ import com.example.cryptoassets.core.domain.AtivoCarteira
 import com.example.cryptoassets.core.domain.Ticker
 import com.example.cryptoassets.core.domain.TipoTransacao
 import com.example.cryptoassets.core.domain.Transacao
+import com.example.cryptoassets.core.repository.AtivoCarteiraRepository
 import com.example.cryptoassets.core.repository.AtivoRepository
 import com.example.cryptoassets.core.repository.TransacaoRepository
 import com.example.cryptoassets.core.util.BigDecimalUtils
@@ -15,7 +16,12 @@ import com.example.cryptoassets.util.ResourceUtil
 import java.text.MessageFormat
 import java.time.LocalDateTime
 
-class TransacaoInteractor(private val transacaoRepository: TransacaoRepository, private val ativoRepository: AtivoRepository, private val context: Context) {
+class TransacaoInteractor(
+    private val context: Context,
+    private val transacaoRepository: TransacaoRepository,
+    private val ativoRepository: AtivoRepository,
+    private val ativoCarteiraRepository: AtivoCarteiraRepository
+) {
 
     interface  OnCliqueSalvar{
         fun onErrorQuantidadeInvalida(msg: String)
@@ -37,12 +43,32 @@ class TransacaoInteractor(private val transacaoRepository: TransacaoRepository, 
             val transacao = Transacao(ativoCarteira, data!!, tipoTransacao!!)
 
             transacaoRepository.salvar(transacao)
+            ativoCarteiraRepository.salvar(carteiraSalvar(ativoCarteira))
 
             val resourceId = if (tipoTransacao == TipoTransacao.COMPRA) R.string.msgTransacaoCompraSucesso
             else R.string.msgTransacaoVendaSucesso
             val mensagem = formatarMensagemSucesso(resourceId, ativo.nome)
             listener.onSuccess(mensagem)
 
+        }
+    }
+
+    private fun carteiraSalvar(ativoCarteira: AtivoCarteira) : AtivoCarteira {
+        val carteiraAtualizar = ativoCarteiraRepository.buscar(ativoCarteira.ativo.ticker)
+        if (carteiraAtualizar == null) {
+           return ativoCarteira
+        }
+        else{
+            val novaQuantidade = carteiraAtualizar.quantidade + ativoCarteira.quantidade
+            val somaPrecoMedio = carteiraAtualizar.precoMedio.add(ativoCarteira.precoMedio)
+            val novoPrecoMedio = somaPrecoMedio.divide(novaQuantidade)
+            val novaCarteira = AtivoCarteira(
+                carteiraAtualizar.id,
+                carteiraAtualizar.ativo,
+                novaQuantidade,
+                novoPrecoMedio
+            )
+            return novaCarteira
         }
     }
 
