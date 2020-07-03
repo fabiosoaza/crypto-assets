@@ -3,12 +3,12 @@ package com.example.cryptoassets.infrastructure.dao
 import android.content.ContentValues
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
-import com.example.cryptoassets.core.domain.Ativo
-import com.example.cryptoassets.core.domain.AtivoCarteira
-import com.example.cryptoassets.core.domain.Ticker
+import com.example.cryptoassets.core.model.entidade.Ativo
+import com.example.cryptoassets.core.model.entidade.AtivoCarteira
+import com.example.cryptoassets.core.model.entidade.Ticker
 import com.example.cryptoassets.core.repository.AtivoCarteiraRepository
-import com.example.cryptoassets.core.util.BigDecimalUtils
-import com.example.cryptoassets.core.util.MoneyUtils
+import com.example.cryptoassets.util.BigDecimalUtils
+import com.example.cryptoassets.util.MoneyUtils
 import java.util.*
 
 class AtivoCarteiraDAO(private val dbHelper : DbHelper) : AtivoCarteiraRepository {
@@ -66,7 +66,14 @@ class AtivoCarteiraDAO(private val dbHelper : DbHelper) : AtivoCarteiraRepositor
 
         val moeda = MoneyUtils.getCurrency(codigoMoeda)
         val preco = MoneyUtils.of(precoMedio, moeda)
-        return AtivoCarteira(id, Ativo(ativoId, ticker, nomeAtivo ), BigDecimalUtils.ofDouble(quantidade), preco)
+        return AtivoCarteira(
+            id,
+            Ativo(
+                ativoId,
+                ticker,
+                nomeAtivo
+            ), BigDecimalUtils.ofDouble(quantidade), preco
+        )
     }
 
 

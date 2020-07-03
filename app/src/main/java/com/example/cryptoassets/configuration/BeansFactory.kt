@@ -25,46 +25,55 @@ import retrofit2.Retrofit
 import retrofit2.converter.jackson.JacksonConverterFactory
 import java.util.concurrent.TimeUnit
 
-class BeansFactory(private val context:Context) {
+class BeansFactory(private val context: Context) {
 
 
-    fun ativoRepository():AtivoRepository{
-        return AtivoDAO(dbHelper())
+    private val ativoDAO = AtivoDAO(dbHelper())
+    private val transacaoDAO = TransacaoDAO(dbHelper())
+    private val ativoCarteiraDAO = AtivoCarteiraDAO(dbHelper())
+    private val cotacaoApi = CotacaoApi(context, mercadoBitcoinApiClient())
+    private val ativoInteractor = AtivoInteractor(ativoRepository(), context)
+    private val transacaoInteractor = TransacaoInteractor(
+        context,
+        transacaoRepository(),
+        ativoRepository(),
+        ativoCarteiraRepository()
+    )
+
+
+    fun ativoRepository(): AtivoRepository {
+        return ativoDAO
     }
 
     fun transacaoRepository(): TransacaoRepository {
-        return TransacaoDAO(dbHelper())
+        return transacaoDAO
     }
 
     fun ativoCarteiraRepository(): AtivoCarteiraRepository {
-        return AtivoCarteiraDAO(dbHelper())
+        return ativoCarteiraDAO
     }
 
-    fun cotacaoRepository():CotacaoRepository{
-        return CotacaoApi(context, mercadoBitcoinApiClient())
+    fun cotacaoRepository(): CotacaoRepository {
+        return cotacaoApi
     }
 
-    fun ativoInteractor() : AtivoInteractor {
-        return AtivoInteractor(ativoRepository(), context)
+
+    fun ativoInteractor(): AtivoInteractor {
+        return ativoInteractor
     }
 
-    fun transacaoInteractor():TransacaoInteractor{
-        return TransacaoInteractor(
-            context,
-            transacaoRepository(),
-            ativoRepository(),
-            ativoCarteiraRepository()
-        )
+    fun transacaoInteractor(): TransacaoInteractor {
+        return transacaoInteractor
     }
 
-    fun dbHelper() : DbHelper{
+    private fun dbHelper(): DbHelper {
         return DbHelper(context)
     }
 
-    private fun mercadoBitcoinApiClient() : MercadoBitcoinApiClient{
-        val objectMapper  = ObjectMapper()
+    private fun mercadoBitcoinApiClient(): MercadoBitcoinApiClient {
+        val objectMapper = ObjectMapper()
         objectMapper.registerModule(JavaTimeModule())
-        objectMapper.registerModule( KotlinModule())
+        objectMapper.registerModule(KotlinModule())
         objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL)
         objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
         objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
@@ -84,7 +93,6 @@ class BeansFactory(private val context:Context) {
 
         return retrofit.create(MercadoBitcoinApiClient::class.java)
     }
-
 
 
 }

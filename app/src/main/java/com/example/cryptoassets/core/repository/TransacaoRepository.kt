@@ -1,8 +1,6 @@
 package com.example.cryptoassets.core.repository
 
-import com.example.cryptoassets.core.domain.Ativo
-import com.example.cryptoassets.core.domain.Ticker
-import com.example.cryptoassets.core.domain.Transacao
+import com.example.cryptoassets.core.model.entidade.Transacao
 
 interface TransacaoRepository {
 
@@ -10,6 +8,6 @@ interface TransacaoRepository {
 
     fun salvar(transacao: Transacao)
 
-    fun excluir(transacao:Transacao)
+    fun excluir(transacao: Transacao)
 
 }

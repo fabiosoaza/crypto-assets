@@ -3,7 +3,7 @@ package com.example.cryptoassets.ui
 import android.content.Context
 import android.os.AsyncTask
 import com.example.cryptoassets.R
-import com.example.cryptoassets.core.domain.Cotacao
+import com.example.cryptoassets.core.model.entidade.Cotacao
 import com.example.cryptoassets.core.exception.ConexaoDesabilitadaException
 import com.example.cryptoassets.core.exception.FalhaConexaoException
 import com.example.cryptoassets.core.repository.CotacaoRepository

@@ -1,8 +1,8 @@
 package com.example.cryptoassets.ui.view.impl.builder
 
-import com.example.cryptoassets.core.domain.AtivoCarteira
-import com.example.cryptoassets.core.domain.Carteira
-import com.example.cryptoassets.core.domain.Cotacao
+import com.example.cryptoassets.core.model.entidade.AtivoCarteira
+import com.example.cryptoassets.core.model.entidade.Carteira
+import com.example.cryptoassets.core.model.entidade.Cotacao
 import com.example.cryptoassets.ui.view.ListAtivosCarteiraView
 import com.example.cryptoassets.ui.view.impl.ListAtivosCarteiraViewImpl
 
@@ -18,7 +18,8 @@ class ListAtivosCarteiraViewBuilder {
     }
 
     fun build(): ListAtivosCarteiraView {
-        val carteira = Carteira(ativoCarteiras)
+        val carteira =
+            Carteira(ativoCarteiras)
         return ListAtivosCarteiraViewImpl(carteira, cotacoes)
     }
 

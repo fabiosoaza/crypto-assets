@@ -1,6 +1,6 @@
 package com.example.cryptoassets.ui.view.impl
 
-import com.example.cryptoassets.core.domain.Ativo
+import com.example.cryptoassets.core.model.entidade.Ativo
 import com.example.cryptoassets.ui.view.AtivoListViewItem
 import com.example.cryptoassets.ui.view.ListAtivosView
 

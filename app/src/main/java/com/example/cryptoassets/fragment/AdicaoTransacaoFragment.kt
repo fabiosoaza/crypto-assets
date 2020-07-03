@@ -16,11 +16,10 @@ import androidx.activity.ComponentActivity
 import androidx.fragment.app.Fragment
 import com.example.cryptoassets.R
 import com.example.cryptoassets.configuration.BeansFactory
-import com.example.cryptoassets.core.domain.Ativo
-import com.example.cryptoassets.core.domain.Cotacao
-import com.example.cryptoassets.core.domain.Ticker
-import com.example.cryptoassets.core.domain.TipoTransacao
-import com.example.cryptoassets.core.util.MoneyUtils
+import com.example.cryptoassets.core.model.entidade.Ativo
+import com.example.cryptoassets.core.model.entidade.Cotacao
+import com.example.cryptoassets.core.model.entidade.Ticker
+import com.example.cryptoassets.core.model.entidade.TipoTransacao
 import com.example.cryptoassets.ui.util.UiUtils
 import com.example.cryptoassets.ui.view.TransacaoView
 import com.example.cryptoassets.presenter.EdicaoTransacaoPresenter
@@ -29,7 +28,6 @@ import com.example.cryptoassets.ui.component.ProgressBarComponent
 import com.example.cryptoassets.ui.util.FormatadorUtils
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-import java.math.BigDecimal
 import java.time.LocalDateTime
 
 

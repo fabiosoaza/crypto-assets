@@ -1,6 +1,6 @@
-package com.example.cryptoassets.core.domain
+package com.example.cryptoassets.core.model.entidade
 
-import com.example.cryptoassets.core.util.MoneyUtils
+import com.example.cryptoassets.util.MoneyUtils
 import org.javamoney.moneta.Money
 
 class Carteira(private val ativoCarteiras: MutableList<AtivoCarteira>? = mutableListOf<AtivoCarteira>()) {

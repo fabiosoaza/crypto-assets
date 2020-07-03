@@ -2,16 +2,13 @@ package com.example.cryptoassets.infrastructure.dao
 
 import android.content.ContentValues
 import android.database.Cursor
-import com.example.cryptoassets.core.domain.*
+import com.example.cryptoassets.core.model.entidade.*
 import com.example.cryptoassets.core.repository.TransacaoRepository
-import com.example.cryptoassets.core.util.BigDecimalUtils
-import com.example.cryptoassets.core.util.MoneyUtils
-import org.javamoney.moneta.CurrencyUnitBuilder
-import java.sql.Timestamp
+import com.example.cryptoassets.util.BigDecimalUtils
+import com.example.cryptoassets.util.MoneyUtils
 import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneOffset
-import javax.money.CurrencyUnit
 
 class TransacaoDAO(private val dbHelper : DbHelper) : TransacaoRepository {
 
@@ -65,8 +62,20 @@ class TransacaoDAO(private val dbHelper : DbHelper) : TransacaoRepository {
         val moeda = MoneyUtils.getCurrency(codigoMoeda)
         val preco = MoneyUtils.of(precoMedio, moeda)
         val data = LocalDateTime.ofInstant(Instant.ofEpochSecond(timestampTransacao), ZoneOffset.UTC)
-        val ativoCarteira = AtivoCarteira(Ativo(ativoId, ticker, nomeAtivo ), BigDecimalUtils.ofDouble(quantidade), preco)
-        return Transacao(id, ativoCarteira, data, tipoTransacao)
+        val ativoCarteira =
+            AtivoCarteira(
+                Ativo(
+                    ativoId,
+                    ticker,
+                    nomeAtivo
+                ), BigDecimalUtils.ofDouble(quantidade), preco
+            )
+        return Transacao(
+            id,
+            ativoCarteira,
+            data,
+            tipoTransacao
+        )
     }
 
 }

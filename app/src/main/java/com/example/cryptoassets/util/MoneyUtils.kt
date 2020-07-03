@@ -1,7 +1,6 @@
-package com.example.cryptoassets.core.util
+package com.example.cryptoassets.util
 
 import org.javamoney.moneta.Money
-import org.javamoney.moneta.format.CurrencyStyle
 import java.math.BigDecimal
 import java.util.*
 import javax.money.CurrencyUnit
@@ -21,7 +20,9 @@ class MoneyUtils {
         }
 
         fun getCurrency(): CurrencyUnit {
-            return getCurrency("USD")
+            return getCurrency(
+                "BRL"
+            )
         }
 
         fun getCurrency(currencyCode:String): CurrencyUnit {
@@ -29,27 +30,32 @@ class MoneyUtils {
         }
 
         fun getFormat(): MonetaryAmountFormat{
-            return MonetaryFormats.getAmountFormat(Locale.getDefault())
+            return MonetaryFormats.getAmountFormat(Locale("pt", "BR"))
         }
 
         fun getFormatWithoutSymbol(): MonetaryAmountFormat{
 
             return MonetaryFormats.getAmountFormat(
                 AmountFormatQueryBuilder.
-                of(Locale.getDefault())
-
+                of(Locale("pt", "BR"))
                     .build()
-
-
             )
         }
 
         fun of(amount:String, currency:CurrencyUnit): Money {
-            return of(BigDecimalUtils.ofString(amount), currency)
+            return of(
+                BigDecimalUtils.ofString(
+                    amount
+                ),
+                currency
+            )
         }
 
         fun of(amount:String): Money {
-            return of(amount, getCurrency())
+            return of(
+                amount,
+                getCurrency()
+            )
         }
 
         fun of(amount:Double, currency:CurrencyUnit): Money {
@@ -57,15 +63,19 @@ class MoneyUtils {
         }
 
         fun of(amount:Double): Money {
-            return Money.of(amount, getCurrency())
+            return Money.of(amount,
+                getCurrency()
+            )
         }
 
         fun of(amount:BigDecimal, currency:CurrencyUnit): Money {
-            return Money.of(amount, currency)
+            return Money.of(BigDecimalUtils.ofBigDecimal(amount), currency)
         }
 
         fun of(amount:BigDecimal): Money {
-            return Money.of(amount, getCurrency())
+            return Money.of(amount,
+                getCurrency()
+            )
         }
 
 

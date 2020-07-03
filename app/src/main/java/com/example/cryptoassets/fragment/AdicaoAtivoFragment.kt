@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment
 import com.example.cryptoassets.presenter.EdicaoAtivoPresenter
 import com.example.cryptoassets.R
 import com.example.cryptoassets.configuration.BeansFactory
-import com.example.cryptoassets.core.domain.Ticker
+import com.example.cryptoassets.core.model.entidade.Ticker
 import com.example.cryptoassets.ui.util.UiUtils
 import com.example.cryptoassets.ui.view.AtivoView
 import com.google.android.material.textfield.TextInputEditText

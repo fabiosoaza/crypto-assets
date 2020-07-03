@@ -1,6 +1,6 @@
 package com.example.cryptoassets.ui.interactor
 
-import com.example.cryptoassets.core.domain.Cotacao
+import com.example.cryptoassets.core.model.entidade.Cotacao
 
 interface  OnBuscaCotacao{
     fun onErrorConnection(msg:String)

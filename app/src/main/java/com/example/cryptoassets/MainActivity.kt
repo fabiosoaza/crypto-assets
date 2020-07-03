@@ -5,7 +5,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.cryptoassets.core.domain.TipoTransacao
+import com.example.cryptoassets.core.model.entidade.TipoTransacao
 import com.example.cryptoassets.fragment.AdicaoTransacaoFragment
 import com.example.cryptoassets.fragment.ListagemAtivosFragment
 import com.example.cryptoassets.fragment.ListagemTransacoesFragment

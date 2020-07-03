@@ -1,4 +1,4 @@
-package com.example.cryptoassets.core.domain
+package com.example.cryptoassets.core.model.entidade
 
 enum class TipoTransacao(val codigo:Int) {
 

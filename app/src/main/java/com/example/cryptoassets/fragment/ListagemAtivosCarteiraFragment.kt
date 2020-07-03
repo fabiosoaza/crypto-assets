@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.ComponentActivity
 import com.example.cryptoassets.R
-import com.example.cryptoassets.core.domain.AtivoCarteira
-import com.example.cryptoassets.core.domain.Cotacao
+import com.example.cryptoassets.core.model.entidade.AtivoCarteira
+import com.example.cryptoassets.core.model.entidade.Cotacao
 import com.example.cryptoassets.ui.BuscaCotacaoAsyncTask
 import com.example.cryptoassets.ui.adapter.ListAtivosCarteiraAdapter
 import com.example.cryptoassets.ui.component.ProgressBarComponent

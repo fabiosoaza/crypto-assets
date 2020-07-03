@@ -2,8 +2,8 @@ package com.example.cryptoassets.infrastructure.dao
 
 import android.content.ContentValues
 import android.database.Cursor
-import com.example.cryptoassets.core.domain.Ativo
-import com.example.cryptoassets.core.domain.Ticker
+import com.example.cryptoassets.core.model.entidade.Ativo
+import com.example.cryptoassets.core.model.entidade.Ticker
 import com.example.cryptoassets.core.repository.AtivoRepository
 
 class AtivoDAO(private val dbHelper : DbHelper) : AtivoRepository {
@@ -60,7 +60,11 @@ class AtivoDAO(private val dbHelper : DbHelper) : AtivoRepository {
         val codigoTicker  = cursor.getString(cursor.getColumnIndex(ATIVO_TICKER))
         val id = cursor.getInt(cursor.getColumnIndex(ATIVO_ID))
         val ticker = Ticker.criar(codigoTicker)!!
-        return Ativo(id, ticker, nome)
+        return Ativo(
+            id,
+            ticker,
+            nome
+        )
     }
 
 }

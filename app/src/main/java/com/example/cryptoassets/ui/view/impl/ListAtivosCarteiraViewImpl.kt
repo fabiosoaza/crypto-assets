@@ -1,9 +1,9 @@
 package com.example.cryptoassets.ui.view.impl
 
-import com.example.cryptoassets.core.domain.Carteira
-import com.example.cryptoassets.core.domain.Cotacao
-import com.example.cryptoassets.core.domain.Ticker
-import com.example.cryptoassets.core.util.CalculadorCarteira
+import com.example.cryptoassets.core.model.entidade.Carteira
+import com.example.cryptoassets.core.model.entidade.Cotacao
+import com.example.cryptoassets.core.model.entidade.Ticker
+import com.example.cryptoassets.core.model.calculador.CalculadorCarteira
 import com.example.cryptoassets.ui.util.FormatadorUtils
 import com.example.cryptoassets.ui.view.AtivoCarteiraListViewItem
 import com.example.cryptoassets.ui.view.ListAtivosCarteiraView
@@ -41,7 +41,7 @@ class ListAtivosCarteiraViewImpl(private val carteira: Carteira, private val cot
         }
     }
 
-    private fun cotacao(ticker: Ticker) : Cotacao{
+    private fun cotacao(ticker: Ticker) : Cotacao {
         return cotacoes.filter { cotacao -> cotacao.ticker == ticker }[0]
     }
 }

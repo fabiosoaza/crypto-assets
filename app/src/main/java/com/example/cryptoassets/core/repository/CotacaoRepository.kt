@@ -1,6 +1,6 @@
 package com.example.cryptoassets.core.repository
 
-import com.example.cryptoassets.core.domain.Cotacao
+import com.example.cryptoassets.core.model.entidade.Cotacao
 
 interface CotacaoRepository {
 

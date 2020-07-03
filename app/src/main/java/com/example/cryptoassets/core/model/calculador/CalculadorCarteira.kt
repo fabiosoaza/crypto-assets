@@ -1,8 +1,10 @@
-package com.example.cryptoassets.core.util
+package com.example.cryptoassets.core.model.calculador
 
-import com.example.cryptoassets.core.domain.Carteira
-import com.example.cryptoassets.core.domain.Cotacao
-import com.example.cryptoassets.core.domain.Ticker
+import com.example.cryptoassets.core.model.entidade.Carteira
+import com.example.cryptoassets.core.model.entidade.Cotacao
+import com.example.cryptoassets.core.model.entidade.Ticker
+import com.example.cryptoassets.util.BigDecimalUtils
+import com.example.cryptoassets.util.MoneyUtils
 import org.javamoney.moneta.Money
 import java.math.BigDecimal
 
@@ -29,20 +31,34 @@ class CalculadorCarteira {
         return if (carteira.calcularValorTotalPago().isZero)
             BigDecimal.ZERO
         else {
-            val ofString = BigDecimalUtils.ofString(calcularVariacaoValor(carteira, cotacoes).number.toString())
-            val ofInt = BigDecimalUtils.ofInt(100)
-            val multiply = BigDecimalUtils.ofBigDecimal(ofString.multiply(ofInt))
-            BigDecimalUtils.divide(multiply, calcularValorTotalCarteira(carteira))
+            val variacao =
+                BigDecimalUtils.ofString(
+                    calcularVariacaoValor(carteira, cotacoes).number.toString()
+                )
+            val percent =
+                BigDecimalUtils.ofInt(
+                    100
+                )
+            val multiply =
+                BigDecimalUtils.ofBigDecimal(
+                    variacao.multiply(percent)
+                )
+            BigDecimalUtils.divide(
+                multiply,
+                calcularValorTotalCarteira(carteira)
+            )
         }
 
     }
 
-    private fun cotacao(cotacoes: List<Cotacao>, ticker:Ticker) : Cotacao {
+    private fun cotacao(cotacoes: List<Cotacao>, ticker: Ticker) : Cotacao {
         return cotacoes.filter { cotacao -> cotacao.ticker == ticker }[0]
     }
 
 
     private fun calcularValorTotalCarteira(carteira: Carteira) =
-        BigDecimalUtils.ofString(carteira.calcularValorTotalPago().number.toString())
+        BigDecimalUtils.ofString(
+            carteira.calcularValorTotalPago().number.toString()
+        )
 
 }

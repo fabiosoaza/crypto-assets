@@ -1,6 +1,6 @@
 package com.example.cryptoassets.ui.util
 
-import com.example.cryptoassets.core.util.MoneyUtils
+import com.example.cryptoassets.util.MoneyUtils
 import org.javamoney.moneta.Money
 import java.math.BigDecimal
 import java.text.DecimalFormat

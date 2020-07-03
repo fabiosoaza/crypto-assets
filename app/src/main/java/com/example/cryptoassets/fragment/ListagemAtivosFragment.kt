@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import com.example.cryptoassets.R
-import com.example.cryptoassets.core.domain.Ativo
+import com.example.cryptoassets.core.model.entidade.Ativo
 import com.example.cryptoassets.ui.adapter.ListAtivosAdapter
 import com.example.cryptoassets.ui.view.ListAtivosView
 import com.example.cryptoassets.ui.view.impl.builder.ListAtivosViewBuilder

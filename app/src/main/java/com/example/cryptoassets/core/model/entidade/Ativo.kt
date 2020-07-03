@@ -1,4 +1,4 @@
-package com.example.cryptoassets.core.domain
+package com.example.cryptoassets.core.model.entidade
 
 import java.util.*
 

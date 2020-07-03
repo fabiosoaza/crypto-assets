@@ -1,8 +1,8 @@
 package com.example.cryptoassets.ui.view.impl
 
-import com.example.cryptoassets.core.util.CalculadorTransacoes
-import com.example.cryptoassets.core.domain.Transacao
-import com.example.cryptoassets.core.util.MoneyUtils
+import com.example.cryptoassets.core.model.calculador.CalculadorTransacoes
+import com.example.cryptoassets.core.model.entidade.Transacao
+import com.example.cryptoassets.util.MoneyUtils
 import com.example.cryptoassets.ui.util.FormatadorUtils
 import com.example.cryptoassets.ui.view.ListTransacoesView
 import com.example.cryptoassets.ui.view.TransacaoListViewItem
@@ -13,7 +13,8 @@ class ListTransacoesViewImpl(private val transacoes: List<Transacao>) : ListTran
         val valor = if (transacoes.isEmpty()) {
             MoneyUtils.zero()
         } else {
-            CalculadorTransacoes().calcularValorTotal(transacoes)
+            CalculadorTransacoes()
+                .calcularValorTotal(transacoes)
         }
         return FormatadorUtils.formatarValor(valor)
     }
