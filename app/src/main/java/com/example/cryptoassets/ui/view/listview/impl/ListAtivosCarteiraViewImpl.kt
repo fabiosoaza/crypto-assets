@@ -1,16 +1,17 @@
-package com.example.cryptoassets.ui.view.impl
+package com.example.cryptoassets.ui.view.listview.impl
 
 import com.example.cryptoassets.core.model.entidade.Carteira
 import com.example.cryptoassets.core.model.entidade.Cotacao
 import com.example.cryptoassets.core.model.entidade.Ticker
 import com.example.cryptoassets.core.model.calculador.CalculadorCarteira
-import com.example.cryptoassets.ui.util.FormatadorUtils
-import com.example.cryptoassets.ui.view.AtivoCarteiraListViewItem
-import com.example.cryptoassets.ui.view.ListAtivosCarteiraView
+import com.example.cryptoassets.util.FormatadorUtils
+import com.example.cryptoassets.ui.view.listview.AtivoCarteiraListViewItem
+import com.example.cryptoassets.ui.view.listview.ListAtivosCarteiraView
 import org.javamoney.moneta.Money
 import java.math.BigDecimal
 
-class ListAtivosCarteiraViewImpl(private val carteira: Carteira, private val cotacoes : List<Cotacao>) : ListAtivosCarteiraView {
+class ListAtivosCarteiraViewImpl(private val carteira: Carteira, private val cotacoes : List<Cotacao>) :
+    ListAtivosCarteiraView {
 
     override fun getSaldoFormatado(): String {
         return formatar(carteira.calcularValorTotalPago())

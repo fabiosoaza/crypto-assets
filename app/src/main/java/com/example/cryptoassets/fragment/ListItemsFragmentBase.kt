@@ -9,16 +9,16 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cryptoassets.R
-import com.example.cryptoassets.configuration.BeansFactory
+import com.example.cryptoassets.context.ApplicationComponentsContext
 import com.example.cryptoassets.ui.adapter.BaseListItemsAdapter
-import com.example.cryptoassets.ui.util.UiUtils
-import com.example.cryptoassets.ui.view.AdaptableListItemsView
+import com.example.cryptoassets.util.UiUtils
+import com.example.cryptoassets.ui.view.listview.AdaptableListItemsView
 
 abstract class ListItemsFragmentBase : Fragment() {
 
     private lateinit var fragmentContext: Context
 
-    private lateinit var beanFactory : BeansFactory
+    private lateinit var beanFactory : ApplicationComponentsContext
 
     fun beanFactory() = beanFactory
 
@@ -26,15 +26,15 @@ abstract class ListItemsFragmentBase : Fragment() {
 
     abstract fun fragmentLayoutId() : Int
 
-    fun fragmentContext() : Context{
-        return fragmentContext
+    open fun onPreCreateView(){
+        beanFactory = ApplicationComponentsContext(fragmentContext)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        beanFactory = BeansFactory(fragmentContext)
+        onPreCreateView()
         updateAdapter(dataSet())
         val root = inflater.inflate(fragmentLayoutId(), container, false)
         val recycleView = root.findViewById<RecyclerView>(recyclerViewId())

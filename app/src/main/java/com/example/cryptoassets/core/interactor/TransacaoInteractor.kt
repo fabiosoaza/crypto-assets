@@ -1,8 +1,9 @@
-package com.example.cryptoassets.ui.interactor
+package com.example.cryptoassets.core.interactor
 
 import android.content.Context
 import android.text.TextUtils.isEmpty
 import com.example.cryptoassets.R
+import com.example.cryptoassets.core.interactor.listener.OnSalvarTransacao
 import com.example.cryptoassets.core.model.entidade.AtivoCarteira
 import com.example.cryptoassets.core.model.entidade.Ticker
 import com.example.cryptoassets.core.model.entidade.TipoTransacao
@@ -23,16 +24,9 @@ class TransacaoInteractor(
     private val ativoCarteiraRepository: AtivoCarteiraRepository
 ) {
 
-    interface  OnCliqueSalvar{
-        fun onErrorQuantidadeInvalida(msg: String)
-        fun onErrorPrecoMedioInvalido(msg: String)
-        fun onErrorTickerInvalido(msg: String)
-        fun onErrorTipoTransacaoInvalida(msg: String)
-        fun onErrorDataTransacaoInvalida(msg: String)
-        fun onSuccess(msg: String)
-    }
 
-    fun salvar(codigoTicker: String?, precoMedio: String?, quantidade: String?, data:LocalDateTime?, tipoTransacao: TipoTransacao?, listener: TransacaoInteractor.OnCliqueSalvar){
+
+    fun salvar(codigoTicker: String?, precoMedio: String?, quantidade: String?, data:LocalDateTime?, tipoTransacao: TipoTransacao?, listener: OnSalvarTransacao){
         val valido = validar(codigoTicker, precoMedio, quantidade, data, tipoTransacao, listener)
         if(valido){
             val ticker = Ticker.criar(codigoTicker!!)!!
@@ -89,7 +83,7 @@ class TransacaoInteractor(
     }
 
 
-    private fun validar(codigoTicker: String?, precoMedio: String?, quantidade: String?, data:LocalDateTime?, tipoTransacao: TipoTransacao?, listener: TransacaoInteractor.OnCliqueSalvar):Boolean{
+    private fun validar(codigoTicker: String?, precoMedio: String?, quantidade: String?, data:LocalDateTime?, tipoTransacao: TipoTransacao?, listener: OnSalvarTransacao):Boolean{
         if(isEmpty(codigoTicker)){
             listener.onErrorTickerInvalido(formatarMensagemErro(R.string.labelTickerAtivo))
             return false

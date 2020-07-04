@@ -1,4 +1,4 @@
-package com.example.cryptoassets.ui.util
+package com.example.cryptoassets.util
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter

@@ -7,11 +7,11 @@ import com.example.cryptoassets.core.model.entidade.Cotacao
 import com.example.cryptoassets.core.exception.ConexaoDesabilitadaException
 import com.example.cryptoassets.core.exception.FalhaConexaoException
 import com.example.cryptoassets.core.repository.CotacaoRepository
-import com.example.cryptoassets.ui.interactor.OnBuscaCotacao
+import com.example.cryptoassets.core.interactor.listener.OnBuscarCotacao
 import com.example.cryptoassets.util.ResourceUtil
 import java.util.*
 
-class BuscaCotacaoAsyncTask(private val context: Context, private val cotacaoRepository: CotacaoRepository, private val listener: OnBuscaCotacao) : AsyncTask<Void, Void, List<Cotacao>>() {
+class BuscaCotacaoAsyncTask(private val context: Context, private val cotacaoRepository: CotacaoRepository, private val listener: OnBuscarCotacao) : AsyncTask<Void, Void, List<Cotacao>>() {
 
     override fun onPreExecute() {
         super.onPreExecute()
@@ -34,7 +34,7 @@ class BuscaCotacaoAsyncTask(private val context: Context, private val cotacaoRep
             return Collections.emptyList<Cotacao>()
         }
         catch(fc: FalhaConexaoException){
-            listener.onErrorBuscaCotacao(ResourceUtil.getString(context, R.string.cantConnectToHost)!!)
+            listener.onErrorBuscarCotacao(ResourceUtil.getString(context, R.string.cantConnectToHost)!!)
             return Collections.emptyList<Cotacao>()
         }
     }

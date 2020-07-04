@@ -1,8 +1,8 @@
-package com.example.cryptoassets.ui.view.impl.builder
+package com.example.cryptoassets.ui.view.listview.impl.builder
 
 import com.example.cryptoassets.core.model.entidade.Ativo
-import com.example.cryptoassets.ui.view.ListAtivosView
-import com.example.cryptoassets.ui.view.impl.ListAtivosViewImpl
+import com.example.cryptoassets.ui.view.listview.ListAtivosView
+import com.example.cryptoassets.ui.view.listview.impl.ListAtivosViewImpl
 
 class ListAtivosViewBuilder {
 

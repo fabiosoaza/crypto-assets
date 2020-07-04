@@ -8,8 +8,8 @@ import android.widget.Button
 import com.example.cryptoassets.R
 import com.example.cryptoassets.core.model.entidade.Ativo
 import com.example.cryptoassets.ui.adapter.ListAtivosAdapter
-import com.example.cryptoassets.ui.view.ListAtivosView
-import com.example.cryptoassets.ui.view.impl.builder.ListAtivosViewBuilder
+import com.example.cryptoassets.ui.view.listview.ListAtivosView
+import com.example.cryptoassets.ui.view.listview.impl.builder.ListAtivosViewBuilder
 
 
 class ListagemAtivosFragment : ListItemsFragmentBase() {

@@ -1,4 +1,4 @@
-package com.example.cryptoassets.ui.view
+package com.example.cryptoassets.ui.view.listview
 
 interface AtivoListViewItem {
 

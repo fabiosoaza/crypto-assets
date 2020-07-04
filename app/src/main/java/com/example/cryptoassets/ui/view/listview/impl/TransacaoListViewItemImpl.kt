@@ -1,10 +1,11 @@
-package com.example.cryptoassets.ui.view.impl
+package com.example.cryptoassets.ui.view.listview.impl
 
 import com.example.cryptoassets.core.model.entidade.Transacao
-import com.example.cryptoassets.ui.util.FormatadorUtils
-import com.example.cryptoassets.ui.view.TransacaoListViewItem
+import com.example.cryptoassets.util.FormatadorUtils
+import com.example.cryptoassets.ui.view.listview.TransacaoListViewItem
 
-class TransacaoListViewItemImpl(private val transacao: Transacao):TransacaoListViewItem {
+class TransacaoListViewItemImpl(private val transacao: Transacao):
+    TransacaoListViewItem {
 
     override fun data(): String {
         return FormatadorUtils.formatarData(transacao.data)

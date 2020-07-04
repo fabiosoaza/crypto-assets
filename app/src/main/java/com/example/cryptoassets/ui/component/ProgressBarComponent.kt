@@ -3,7 +3,7 @@ package com.example.cryptoassets.ui.component
 import android.view.View
 import androidx.activity.ComponentActivity
 import com.example.cryptoassets.R
-import com.example.cryptoassets.ui.util.UiUtils
+import com.example.cryptoassets.util.UiUtils
 import java.util.concurrent.atomic.AtomicBoolean
 
 class ProgressBarComponent(private var view: ComponentActivity, private val viewContainerId:Int,  private val viewProgressBarId:Int ) {

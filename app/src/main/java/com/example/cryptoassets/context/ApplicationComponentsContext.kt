@@ -1,4 +1,4 @@
-package com.example.cryptoassets.configuration
+package com.example.cryptoassets.context
 
 import android.content.Context
 import com.example.cryptoassets.BuildConfig
@@ -12,8 +12,9 @@ import com.example.cryptoassets.infrastructure.dao.DbHelper
 import com.example.cryptoassets.infrastructure.dao.TransacaoDAO
 import com.example.cryptoassets.infrastructure.webservice.CotacaoApi
 import com.example.cryptoassets.infrastructure.webservice.client.MercadoBitcoinApiClient
-import com.example.cryptoassets.ui.interactor.AtivoInteractor
-import com.example.cryptoassets.ui.interactor.TransacaoInteractor
+import com.example.cryptoassets.core.interactor.AtivoInteractor
+import com.example.cryptoassets.core.interactor.BuscaCotacaoInteractor
+import com.example.cryptoassets.core.interactor.TransacaoInteractor
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
@@ -25,7 +26,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.jackson.JacksonConverterFactory
 import java.util.concurrent.TimeUnit
 
-class BeansFactory(private val context: Context) {
+class ApplicationComponentsContext(private val context: Context) {
 
 
     private val ativoDAO = AtivoDAO(dbHelper())
@@ -39,6 +40,7 @@ class BeansFactory(private val context: Context) {
         ativoRepository(),
         ativoCarteiraRepository()
     )
+    private val buscaCotacaoInteractor = BuscaCotacaoInteractor(context, cotacaoRepository())
 
 
     fun ativoRepository(): AtivoRepository {
@@ -64,6 +66,10 @@ class BeansFactory(private val context: Context) {
 
     fun transacaoInteractor(): TransacaoInteractor {
         return transacaoInteractor
+    }
+
+    fun buscaCotacaoInteractor():BuscaCotacaoInteractor{
+        return buscaCotacaoInteractor
     }
 
     private fun dbHelper(): DbHelper {

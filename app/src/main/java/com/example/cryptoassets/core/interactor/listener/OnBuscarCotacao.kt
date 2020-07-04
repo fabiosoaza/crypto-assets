@@ -1,10 +1,10 @@
-package com.example.cryptoassets.ui.interactor
+package com.example.cryptoassets.core.interactor.listener
 
 import com.example.cryptoassets.core.model.entidade.Cotacao
 
-interface  OnBuscaCotacao{
+interface  OnBuscarCotacao{
     fun onErrorConnection(msg:String)
-    fun onErrorBuscaCotacao(msg:String)
+    fun onErrorBuscarCotacao(msg:String)
     fun onPreExecute()
     fun onPostExecute(result: List<Cotacao>)
 }

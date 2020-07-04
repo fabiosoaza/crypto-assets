@@ -15,17 +15,17 @@ import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.fragment.app.Fragment
 import com.example.cryptoassets.R
-import com.example.cryptoassets.configuration.BeansFactory
+import com.example.cryptoassets.context.ApplicationComponentsContext
 import com.example.cryptoassets.core.model.entidade.Ativo
 import com.example.cryptoassets.core.model.entidade.Cotacao
 import com.example.cryptoassets.core.model.entidade.Ticker
 import com.example.cryptoassets.core.model.entidade.TipoTransacao
-import com.example.cryptoassets.ui.util.UiUtils
+import com.example.cryptoassets.util.UiUtils
 import com.example.cryptoassets.ui.view.TransacaoView
 import com.example.cryptoassets.presenter.EdicaoTransacaoPresenter
 import com.example.cryptoassets.ui.BuscaCotacaoAsyncTask
 import com.example.cryptoassets.ui.component.ProgressBarComponent
-import com.example.cryptoassets.ui.util.FormatadorUtils
+import com.example.cryptoassets.util.FormatadorUtils
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import java.time.LocalDateTime
@@ -36,14 +36,14 @@ class AdicaoTransacaoFragment : TransacaoView, Fragment() {
     private lateinit var fragmentContext: Context
     private var asyncTaskBuscaCotacao: BuscaCotacaoAsyncTask?= null
     private var progressBarComponent: ProgressBarComponent?=null
-    private lateinit var beanFactory : BeansFactory
+    private lateinit var beanFactory : ApplicationComponentsContext
     private var cotacoes  = arrayListOf<Cotacao>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        beanFactory = BeansFactory(fragmentContext)
+        beanFactory = ApplicationComponentsContext(fragmentContext)
         val root = inflater.inflate(R.layout.fragment_adicao_transacao, container, false)
 
         val presenter =
@@ -211,7 +211,7 @@ class AdicaoTransacaoFragment : TransacaoView, Fragment() {
         UiUtils.message(activity as ComponentActivity, msg)
     }
 
-    override fun onErrorBuscaCotacao(msg: String) {
+    override fun onErrorBuscarCotacao(msg: String) {
         UiUtils.message(activity as ComponentActivity, msg)
     }
 

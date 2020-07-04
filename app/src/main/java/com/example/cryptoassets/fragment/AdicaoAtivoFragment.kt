@@ -12,9 +12,9 @@ import androidx.activity.ComponentActivity
 import androidx.fragment.app.Fragment
 import com.example.cryptoassets.presenter.EdicaoAtivoPresenter
 import com.example.cryptoassets.R
-import com.example.cryptoassets.configuration.BeansFactory
+import com.example.cryptoassets.context.ApplicationComponentsContext
 import com.example.cryptoassets.core.model.entidade.Ticker
-import com.example.cryptoassets.ui.util.UiUtils
+import com.example.cryptoassets.util.UiUtils
 import com.example.cryptoassets.ui.view.AtivoView
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -28,7 +28,7 @@ class AdicaoAtivoFragment : AtivoView, Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-       val  beanFactory = BeansFactory(fragmentContext)
+       val  beanFactory = ApplicationComponentsContext(fragmentContext)
 
         val root = inflater.inflate(R.layout.fragment_adicao_ativo, container, false)
 

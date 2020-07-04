@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cryptoassets.R
-import com.example.cryptoassets.ui.view.AdaptableListItemsView
-import com.example.cryptoassets.ui.view.ListTransacoesView
-import com.example.cryptoassets.ui.view.TransacaoListViewItem
+import com.example.cryptoassets.ui.view.listview.AdaptableListItemsView
+import com.example.cryptoassets.ui.view.listview.ListTransacoesView
+import com.example.cryptoassets.ui.view.listview.TransacaoListViewItem
 import kotlinx.android.synthetic.main.transacao_item.view.*
 import kotlinx.android.synthetic.main.transacao_item_header.view.*
 

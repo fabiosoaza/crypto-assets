@@ -10,22 +10,18 @@ import com.example.cryptoassets.fragment.AdicaoTransacaoFragment
 import com.example.cryptoassets.fragment.ListagemAtivosFragment
 import com.example.cryptoassets.fragment.ListagemTransacoesFragment
 import com.example.cryptoassets.fragment.ListagemAtivosCarteiraFragment
-import com.example.cryptoassets.ui.util.UiUtils
+import com.example.cryptoassets.util.UiUtils
 import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         bottom_navigation.setOnNavigationItemSelectedListener { item: MenuItem ->
-            val id = item.itemId
-            val fragment = when (id) {
+            val fragment = when (item.itemId) {
                 R.id.pageHome -> ListagemAtivosCarteiraFragment()
                 R.id.pageTransactions -> ListagemTransacoesFragment()
                 R.id.pageAssets -> ListagemAtivosFragment()

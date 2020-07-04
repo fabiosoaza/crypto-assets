@@ -3,8 +3,8 @@ package com.example.cryptoassets.fragment
 import com.example.cryptoassets.R
 import com.example.cryptoassets.core.model.entidade.Transacao
 import com.example.cryptoassets.ui.adapter.ListTransacoesAdapter
-import com.example.cryptoassets.ui.view.ListTransacoesView
-import com.example.cryptoassets.ui.view.impl.builder.ListTransacoesViewBuilder
+import com.example.cryptoassets.ui.view.listview.ListTransacoesView
+import com.example.cryptoassets.ui.view.listview.impl.builder.ListTransacoesViewBuilder
 
 
 class ListagemTransacoesFragment : ListItemsFragmentBase() {

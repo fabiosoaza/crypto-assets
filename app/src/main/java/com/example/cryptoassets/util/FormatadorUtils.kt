@@ -1,4 +1,4 @@
-package com.example.cryptoassets.ui.util
+package com.example.cryptoassets.util
 
 import com.example.cryptoassets.util.MoneyUtils
 import org.javamoney.moneta.Money

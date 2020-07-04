@@ -1,44 +1,35 @@
 package com.example.cryptoassets.fragment
 
-import android.os.AsyncTask
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.ComponentActivity
 import com.example.cryptoassets.R
+import com.example.cryptoassets.context.ApplicationComponentsContext
+import com.example.cryptoassets.core.interactor.listener.OnBuscarCotacao
 import com.example.cryptoassets.core.model.entidade.AtivoCarteira
 import com.example.cryptoassets.core.model.entidade.Cotacao
-import com.example.cryptoassets.ui.BuscaCotacaoAsyncTask
 import com.example.cryptoassets.ui.adapter.ListAtivosCarteiraAdapter
 import com.example.cryptoassets.ui.component.ProgressBarComponent
-import com.example.cryptoassets.ui.interactor.OnBuscaCotacao
-import com.example.cryptoassets.ui.util.UiUtils
-import com.example.cryptoassets.ui.view.ListAtivosCarteiraView
-import com.example.cryptoassets.ui.view.impl.builder.ListAtivosCarteiraViewBuilder
+import com.example.cryptoassets.ui.view.listview.ListAtivosCarteiraView
+import com.example.cryptoassets.ui.view.listview.impl.builder.ListAtivosCarteiraViewBuilder
+import com.example.cryptoassets.util.UiUtils
 
 
-class ListagemAtivosCarteiraFragment : OnBuscaCotacao, ListItemsFragmentBase() {
+class ListagemAtivosCarteiraFragment : OnBuscarCotacao, ListItemsFragmentBase() {
 
-    private var asyncTaskBuscaCotacao: BuscaCotacaoAsyncTask?= null
     private var progressBarComponent: ProgressBarComponent?=null
-
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        //Dependencia Temporal: a barra de status precisa ser instanciada antes de chamar o método super
-        progressBarComponent = ProgressBarComponent(activity as ComponentActivity, R.id.container, R.id.progressOverlay )
-        return super.onCreateView(inflater, container, savedInstanceState)
-    }
-
-    private var listAdapter =
-        ListAtivosCarteiraAdapter(
+    private var listAdapter = ListAtivosCarteiraAdapter(
             ListAtivosCarteiraViewBuilder()
                 .build()
         )
 
+    override fun onPreCreateView(){
+        //Dependencia da chamada dom étodo da classe mãe
+        super.onPreCreateView()
+        progressBarComponent = ProgressBarComponent(activity as ComponentActivity, R.id.container, R.id.progressOverlay )
+    }
 
     override fun recyclerViewId() = R.id.rvListagemMoedas
 
@@ -47,19 +38,9 @@ class ListagemAtivosCarteiraFragment : OnBuscaCotacao, ListItemsFragmentBase() {
     override fun listAdapter() = listAdapter
 
     override fun dataSet(): ListAtivosCarteiraView {
-        carregarCotacoes()
+        beanFactory().buscaCotacaoInteractor().buscarCotacoes(this)
         return ListAtivosCarteiraViewBuilder()
             .build()
-    }
-
-
-
-    private fun carregarCotacoes() {
-        if (asyncTaskBuscaCotacao?.status != AsyncTask.Status.RUNNING) {
-            asyncTaskBuscaCotacao =
-                BuscaCotacaoAsyncTask(fragmentContext(), beanFactory().cotacaoRepository(), this)
-            asyncTaskBuscaCotacao?.execute()
-        }
     }
 
     private fun ativos(): MutableList<AtivoCarteira> {
@@ -70,7 +51,7 @@ class ListagemAtivosCarteiraFragment : OnBuscaCotacao, ListItemsFragmentBase() {
         UiUtils.message(activity as ComponentActivity, msg)
     }
 
-    override fun onErrorBuscaCotacao(msg: String) {
+    override fun onErrorBuscarCotacao(msg: String) {
         UiUtils.message(activity as ComponentActivity, msg)
     }
 

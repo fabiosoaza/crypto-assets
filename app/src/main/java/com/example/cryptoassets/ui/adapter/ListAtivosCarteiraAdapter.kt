@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cryptoassets.R
-import com.example.cryptoassets.ui.view.AdaptableListItemsView
-import com.example.cryptoassets.ui.view.AtivoCarteiraListViewItem
-import com.example.cryptoassets.ui.view.ListAtivosCarteiraView
+import com.example.cryptoassets.ui.view.listview.AdaptableListItemsView
+import com.example.cryptoassets.ui.view.listview.AtivoCarteiraListViewItem
+import com.example.cryptoassets.ui.view.listview.ListAtivosCarteiraView
 import kotlinx.android.synthetic.main.moeda_item.view.*
 import kotlinx.android.synthetic.main.moeda_item_header.view.*
 
@@ -108,7 +108,7 @@ class ListAtivosCarteiraAdapter(private var listAtivosCarteiraView: ListAtivosCa
         var txtVariacaoTotalPrecoMedio: TextView = itemView.txtVariacaoTotalPrecoMedio
         var txtVariacaoPorcentagemPrecoMedio: TextView = itemView.txtVariacaoPorcentagemPrecoMedio
 
-        fun update(listAtivosCarteiraView:ListAtivosCarteiraView){
+        fun update(listAtivosCarteiraView: ListAtivosCarteiraView){
             updateTextViewCounter(this.txtTotalBalance, listAtivosCarteiraView.getSaldoFormatado())
             updateTextViewCounter(this.txtVariacaoTotalPrecoMedio, listAtivosCarteiraView.getVariacaoTotalFormatada())
             updateTextViewCounter(this.txtVariacaoPorcentagemPrecoMedio, listAtivosCarteiraView.getVariacaoPorcentagemFormatada())

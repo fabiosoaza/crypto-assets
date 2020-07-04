@@ -1,14 +1,15 @@
-package com.example.cryptoassets.ui.view.impl
+package com.example.cryptoassets.ui.view.listview.impl
 
 import com.example.cryptoassets.core.model.entidade.AtivoCarteira
 import com.example.cryptoassets.core.model.calculador.CalculadorVariacaoCotacao
 import com.example.cryptoassets.core.model.entidade.Cotacao
-import com.example.cryptoassets.ui.util.FormatadorUtils
-import com.example.cryptoassets.ui.view.AtivoCarteiraListViewItem
+import com.example.cryptoassets.util.FormatadorUtils
+import com.example.cryptoassets.ui.view.listview.AtivoCarteiraListViewItem
 import org.javamoney.moneta.Money
 import java.math.BigDecimal
 
-class AtivoCarteiraListViewItemImpl(private val ativoCarteira: AtivoCarteira, private val cotacao: Cotacao) : AtivoCarteiraListViewItem  {
+class AtivoCarteiraListViewItemImpl(private val ativoCarteira: AtivoCarteira, private val cotacao: Cotacao) :
+    AtivoCarteiraListViewItem {
 
     override fun getCodigoTicker(): String {
         return ativoCarteira.ativo.ticker.name

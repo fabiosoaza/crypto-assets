@@ -1,7 +1,8 @@
-package com.example.cryptoassets.ui.interactor
+package com.example.cryptoassets.core.interactor
 
 import android.content.Context
 import com.example.cryptoassets.R
+import com.example.cryptoassets.core.interactor.listener.OnSalvarAtivo
 import com.example.cryptoassets.core.model.entidade.Ativo
 import com.example.cryptoassets.core.model.entidade.Ticker
 import com.example.cryptoassets.core.repository.AtivoRepository
@@ -10,14 +11,8 @@ import java.text.MessageFormat
 
 class AtivoInteractor(private val repository: AtivoRepository, private val context: Context) {
 
-    interface  OnCliqueSalvar{
-        fun onErrorAtivoJaCadastrado(msg: String)
-        fun onErrorTickerInvalido(msg: String)
-        fun onErrorNomeInvalido(msg: String)
-        fun onSuccess(msg: String)
-    }
 
-    fun salvar(ticker: String?, nomeAtivo: String?, listener: OnCliqueSalvar){
+    fun salvar(ticker: String?, nomeAtivo: String?, listener: OnSalvarAtivo){
         val valido = validar(ticker, nomeAtivo, listener)
         if(valido){
             val ativo = Ativo(
@@ -28,7 +23,7 @@ class AtivoInteractor(private val repository: AtivoRepository, private val conte
         }
     }
 
-    private fun validar(ticker: String?, nomeAtivo: String?, listener: OnCliqueSalvar):Boolean{
+    private fun validar(ticker: String?, nomeAtivo: String?, listener: OnSalvarAtivo):Boolean{
         if(isEmpty(ticker)){
             listener.onErrorTickerInvalido(formatarMensagem(R.string.labelTickerAtivo))
             return false

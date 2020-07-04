@@ -1,7 +1,7 @@
 package com.example.cryptoassets.presenter
 
 import com.example.cryptoassets.core.model.entidade.TipoTransacao
-import com.example.cryptoassets.ui.interactor.TransacaoInteractor
+import com.example.cryptoassets.core.interactor.TransacaoInteractor
 import com.example.cryptoassets.ui.view.TransacaoView
 import java.time.LocalDateTime
 

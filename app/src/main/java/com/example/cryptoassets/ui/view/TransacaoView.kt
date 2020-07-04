@@ -1,7 +1,8 @@
 package com.example.cryptoassets.ui.view
 
-import com.example.cryptoassets.ui.interactor.OnBuscaCotacao
-import com.example.cryptoassets.ui.interactor.TransacaoInteractor
+import com.example.cryptoassets.core.interactor.listener.OnBuscarCotacao
+import com.example.cryptoassets.core.interactor.listener.OnSalvarTransacao
 
-interface TransacaoView : TransacaoInteractor.OnCliqueSalvar, OnBuscaCotacao {
+interface TransacaoView : OnSalvarTransacao,
+    OnBuscarCotacao {
 }
