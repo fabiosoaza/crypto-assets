@@ -1,7 +1,6 @@
 package com.example.cryptoassets.fragment
 
 import android.content.Context
-import android.os.AsyncTask
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -16,25 +15,24 @@ import androidx.activity.ComponentActivity
 import androidx.fragment.app.Fragment
 import com.example.cryptoassets.R
 import com.example.cryptoassets.context.ApplicationComponentsContext
+import com.example.cryptoassets.core.interactor.listener.OnBuscarCotacao
 import com.example.cryptoassets.core.model.entidade.Ativo
 import com.example.cryptoassets.core.model.entidade.Cotacao
 import com.example.cryptoassets.core.model.entidade.Ticker
 import com.example.cryptoassets.core.model.entidade.TipoTransacao
-import com.example.cryptoassets.util.UiUtils
-import com.example.cryptoassets.ui.view.TransacaoView
 import com.example.cryptoassets.presenter.EdicaoTransacaoPresenter
-import com.example.cryptoassets.ui.BuscaCotacaoAsyncTask
 import com.example.cryptoassets.ui.component.ProgressBarComponent
+import com.example.cryptoassets.ui.view.TransacaoView
 import com.example.cryptoassets.util.FormatadorUtils
+import com.example.cryptoassets.util.UiUtils
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import java.time.LocalDateTime
 
 
-class AdicaoTransacaoFragment : TransacaoView, Fragment() {
+class AdicaoTransacaoFragment : TransacaoView, OnBuscarCotacao, Fragment() {
 
     private lateinit var fragmentContext: Context
-    private var asyncTaskBuscaCotacao: BuscaCotacaoAsyncTask?= null
     private var progressBarComponent: ProgressBarComponent?=null
     private lateinit var beanFactory : ApplicationComponentsContext
     private var cotacoes  = arrayListOf<Cotacao>()
@@ -94,7 +92,7 @@ class AdicaoTransacaoFragment : TransacaoView, Fragment() {
         editQuantidade.addTextChangedListener(UiUtils.createClearInputErrorMessageListener(layoutQuantidade))
 
         progressBarComponent = ProgressBarComponent(activity as ComponentActivity, R.id.container, R.id.progressOverlay )
-        carregarCotacoes()
+        beanFactory.buscaCotacaoInteractor().buscarCotacoes(this)
 
         return root
     }
@@ -224,14 +222,6 @@ class AdicaoTransacaoFragment : TransacaoView, Fragment() {
         cotacoes.clear()
         cotacoes.addAll(result)
         updateTotais()
-    }
-
-    private fun carregarCotacoes() {
-        if (asyncTaskBuscaCotacao?.status != AsyncTask.Status.RUNNING) {
-            asyncTaskBuscaCotacao =
-                BuscaCotacaoAsyncTask(fragmentContext, beanFactory.cotacaoRepository(), this)
-            asyncTaskBuscaCotacao?.execute()
-        }
     }
 
     private fun updateTotais(){
