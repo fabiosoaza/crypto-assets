@@ -3,7 +3,7 @@ package com.example.cryptoassets.util
 import android.content.Context
 import android.content.res.Resources
 
-class ResourceUtil {
+class ResourceUtils {
     companion object {
 
         fun getStringResourceByName(context: Context, aString: String, packageName:String?= context.packageName): String? {

@@ -80,4 +80,39 @@ class CalculadorCarteiraTest {
         assertEquals(valorEsperado, calculo)
     }
 
+    @Test
+    fun deveCalcularValorAtualCarteiraSemAtivos() {
+        val ativosCarteira = mutableListOf<AtivoCarteira>()
+        val carteira = Carteira(ativosCarteira)
+        val calculo = CalculadorCarteira().calculadorValorAtualCarteira(carteira, cotacoes)
+
+        val valorEsperado = MoneyUtils.zero()
+        assertEquals(valorEsperado, calculo)
+    }
+
+    @Test
+    fun deveCalcularValorAtualCarteira() {
+
+        val elements = arrayOf(
+            AtivoCarteira(
+                Ativo(Ticker.BTC, Ticker.BTC.name),
+                BigDecimalUtils.ofString("0.5"),
+                MoneyUtils.of("50000")
+            ),
+            AtivoCarteira(
+                Ativo(Ticker.LTC, Ticker.LTC.name),
+                BigDecimalUtils.ofString("0.5"),
+                MoneyUtils.of("226.00000000")
+            )
+        )
+        val ativosCarteira = mutableListOf<AtivoCarteira>()
+        ativosCarteira.addAll(elements)
+
+        val carteira = Carteira(ativosCarteira)
+        val calculo = CalculadorCarteira().calculadorValorAtualCarteira(carteira, cotacoes)
+
+        val valorEsperado = MoneyUtils.of("25136.5")
+        assertEquals(valorEsperado, calculo)
+    }
+
 }

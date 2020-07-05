@@ -10,6 +10,18 @@ import java.math.BigDecimal
 
 class CalculadorCarteira {
 
+    fun calculadorValorAtualCarteira(carteira: Carteira, cotacoes: List<Cotacao>): Money{
+        if (carteira.investimentos.isEmpty()){
+            return MoneyUtils.zero()
+        }
+        return carteira.investimentos.map { ativoCarteira ->
+                cotacao(cotacoes, ativoCarteira.ativo.ticker)
+                .valor.multiply(ativoCarteira.quantidade)
+        }.groupingBy { 0 }.aggregate { _, accumulator: Money?, element: Money?, first ->
+            if (first) element else accumulator?.add(element)
+        }[0] ?: MoneyUtils.zero()
+    }
+
     fun calcularVariacaoValor(carteira: Carteira, cotacoes: List<Cotacao>) : Money {
         if (carteira.investimentos.isEmpty()){
             return MoneyUtils.zero()

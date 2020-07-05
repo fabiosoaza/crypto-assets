@@ -13,7 +13,7 @@ import com.example.cryptoassets.core.repository.AtivoRepository
 import com.example.cryptoassets.core.repository.TransacaoRepository
 import com.example.cryptoassets.util.BigDecimalUtils
 import com.example.cryptoassets.util.MoneyUtils
-import com.example.cryptoassets.util.ResourceUtil
+import com.example.cryptoassets.util.ResourceUtils
 import java.text.MessageFormat
 import java.time.LocalDateTime
 
@@ -111,13 +111,13 @@ class TransacaoInteractor(
 
 
     private fun formatarMensagemErro(fieldResourceId:Int) : String{
-        val campo = ResourceUtil.getString(context, fieldResourceId)
-        val message = ResourceUtil.getString(context, R.string.labelMessageErrorMandatory)
+        val campo = ResourceUtils.getString(context, fieldResourceId)
+        val message = ResourceUtils.getString(context, R.string.labelMessageErrorMandatory)
         return  MessageFormat.format(message!!, campo!!)
     }
 
     private fun formatarMensagemSucesso(messageResourceId:Int, campo: String ) : String{
-        val message = ResourceUtil.getString(context, messageResourceId)
+        val message = ResourceUtils.getString(context, messageResourceId)
         return  MessageFormat.format(message!!, campo)
     }
 

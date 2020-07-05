@@ -26,7 +26,7 @@ class ListagemAtivosCarteiraFragment : OnBuscarCotacao, ListItemsFragmentBase() 
         )
 
     override fun onPreCreateView(){
-        //Dependencia da chamada dom étodo da classe mãe
+        //Dependencia da chamada do método da classe mãe
         super.onPreCreateView()
         progressBarComponent = ProgressBarComponent(activity as ComponentActivity, R.id.container, R.id.progressOverlay )
     }

@@ -26,6 +26,10 @@ abstract class ListItemsFragmentBase : Fragment() {
 
     abstract fun fragmentLayoutId() : Int
 
+    fun fragmentContext():Context{
+        return fragmentContext
+    }
+
     open fun onPreCreateView(){
         beanFactory = ApplicationComponentsContext(fragmentContext)
     }

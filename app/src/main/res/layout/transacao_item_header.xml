@@ -34,7 +34,7 @@
                     android:layout_marginTop="8dp"
                     android:focusable="true"
                     android:importantForAccessibility="yes"
-                    android:text="@string/txtTotalBalance"
+                    android:text="@string/txtTotalTransactionsBalance"
                     android:textAppearance="?attr/textAppearanceHeadline6"
                     android:textColor="@color/colorPrimary"
                     app:layout_constraintStart_toStartOf="parent"

@@ -1,4 +1,4 @@
-package com.example.cryptoassets.ui
+package com.example.cryptoassets.core.task
 
 import android.content.Context
 import android.os.AsyncTask
@@ -8,7 +8,7 @@ import com.example.cryptoassets.core.exception.ConexaoDesabilitadaException
 import com.example.cryptoassets.core.exception.FalhaConexaoException
 import com.example.cryptoassets.core.repository.CotacaoRepository
 import com.example.cryptoassets.core.interactor.listener.OnBuscarCotacao
-import com.example.cryptoassets.util.ResourceUtil
+import com.example.cryptoassets.util.ResourceUtils
 import java.util.*
 
 class BuscaCotacaoAsyncTask(private val context: Context, private val cotacaoRepository: CotacaoRepository, private val listener: OnBuscarCotacao) : AsyncTask<Void, Void, List<Cotacao>>() {
@@ -30,11 +30,11 @@ class BuscaCotacaoAsyncTask(private val context: Context, private val cotacaoRep
             cotacaoRepository.cotacoes().toMutableList()
         }
         catch(cd: ConexaoDesabilitadaException){
-            listener.onErrorConnection(ResourceUtil.getString(context, R.string.noInternetPermissionWarning)!!)
+            listener.onErrorConnection(ResourceUtils.getString(context, R.string.noInternetPermissionWarning)!!)
             return Collections.emptyList<Cotacao>()
         }
         catch(fc: FalhaConexaoException){
-            listener.onErrorBuscarCotacao(ResourceUtil.getString(context, R.string.cantConnectToHost)!!)
+            listener.onErrorBuscarCotacao(ResourceUtils.getString(context, R.string.cantConnectToHost)!!)
             return Collections.emptyList<Cotacao>()
         }
     }

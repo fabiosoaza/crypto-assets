@@ -7,10 +7,6 @@ class Carteira(private val ativoCarteiras: MutableList<AtivoCarteira>? = mutable
 
     val investimentos : MutableList<AtivoCarteira> get() = this.ativoCarteiras ?: mutableListOf<AtivoCarteira>()
 
-    fun adicionar(ativoCarteira: AtivoCarteira) {
-        ativoCarteiras?.add(ativoCarteira)
-    }
-
     fun calcularValorTotalPago(): Money {
         if (ativoCarteiras == null || ativoCarteiras.isEmpty()) {
             return MoneyUtils.zero()

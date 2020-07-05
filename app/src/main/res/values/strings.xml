@@ -47,6 +47,8 @@
     <string name="labelDownloadingData">Loading data</string>
     <string name="labelDownloadingDataComplete">Data loading complete</string>
     <string name="labelDownloadData">Download data</string>
-
+    <string name="txtTotalTransactionsBalance">Balance</string>
+    <string name="txtTotalInvestido">Total invested</string>
+    <string name="txtVariacaoPatrimonio">Variation: </string>
 
 </resources>

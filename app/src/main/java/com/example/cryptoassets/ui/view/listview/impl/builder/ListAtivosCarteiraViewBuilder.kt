@@ -1,5 +1,6 @@
 package com.example.cryptoassets.ui.view.listview.impl.builder
 
+import android.view.View
 import com.example.cryptoassets.core.model.entidade.AtivoCarteira
 import com.example.cryptoassets.core.model.entidade.Carteira
 import com.example.cryptoassets.core.model.entidade.Cotacao

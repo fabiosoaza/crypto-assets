@@ -73,11 +73,11 @@ class AdicaoAtivoFragment : AtivoView, Fragment() {
         fragmentContext = context
     }
 
-    override fun ticker(): String {
+    fun ticker(): String {
         return editTicker()?.text?.toString()!!
     }
 
-    override fun nome(): String {
+    fun nome(): String {
         return editNomeAtivo()?.text?.toString()!!
     }
 

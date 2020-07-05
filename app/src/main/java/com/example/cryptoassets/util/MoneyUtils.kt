@@ -1,6 +1,7 @@
 package com.example.cryptoassets.util
 
 import org.javamoney.moneta.Money
+import org.javamoney.moneta.format.CurrencyStyle
 import java.math.BigDecimal
 import java.util.*
 import javax.money.CurrencyUnit
@@ -33,11 +34,11 @@ class MoneyUtils {
             return MonetaryFormats.getAmountFormat(Locale("pt", "BR"))
         }
 
-        fun getFormatWithoutSymbol(): MonetaryAmountFormat{
-
+        fun getFormatWithSymbol(): MonetaryAmountFormat{
             return MonetaryFormats.getAmountFormat(
                 AmountFormatQueryBuilder.
                 of(Locale("pt", "BR"))
+                    .set(CurrencyStyle.SYMBOL)
                     .build()
             )
         }

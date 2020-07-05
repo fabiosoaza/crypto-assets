@@ -3,14 +3,11 @@ package com.example.cryptoassets.ui.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cryptoassets.R
 import com.example.cryptoassets.ui.view.listview.AdaptableListItemsView
 import com.example.cryptoassets.ui.view.listview.AtivoCarteiraListViewItem
 import com.example.cryptoassets.ui.view.listview.ListAtivosCarteiraView
-import kotlinx.android.synthetic.main.moeda_item.view.*
-import kotlinx.android.synthetic.main.moeda_item_header.view.*
 
 class ListAtivosCarteiraAdapter(private var listAtivosCarteiraView: ListAtivosCarteiraView) :
     BaseListItemsAdapter() {
@@ -70,62 +67,18 @@ class ListAtivosCarteiraAdapter(private var listAtivosCarteiraView: ListAtivosCa
 
 
     class AtivoItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var txtLabelNomeMoeda: TextView = itemView.txtLabelNomeMoeda
-        var txtCotacaoMoeda: TextView = itemView.txtCotacaoMoeda
-        var txtQuantidadeMoeda: TextView = itemView.txtQuantidadeMoeda
-        var txtPrecoMedioPago: TextView = itemView.txtPrecoMedioPago
-        var txtValorTotalPago: TextView = itemView.txtValorTotalPago
-        var txtVariacaoTotalPrecoMedioMoeda: TextView = itemView.txtVariacaoTotalPrecoMedioMoeda
 
-        fun update(ativo: AtivoCarteiraListViewItem) {
-            updateTextViewCounter(this.txtLabelNomeMoeda, ativo.getCodigoTicker())
-            updateTextViewCounter(this.txtCotacaoMoeda, ativo.getValorCotacaoFormatada())
-            updateTextViewCounter(this.txtQuantidadeMoeda, ativo.getQuantidadeFormatada())
-            updateTextViewCounter(this.txtPrecoMedioPago, ativo.getPrecoMedioFormatado())
-            updateTextViewCounter(this.txtValorTotalPago, ativo.getValorTotalFormatado())
-            updateTextViewCounter(
-                this.txtVariacaoTotalPrecoMedioMoeda,
-                ativo.getVariacaoValorTotalPagoFormatada()
-            )
+        fun update(viewItem: AtivoCarteiraListViewItem) {
+            viewItem.update(itemView)
 
-            /* CasosCovidUtil.updateContentDecriptionSummary(
-              holder?.itemView?.context,
-              holder?.viewGroupCaseByStateItem,
-              caso,
-              holder?.itemView?.context?.getString(R.string.contentDescriptionItemList)
-          )*/
-
-        }
-
-        private fun updateTextViewCounter(viewTotal: TextView?, value: String?) {
-            viewTotal?.text = value ?: "-"
         }
 
     }
 
     class AtivoHeaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var txtTotalBalance: TextView = itemView.txtTotalBalance
-        var txtVariacaoTotalPrecoMedio: TextView = itemView.txtVariacaoTotalPrecoMedio
-        var txtVariacaoPorcentagemPrecoMedio: TextView = itemView.txtVariacaoPorcentagemPrecoMedio
-
-        fun update(listAtivosCarteiraView: ListAtivosCarteiraView){
-            updateTextViewCounter(this.txtTotalBalance, listAtivosCarteiraView.getSaldoFormatado())
-            updateTextViewCounter(this.txtVariacaoTotalPrecoMedio, listAtivosCarteiraView.getVariacaoTotalFormatada())
-            updateTextViewCounter(this.txtVariacaoPorcentagemPrecoMedio, listAtivosCarteiraView.getVariacaoPorcentagemFormatada())
-
-            /* CasosCovidUtil.updateContentDecriptionSummary(
-         holder?.itemView?.context,
-         holder?.viewGroupCaseByStateItem,
-         caso,
-         holder?.itemView?.context?.getString(R.string.contentDescriptionItemList)
-     )*/
-
+             fun update(listAtivosCarteiraView: ListAtivosCarteiraView){
+            listAtivosCarteiraView.update(itemView)
         }
-
-        private fun updateTextViewCounter(viewTotal: TextView?, value: String?) {
-            viewTotal?.text = value ?: "-"
-        }
-
     }
 
 }

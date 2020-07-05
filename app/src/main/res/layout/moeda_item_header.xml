@@ -1,21 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/containerTotalItemHeaderMoeda"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:paddingLeft="8dp"
-    android:paddingTop="8dp"
-    android:paddingRight="8dp"
-    android:paddingBottom="8dp">
-
-
+    style="@style/containerTotalItemHeaderMoeda"
+    >
         <com.google.android.material.card.MaterialCardView
+            style="@style/cardTotalItemHeaderMoeda"
             android:id="@+id/cardTotalItemHeaderMoeda"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
@@ -25,80 +17,91 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
+
 
                 <TextView
                     android:id="@+id/txtLabelTotalBalance"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/txtLabelTotalBalance"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:focusable="true"
-                    android:importantForAccessibility="yes"
+                    android:focusable="false"
+                    android:importantForAccessibility="no"
                     android:text="@string/txtTotalBalance"
-                    android:textAppearance="?attr/textAppearanceHeadline6"
-                    android:textColor="@color/colorPrimary"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-
                 <TextView
                     android:id="@+id/txtTotalBalance"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/txtValorLabelTotalBalance"
                     android:layout_marginTop="8dp"
                     android:focusable="false"
                     android:importantForAccessibility="no"
-                    android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="?android:attr/textColorSecondary"
-                    android:visibility="visible"
+                    android:text="Valor Total Patrimonio"
                     app:layout_constraintStart_toStartOf="@+id/txtLabelTotalBalance"
                     app:layout_constraintTop_toBottomOf="@+id/txtLabelTotalBalance" />
 
+
                 <TextView
-                    android:id="@+id/txtVariacaoTotalPrecoMedio"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:id="@+id/txtLabelTotalInvestido"
+                    style="@style/txtLabelTotalInvestido"
                     android:focusable="false"
                     android:importantForAccessibility="no"
-                    android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="?android:attr/textColorSecondary"
-                    android:visibility="visible"
+                    android:text="@string/txtTotalInvestido"
                     app:layout_constraintStart_toStartOf="@+id/txtTotalBalance"
                     app:layout_constraintTop_toBottomOf="@+id/txtTotalBalance" />
 
                 <TextView
-                    android:id="@+id/txtVariacaoPorcentagemPrecoMedio"
+                    android:id="@+id/txtTotalInvestido"
+                    style="@style/txtValorTotalInvestido"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="8dp"
                     android:focusable="false"
                     android:importantForAccessibility="no"
-                    android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="?android:attr/textColorSecondary"
-                    android:visibility="visible"
-                    app:layout_constraintStart_toEndOf="@+id/txtTotalBalance"
-                    app:layout_constraintTop_toTopOf="@+id/txtLabelTotalBalance" />
+                    android:text="Valor Investido"
+                    app:layout_constraintStart_toEndOf="@+id/txtLabelTotalInvestido"
+                    app:layout_constraintTop_toTopOf="@+id/txtLabelTotalInvestido" />
 
                 <TextView
-                    android:id="@+id/txtLabelToday"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/txtLabelVariacaoPrecoMedio"
+                    style="@style/txtLabelVariacaoPatrimonio"
                     android:layout_marginTop="8dp"
                     android:focusable="false"
                     android:importantForAccessibility="no"
-                    android:text="@string/txtToday"
-                    android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="?android:attr/textColorSecondary"
-                    android:visibility="visible"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/txtVariacaoPorcentagemPrecoMedio"
-                    app:layout_constraintTop_toBottomOf="@+id/txtVariacaoPorcentagemPrecoMedio"
-                    app:layout_constraintVertical_bias="0.0" />
+                    android:text="@string/txtVariacaoPatrimonio"
+                    app:layout_constraintStart_toStartOf="@+id/txtLabelTotalInvestido"
+                    app:layout_constraintTop_toBottomOf="@+id/txtLabelTotalInvestido" />
+
+                <TextView
+                    android:id="@+id/txtVariacaoPorcentagem"
+                    style="@style/txtLabelVariacaoPrecoMedioNeutra"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:focusable="false"
+                    android:importantForAccessibility="no"
+                    android:text="Var Porcentagem"
+                    app:layout_constraintStart_toEndOf="@+id/txtVariacaoPatrimonio"
+                    app:layout_constraintTop_toTopOf="@+id/txtLabelVariacaoPrecoMedio" />
+
+                <TextView
+                    android:id="@+id/txtVariacaoPatrimonio"
+                    style="@style/txtLabelVariacaoPrecoMedioNeutra"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:focusable="false"
+                    android:importantForAccessibility="no"
+                    android:text="Var Preco Medio"
+                    app:layout_constraintStart_toEndOf="@+id/txtLabelVariacaoPrecoMedio"
+                    app:layout_constraintTop_toTopOf="@+id/txtLabelVariacaoPrecoMedio" />
+
+
+
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
-
-
 
 </LinearLayout>
