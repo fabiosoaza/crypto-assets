@@ -3,13 +3,11 @@ package com.example.cryptoassets.ui.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cryptoassets.R
 import com.example.cryptoassets.ui.view.listview.AdaptableListItemsView
 import com.example.cryptoassets.ui.view.listview.ListTransacoesView
 import com.example.cryptoassets.ui.view.listview.TransacaoListViewItem
-import kotlinx.android.synthetic.main.transacao_item.view.*
 
 class ListTransacoesAdapter(private var listTransacoesView: ListTransacoesView) :
     BaseListItemsAdapter() {
@@ -68,46 +66,18 @@ class ListTransacoesAdapter(private var listTransacoesView: ListTransacoesView) 
 
 
     class AtivoItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var txtNomeAtivo: TextView = itemView.txtNomeAtivo
-        var txtTipoTransacao: TextView = itemView.txtTipoTransacao
-        var txtQuantidade: TextView = itemView.txtQuantidade
-        var txtPrecoMedio: TextView = itemView.txtPrecoMedio
-        var txtValorTotal: TextView = itemView.txtValorTotal
-        var txtData: TextView = itemView.txtData
 
-        fun update(ativo: TransacaoListViewItem) {
-            updateTextViewCounter(this.txtNomeAtivo, ativo.nomeAtivo())
-            updateTextViewCounter(this.txtTipoTransacao, ativo.tipoTransacao())
-            updateTextViewCounter(this.txtQuantidade, ativo.getQuantidadeFormatada())
-            updateTextViewCounter(this.txtPrecoMedio, ativo.getPrecoMedioFormatado())
-            updateTextViewCounter(this.txtValorTotal, ativo.getValorTotalFormatado())
-            updateTextViewCounter(this.txtData, ativo.data())
-
-
-            /* CasosCovidUtil.updateContentDecriptionSummary(
-              holder?.itemView?.context,
-              holder?.viewGroupCaseByStateItem,
-              caso,
-              holder?.itemView?.context?.getString(R.string.contentDescriptionItemList)
-          )*/
-
-        }
-
-        private fun updateTextViewCounter(viewTotal: TextView?, value: String?) {
-            viewTotal?.text = value ?: "-"
+        fun update(view: TransacaoListViewItem) {
+            view.update(itemView)
         }
 
     }
 
     class AtivoHeaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
         fun update(listTransacoesView: ListTransacoesView) {
 
         }
 
-        private fun updateTextViewCounter(viewTotal: TextView?, value: String?) {
-            viewTotal?.text = value ?: "-"
-        }
 
     }
 

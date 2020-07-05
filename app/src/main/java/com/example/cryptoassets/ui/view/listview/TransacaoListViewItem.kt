@@ -1,11 +1,8 @@
 package com.example.cryptoassets.ui.view.listview
 
+import android.view.View
+
 interface TransacaoListViewItem {
 
-    fun data():String
-    fun tipoTransacao():String
-    fun nomeAtivo():String
-    fun getQuantidadeFormatada(): String
-    fun getPrecoMedioFormatado(): String
-    fun getValorTotalFormatado(): String
+    fun update(itemView: View)
 }

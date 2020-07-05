@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/containerTotalItemMoeda"
     style="@style/containerTotalItemMoeda">
 
@@ -16,7 +17,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
 
                 <TextView
@@ -47,7 +48,7 @@
                     android:importantForAccessibility="no"
                     android:text="@string/quantidadeAtivosAbreviado"
                     app:layout_constraintEnd_toEndOf="@+id/txtCotacaoMoeda"
-                    app:layout_constraintTop_toTopOf="@+id/txtLabelValorTotalInvestido" />
+                    app:layout_constraintTop_toTopOf="@+id/txtLabelPrecoMedio" />
 
                 <TextView
                     android:id="@+id/txtQuantidadeMoeda"
@@ -61,7 +62,6 @@
                 <TextView
                     android:id="@+id/txtPrecoMedioPago"
                     style="@style/txtAtivoCarteiraValorPrecoMedio"
-                    android:layout_marginTop="8dp"
                     android:focusable="false"
                     android:importantForAccessibility="no"
                     android:text="Valor Preco Medio"
@@ -74,18 +74,18 @@
                     android:layout_marginTop="8dp"
                     android:focusable="false"
                     android:text="@string/txtTotalInvestido"
-                    app:layout_constraintStart_toStartOf="@+id/iconeAtivo"
-                    app:layout_constraintTop_toBottomOf="@+id/iconeAtivo" />
+                    app:layout_constraintStart_toStartOf="@+id/txtPrecoMedioPago"
+                    app:layout_constraintTop_toBottomOf="@+id/txtPrecoMedioPago" />
 
                 <TextView
                     android:id="@+id/txtValorTotalPago"
                     style="@style/txtAtivoCarteiraValorTotalInvestido"
-                    android:layout_marginTop="8dp"
                     android:focusable="false"
                     android:importantForAccessibility="no"
                     android:text="Valor Investido"
                     app:layout_constraintStart_toStartOf="@+id/txtLabelValorTotalInvestido"
                     app:layout_constraintTop_toBottomOf="@+id/txtLabelValorTotalInvestido" />
+
 
                 <TextView
                     android:id="@+id/txtLabelPrecoMedio"
@@ -94,9 +94,8 @@
                     android:focusable="false"
                     android:importantForAccessibility="no"
                     android:text="@string/labelPrecoMedio"
-                    app:layout_constraintStart_toStartOf="@+id/txtValorTotalPago"
-                    app:layout_constraintTop_toBottomOf="@+id/txtValorTotalPago" />
-
+                    app:layout_constraintStart_toStartOf="@+id/iconeAtivo"
+                    app:layout_constraintTop_toBottomOf="@+id/iconeAtivo" />
 
                 <TextView
                     android:id="@+id/txtLabelVariacaoPorcentagem"
@@ -105,12 +104,11 @@
                     android:importantForAccessibility="no"
                     android:text="@string/txtVariacaoPatrimonio"
                     app:layout_constraintEnd_toEndOf="@+id/txtQuantidadeMoeda"
-                    app:layout_constraintTop_toBottomOf="@+id/txtValorTotalPago" />
+                    app:layout_constraintTop_toTopOf="@+id/txtLabelValorTotalInvestido" />
 
                 <TextView
                     android:id="@+id/txtVariacaoTotalPrecoMedioMoeda"
                     style="@style/txtAtivoCarteiraLabelVariacaoNeutra"
-                    android:layout_marginTop="8dp"
                     android:focusable="false"
                     android:importantForAccessibility="no"
                     android:text="Variacao Moeda"
@@ -126,7 +124,7 @@
                     android:scaleType="center"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_currency_not_found" />
+                    app:srcCompat="@drawable/ic_btc" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

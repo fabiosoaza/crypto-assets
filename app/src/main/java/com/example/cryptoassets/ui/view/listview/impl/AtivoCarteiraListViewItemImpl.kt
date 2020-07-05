@@ -11,6 +11,7 @@ import com.example.cryptoassets.core.model.entidade.Ticker
 import com.example.cryptoassets.ui.view.listview.AtivoCarteiraListViewItem
 import com.example.cryptoassets.util.FormatadorUtils
 import com.example.cryptoassets.util.MoneyUtils
+import com.example.cryptoassets.util.ResourceUtils
 import kotlinx.android.synthetic.main.moeda_item.view.*
 import org.javamoney.moneta.Money
 import java.math.BigDecimal
@@ -57,7 +58,7 @@ class AtivoCarteiraListViewItemImpl(private val ativoCarteira: AtivoCarteira, pr
         val txtVariacaoTotalPrecoMedioMoeda: TextView = itemView.txtVariacaoTotalPrecoMedioMoeda
         val iconeAtivo : ImageView = itemView.iconeAtivo
 
-        iconeAtivo.setImageResource(getAssetImageResourceId())
+        iconeAtivo.setImageResource(ResourceUtils.getAssetImageResourceIdByTicker(ativoCarteira.ativo.ticker))
 
         updateTextViewCounter(txtNomeAtivo, getNomeAtivo())
         updateTextViewCounter(txtCotacaoMoeda, getValorCotacaoFormatada())
@@ -89,19 +90,9 @@ class AtivoCarteiraListViewItemImpl(private val ativoCarteira: AtivoCarteira, pr
 
     }
 
-    private fun getAssetImageResourceId():Int{
-        return when(ativoCarteira.ativo.ticker){
-            Ticker.BTC->R.drawable.ic_btc
-            Ticker.BCH->R.drawable.ic_bch
-            Ticker.LTC->R.drawable.ic_ltc
-            Ticker.XRP->R.drawable.ic_xrp
-            Ticker.ETH->R.drawable.ic_eth
-            Ticker.USDC->R.drawable.ic_usdc
-            else -> R.drawable.ic_currency_not_found
-        }
-    }
 
-    private fun getNomeAtivo() = "${ativoCarteira.ativo.ticker.name}-${ativoCarteira.ativo.nome}"
+
+    private fun getNomeAtivo() = "${ativoCarteira.ativo.ticker.name} - ${ativoCarteira.ativo.nome}"
 
     private fun updateTextViewCounter(viewTotal: TextView?, value: String?) {
         viewTotal?.text = value ?: "-"
