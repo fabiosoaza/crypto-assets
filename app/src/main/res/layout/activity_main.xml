@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_content"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
 
     <include layout="@layout/progress_bar" />
 
@@ -16,8 +18,7 @@
 
         <ScrollView
             android:id="@+id/scrollTotalCrypto"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            style="@style/scrollTotalCrypto"
             android:fitsSystemWindows="true"
             app:layout_constraintBottom_toTopOf="@+id/containerMenu"
             app:layout_constraintEnd_toEndOf="parent"
@@ -33,38 +34,28 @@
         </ScrollView>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="12dp"
-            android:layout_marginBottom="8dp"
+            android:id="@+id/fabContainer"
+            style="@style/fabContainer"
             app:layout_constraintBottom_toTopOf="@+id/containerMenu"
             app:layout_constraintEnd_toEndOf="parent">
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/sellFab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:layout_marginEnd="8dp"
-                android:backgroundTint="@color/colorPrimary"
+                style="@style/defaultFabButton"
                 android:clickable="true"
                 android:contentDescription="@string/contentDescriptionAddAsset"
                 android:src="@drawable/ic_remove_shopping_cart_black_24dp"
                 android:text="@string/txtSellAsset"
-                app:elevation="6dp"
-                app:fabSize="auto"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/buyFab"
                 app:pressedTranslationZ="12dp"
-                app:rippleColor="@color/colorSecondary" />
-
+                app:rippleColor="@color/colorSecondary"
+                app:fabSize="auto"
+                 />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/buyFab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:backgroundTint="@color/colorPrimary"
+                style="@style/defaultFabButton"
                 android:clickable="true"
                 android:contentDescription="@string/contentDescriptionAddAsset"
                 android:src="@drawable/ic_add_shopping_cart_black_24dp"
@@ -81,35 +72,21 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
-
         <LinearLayout
             android:id="@+id/containerMenu"
+            style="@style/bottomBarContainer"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end">
+           >
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottom_navigation"
-                style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/bottomNavigationMenu"
                 app:menu="@menu/bottom_navigation_menu" />
 
         </LinearLayout>
 
 
-
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-
-
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
