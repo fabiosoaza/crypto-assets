@@ -97,34 +97,27 @@
 
             <TextView
                 android:id="@+id/txtQuantidade"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/txtAtivoCarteiraLabelQuantidadeMoeda"
                 android:focusable="false"
                 android:importantForAccessibility="no"
                 android:text="Valor Quantidade"
-                android:textAppearance="?attr/textAppearanceBody2"
-                android:textColor="?android:attr/textColorSecondary"
-
                 app:layout_constraintEnd_toEndOf="@+id/txtLabelQuantidadeMoeda"
                 app:layout_constraintTop_toBottomOf="@+id/txtLabelQuantidadeMoeda" />
 
             <TextView
                 android:id="@+id/txtValorTotal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/txtValorTotalInvestido"
                 android:focusable="false"
                 android:importantForAccessibility="no"
                 android:text="Valor Total"
-                android:textAppearance="?attr/textAppearanceBody2"
-                android:textColor="?android:attr/textColorSecondary"
-
                 app:layout_constraintStart_toStartOf="@+id/txtLabelValorTotalInvestido"
-                app:layout_constraintTop_toBottomOf="@+id/txtLabelValorTotalInvestido" />
+                app:layout_constraintTop_toBottomOf="@+id/txtLabelValorTotalInvestido"
+                />
 
 
             <TextView
                 android:id="@+id/txtLabelDataTransacao"
-                style="@style/txtAtivoCarteiraLabelQuantidadeMoeda"
+                style="@style/txtLabelTransacaoData"
                 android:focusable="false"
                 android:importantForAccessibility="no"
                 android:text="@string/labelDataTransacao"
@@ -133,14 +126,10 @@
 
             <TextView
                 android:id="@+id/txtData"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/txtTransacaoData"
                 android:focusable="false"
                 android:importantForAccessibility="no"
                 android:text="Data transação"
-                android:textAppearance="?attr/textAppearanceBody2"
-                android:textColor="?android:attr/textColorSecondary"
-
                 app:layout_constraintEnd_toEndOf="@+id/txtLabelDataTransacao"
                 app:layout_constraintTop_toBottomOf="@+id/txtLabelDataTransacao" />
 

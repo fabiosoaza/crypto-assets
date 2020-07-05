@@ -11,7 +11,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    <androidx.recyclerview.widget.RecyclerView
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardTotalItemAtivo"
+            style="@style/cardTotalItemAtivo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0">
+
+        <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvListagemAtivos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,6 +30,7 @@
         app:layout_constraintTop_toTopOf="parent"
         />
 
+        </com.google.android.material.card.MaterialCardView>
         <Button
             android:id="@+id/btnNovoAtivo"
             style="@style/styleContainedButton"
@@ -31,7 +42,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rvListagemAtivos" />
+            app:layout_constraintTop_toBottomOf="@+id/cardTotalItemAtivo" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

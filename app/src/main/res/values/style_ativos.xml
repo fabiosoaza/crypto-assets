@@ -1,0 +1,24 @@
+<resources>
+
+    <style name="containerAtivoItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+    </style>
+
+    <style name="txtAtivoTickerAtivo" parent="@style/txtLabelTitleDefault" />
+
+     <style name="cardTotalItemAtivo" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_margin">6dp</item>
+    </style>
+
+
+
+
+</resources>

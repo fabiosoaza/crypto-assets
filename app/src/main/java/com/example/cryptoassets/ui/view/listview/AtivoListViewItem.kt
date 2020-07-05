@@ -1,9 +1,10 @@
 package com.example.cryptoassets.ui.view.listview
 
+import android.view.View
+
 interface AtivoListViewItem {
 
-    fun ticker() : String
-    fun nome() : String
+    fun update(itemView: View)
 
 
 

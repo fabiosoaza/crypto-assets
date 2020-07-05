@@ -50,4 +50,5 @@
     <string name="quantidadeAtivosAbreviado">Qtd </string>
     <string name="labelPrecoMedio">Preço Médio</string>
     <string name="labelOrders">Ordens</string>
+    <string name="labelAvailableAssets">Ativos Disponíveis</string>
 </resources>
