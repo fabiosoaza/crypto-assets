@@ -50,5 +50,7 @@
     <string name="txtTotalTransactionsBalance">Balance</string>
     <string name="txtTotalInvestido">Total invested</string>
     <string name="txtVariacaoPatrimonio">Variation: </string>
-
+    <string name="quantidadeAtivosAbreviado">Qnt </string>
+    <string name="labelPrecoMedio">Average Price</string>
+    <string name="labelOrders">Ordens</string>
 </resources>

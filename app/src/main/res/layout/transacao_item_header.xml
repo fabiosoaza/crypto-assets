@@ -2,20 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/containerTotalItemHeaderTransacao"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:paddingLeft="8dp"
-    android:paddingTop="8dp"
-    android:paddingRight="8dp"
-    android:paddingBottom="8dp">
+    style="@style/containerTotalItemHeaderTransacao">
 
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardTotalItemHeaderTransacao"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            style="@style/cardTotalItemHeaderTransacao"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
@@ -25,36 +17,16 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
+                android:layout_height="match_parent">
                 <TextView
-                    android:id="@+id/txtLabelTotalBalance"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:focusable="true"
-                    android:importantForAccessibility="yes"
-                    android:text="@string/txtTotalTransactionsBalance"
-                    android:textAppearance="?attr/textAppearanceHeadline6"
-                    android:textColor="@color/colorPrimary"
+                    android:id="@+id/txtLabelOrders"
+                    style="@style/txtLabelOrders"
+                    android:focusable="false"
+                    android:importantForAccessibility="no"
+                    android:text="@string/labelOrders"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-
-                <TextView
-                    android:id="@+id/txtTotalTransacionadoPeriodo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:focusable="false"
-                    android:importantForAccessibility="no"
-                    android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="?android:attr/textColorSecondary"
-                    android:visibility="visible"
-                    app:layout_constraintStart_toStartOf="@+id/txtLabelTotalBalance"
-                    app:layout_constraintTop_toBottomOf="@+id/txtLabelTotalBalance" />
-
-                
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
 

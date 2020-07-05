@@ -64,19 +64,20 @@ class MoneyUtils {
         }
 
         fun of(amount:Double): Money {
-            return Money.of(amount,
-                getCurrency()
+            return of(amount, getCurrency()
             )
         }
 
         fun of(amount:BigDecimal, currency:CurrencyUnit): Money {
-            return Money.of(BigDecimalUtils.ofBigDecimal(amount), currency)
+            val amount = Money.of(BigDecimalUtils.ofBigDecimal(amount), currency)
+            //val mathContext = MathContext(BigDecimalUtils.PRECISAO, RoundingMode.HALF_EVEN)
+            //val monetaryOperator = PrecisionScaleRoundedOperator.of(BigDecimalUtils.PRECISAO, mathContext)
+            //val roundedValue = monetaryOperator.apply(amount)
+            return amount
         }
 
         fun of(amount:BigDecimal): Money {
-            return Money.of(amount,
-                getCurrency()
-            )
+            return of(amount, getCurrency())
         }
 
 

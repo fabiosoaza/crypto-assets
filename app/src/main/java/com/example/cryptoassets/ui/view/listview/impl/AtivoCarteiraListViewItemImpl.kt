@@ -1,22 +1,22 @@
 package com.example.cryptoassets.ui.view.listview.impl
 
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
+import com.example.cryptoassets.R
 import com.example.cryptoassets.core.model.calculador.CalculadorVariacaoCotacao
 import com.example.cryptoassets.core.model.entidade.AtivoCarteira
 import com.example.cryptoassets.core.model.entidade.Cotacao
+import com.example.cryptoassets.core.model.entidade.Ticker
 import com.example.cryptoassets.ui.view.listview.AtivoCarteiraListViewItem
 import com.example.cryptoassets.util.FormatadorUtils
+import com.example.cryptoassets.util.MoneyUtils
 import kotlinx.android.synthetic.main.moeda_item.view.*
 import org.javamoney.moneta.Money
 import java.math.BigDecimal
 
 class AtivoCarteiraListViewItemImpl(private val ativoCarteira: AtivoCarteira, private val cotacao: Cotacao) :
     AtivoCarteiraListViewItem {
-
-    private fun getCodigoTicker(): String {
-        return ativoCarteira.ativo.ticker.name
-    }
 
     private fun getQuantidadeFormatada(): String {
         return formatar(ativoCarteira.quantidade)
@@ -31,38 +31,52 @@ class AtivoCarteiraListViewItemImpl(private val ativoCarteira: AtivoCarteira, pr
     }
 
     private fun getVariacaoValorTotalPagoFormatada(): String {
-        return formatar(
+        val variacaoPrecoPago = formatar(
             CalculadorVariacaoCotacao()
-                .calcularVariacaoValorTotalPago(ativoCarteira, cotacao))
+                .calcularVariacaoValorTotalPago(ativoCarteira, cotacao)
+        )
+        val variacaoPorcentagem = formatar(variacaoPorcentagem())
+
+        return "$variacaoPrecoPago($variacaoPorcentagem%)"
     }
 
-    private fun getVariacaoPorcentagemFormatada(): String {
-        return formatar(
-            CalculadorVariacaoCotacao()
-                .calcularVariacaoPorcentagem(ativoCarteira, cotacao))
+    private fun variacaoPorcentagem() = CalculadorVariacaoCotacao()
+        .calcularVariacaoPorcentagem(ativoCarteira, cotacao)
+
+    private fun getValorCotacaoFormatada(): String {
+        return formatar(cotacao.valor)
     }
 
-    private fun getVariacaoPrecoMedioFormatada(): String {
-        return formatar(
-            CalculadorVariacaoCotacao()
-                .calcularVariacaoPrecoMedio(ativoCarteira, cotacao))
-    }
 
     override fun update(itemView: View) {
-        val txtLabelNomeMoeda: TextView = itemView.txtLabelNomeMoeda
+        val txtNomeAtivo: TextView = itemView.txtNomeAtivo
         val txtCotacaoMoeda: TextView = itemView.txtCotacaoMoeda
+        val txtValorTotalPago: TextView = itemView.txtValorTotalPago
         val txtQuantidadeMoeda: TextView = itemView.txtQuantidadeMoeda
         val txtPrecoMedioPago: TextView = itemView.txtPrecoMedioPago
-        val txtValorTotalPago: TextView = itemView.txtValorTotalPago
         val txtVariacaoTotalPrecoMedioMoeda: TextView = itemView.txtVariacaoTotalPrecoMedioMoeda
+        val iconeAtivo : ImageView = itemView.iconeAtivo
 
-            updateTextViewCounter(txtLabelNomeMoeda, getCodigoTicker())
-            updateTextViewCounter(txtCotacaoMoeda, getValorCotacaoFormatada())
-            updateTextViewCounter(txtQuantidadeMoeda, getQuantidadeFormatada())
-            updateTextViewCounter(txtPrecoMedioPago, getPrecoMedioFormatado())
-            updateTextViewCounter(txtValorTotalPago, getValorTotalFormatado())
-            updateTextViewCounter(txtVariacaoTotalPrecoMedioMoeda,getVariacaoValorTotalPagoFormatada()
-            )
+        iconeAtivo.setImageResource(getAssetImageResourceId())
+
+        updateTextViewCounter(txtNomeAtivo, getNomeAtivo())
+        updateTextViewCounter(txtCotacaoMoeda, getValorCotacaoFormatada())
+        updateTextViewCounter(txtQuantidadeMoeda, getQuantidadeFormatada())
+        updateTextViewCounter(txtPrecoMedioPago, getPrecoMedioFormatado())
+        updateTextViewCounter(txtValorTotalPago, getValorTotalFormatado())
+        updateTextViewCounter(txtVariacaoTotalPrecoMedioMoeda, getVariacaoValorTotalPagoFormatada())
+
+
+
+        var textStyle = R.style.txtAtivoCarteiraLabelVariacaoNeutra
+        if(variacaoPorcentagem().signum() < 0){
+            textStyle =  R.style.txtAtivoCarteiraLabelVariacaoNegativa
+        }
+        else if(variacaoPorcentagem().signum() > 0){
+            textStyle =  R.style.txtAtivoCarteiraLabelVariacaoPositiva
+        }
+        txtVariacaoTotalPrecoMedioMoeda.setTextAppearance( textStyle)
+
 
             /* CasosCovidUtil.updateContentDecriptionSummary(
               holder?.itemView?.context,
@@ -75,15 +89,27 @@ class AtivoCarteiraListViewItemImpl(private val ativoCarteira: AtivoCarteira, pr
 
     }
 
+    private fun getAssetImageResourceId():Int{
+        return when(ativoCarteira.ativo.ticker){
+            Ticker.BTC->R.drawable.ic_btc
+            Ticker.BCH->R.drawable.ic_bch
+            Ticker.LTC->R.drawable.ic_ltc
+            Ticker.XRP->R.drawable.ic_xrp
+            Ticker.ETH->R.drawable.ic_eth
+            Ticker.USDC->R.drawable.ic_usdc
+            else -> R.drawable.ic_currency_not_found
+        }
+    }
+
+    private fun getNomeAtivo() = "${ativoCarteira.ativo.ticker.name}-${ativoCarteira.ativo.nome}"
+
     private fun updateTextViewCounter(viewTotal: TextView?, value: String?) {
         viewTotal?.text = value ?: "-"
     }
-    private fun getValorCotacaoFormatada(): String {
-        return formatar(cotacao.valor)
-    }
+
 
     private fun formatar(valor: Money) : String {
-        return FormatadorUtils.formatarValor(valor)
+        return MoneyUtils.getFormatWithSymbol().format(valor)
     }
 
     private fun formatar(valor: BigDecimal) : String {

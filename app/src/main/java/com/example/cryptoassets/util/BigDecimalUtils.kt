@@ -8,7 +8,7 @@ class BigDecimalUtils {
 
     companion object {
 
-        private val PRECISAO : Int = 8
+        public val PRECISAO : Int = 8
 
 
         fun ofDouble(valor : Double) : BigDecimal {

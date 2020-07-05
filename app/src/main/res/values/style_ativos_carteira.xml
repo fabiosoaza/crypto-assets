@@ -1,0 +1,112 @@
+<resources>
+
+    <style name="containerTotalItemHeaderMoeda">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+    </style>
+
+
+    <style name="cardTotalItemHeaderMoeda" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">8dp</item>
+    </style>
+
+    <style name="txtLabelTotalBalance" parent="@style/Widget.MaterialComponents.TextView">
+        <item name="android:textAppearance">?attr/textAppearanceHeadline6</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="txtDefault" parent="@style/Widget.MaterialComponents.TextView">
+        <item name="android:textAppearance">?attr/textAppearanceBody2</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+    </style>
+
+    <style name="txtValorLabelTotalBalance" parent="@style/txtDefault" />
+
+    <style name="txtVariacaoTotalPrecoMedio" parent="@style/txtDefault" />
+
+    <style name="txtVariacaoPorcentagemPrecoMedio" parent="@style/txtDefault" />
+
+    <style name="txtLabelVariacaoPatrimonio" parent="@style/txtLabelTotalBalance" />
+
+    <style name="txtLabelTotalInvestido" parent="@style/txtLabelTotalBalance" />
+
+    <style name="txtTotalInvestido" parent="@style/txtDefault" />
+
+    <style name="txtValorVariacaoPatrimonio" parent="@style/txtDefault" />
+
+    <style name="txtValorTotalInvestido" parent="@style/txtDefault" />
+
+    <style name="txtLabelVariacaoPrecoMedioNeutra" parent="@style/txtDefault" />
+
+    <style name="txtLabelVariacaoPrecoPositiva" parent="@style/txtDefault">
+        <item name="android:textColor">@color/colorVariationPositive</item>
+    </style>
+
+    <style name="txtLabelVariacaoPrecoNegativa" parent="@style/txtDefault">
+        <item name="android:textColor">@color/colorVariationNegative</item>
+    </style>
+
+    <style name="containerTotalItemMoeda">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+    </style>
+
+    <style name="cardTotalItemMoeda" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_margin">6dp</item>
+    </style>
+
+    <style name="txtAtivoCarteiraTickerAtivo" parent="@style/txtLabelTotalBalance"></style>
+
+    <style name="txtAtivoCarteiraNomeAtivo" parent="@style/txtLabelTotalBalance"></style>
+
+    <style name="txtAtivoCarteiraCotacaoAtivo" parent="@style/txtDefault"></style>
+
+    <style name="txtAtivoCarteiraLabelQuantidadeMoeda" parent="@style/txtDefault"></style>
+
+    <style name="txtAtivoCarteiraQuantidadeMoeda" parent="@style/txtDefault"></style>
+
+    <style name="txtAtivoCarteiraValorPrecoMedio" parent="@style/txtDefault"></style>
+
+    <style name="txtLabelAtivoCarteiraValorTotalInvestido" parent="@style/txtDefault"></style>
+
+    <style name="txtAtivoCarteiraValorTotalInvestido" parent="@style/txtDefault"></style>
+
+    <style name="txtAtivoCarteiraVariacaoValorTotal" parent="@style/txtDefault"></style>
+
+    <style name="txtAtivoCarteiraVariacaoPorcentagem" parent="@style/txtDefault"></style>
+
+    <style name="txtAtivoCarteiraLabelPrecoMedio" parent="@style/txtDefault"></style>
+
+    <style name="txtAtivoCarteiraLabelVariacaoNeutra" parent="@style/txtDefault">
+        <item name="android:textColor">@color/colorVariationPositive</item>
+    </style>
+
+    <style name="txtAtivoCarteiraLabelVariacaoPositiva" parent="@style/txtDefault">
+        <item name="android:textColor">@color/colorVariationPositive</item>
+    </style>
+
+
+    <style name="txtAtivoCarteiraLabelVariacaoNegativa" parent="@style/txtDefault">
+        <item name="android:textColor">@color/colorVariationNegative</item>
+    </style>
+
+</resources>

@@ -1,21 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/containerTotalItemMoeda"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:paddingLeft="8dp"
-    android:paddingTop="8dp"
-    android:paddingRight="8dp"
-    android:paddingBottom="8dp">
+    style="@style/containerTotalItemMoeda">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardTotalItemMoeda"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="6dp"
+            style="@style/cardTotalItemMoeda"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
@@ -23,102 +14,119 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0">
 
-
-
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
+                android:layout_height="match_parent">
 
 
                 <TextView
-                    android:id="@+id/txtLabelNomeMoeda"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:id="@+id/txtNomeAtivo"
+                    style="@style/txtAtivoCarteiraNomeAtivo"
+                    android:layout_marginStart="8dp"
                     android:focusable="true"
                     android:importantForAccessibility="yes"
-                    android:textAppearance="?attr/textAppearanceHeadline6"
-
-                    android:textColor="@color/colorPrimary"
-
-                    app:layout_constraintEnd_toStartOf="@+id/txtPrecoMedioPago"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:text="Nome Ativo"
+                    app:layout_constraintStart_toEndOf="@+id/iconeAtivo"
+                    app:layout_constraintTop_toTopOf="@+id/iconeAtivo" />
 
                 <TextView
                     android:id="@+id/txtCotacaoMoeda"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    style="@style/txtAtivoCarteiraCotacaoAtivo"
+                    android:layout_marginEnd="8dp"
                     android:focusable="false"
                     android:importantForAccessibility="no"
-                    android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="?android:attr/textColorSecondary"
+                    android:text="Cotacao Moeda"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/txtNomeAtivo" />
 
-                    app:layout_constraintEnd_toEndOf="@+id/txtLabelNomeMoeda"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/txtLabelNomeMoeda"
-                    app:layout_constraintTop_toBottomOf="@+id/txtLabelNomeMoeda" />
+
+                <TextView
+                    android:id="@+id/txtLabelQuantidadeMoeda"
+                    style="@style/txtAtivoCarteiraLabelQuantidadeMoeda"
+                    android:focusable="false"
+                    android:importantForAccessibility="no"
+                    android:text="@string/quantidadeAtivosAbreviado"
+                    app:layout_constraintEnd_toEndOf="@+id/txtCotacaoMoeda"
+                    app:layout_constraintTop_toTopOf="@+id/txtLabelValorTotalInvestido" />
 
                 <TextView
                     android:id="@+id/txtQuantidadeMoeda"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    style="@style/txtAtivoCarteiraQuantidadeMoeda"
                     android:focusable="false"
                     android:importantForAccessibility="no"
-                    android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="?android:attr/textColorSecondary"
-
-                    app:layout_constraintEnd_toEndOf="@+id/txtCotacaoMoeda"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/txtCotacaoMoeda"
-                    app:layout_constraintTop_toBottomOf="@+id/txtCotacaoMoeda" />
+                    android:text="Qtd Moeda"
+                    app:layout_constraintEnd_toEndOf="@+id/txtLabelQuantidadeMoeda"
+                    app:layout_constraintTop_toBottomOf="@+id/txtLabelQuantidadeMoeda" />
 
                 <TextView
                     android:id="@+id/txtPrecoMedioPago"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/txtAtivoCarteiraValorPrecoMedio"
                     android:layout_marginTop="8dp"
                     android:focusable="false"
                     android:importantForAccessibility="no"
-                    android:textAppearance="?attr/textAppearanceBody2"
+                    android:text="Valor Preco Medio"
+                    app:layout_constraintStart_toStartOf="@+id/txtLabelPrecoMedio"
+                    app:layout_constraintTop_toBottomOf="@+id/txtLabelPrecoMedio" />
 
-                    android:textColor="?android:attr/textColorSecondary"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/txtLabelNomeMoeda" />
+                <TextView
+                    android:id="@+id/txtLabelValorTotalInvestido"
+                    style="@style/txtLabelAtivoCarteiraValorTotalInvestido"
+                    android:layout_marginTop="8dp"
+                    android:focusable="false"
+                    android:text="@string/txtTotalInvestido"
+                    app:layout_constraintStart_toStartOf="@+id/iconeAtivo"
+                    app:layout_constraintTop_toBottomOf="@+id/iconeAtivo" />
 
                 <TextView
                     android:id="@+id/txtValorTotalPago"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/txtAtivoCarteiraValorTotalInvestido"
                     android:layout_marginTop="8dp"
                     android:focusable="false"
                     android:importantForAccessibility="no"
-                    android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="?android:attr/textColorSecondary"
-
-                    app:layout_constraintEnd_toEndOf="@+id/txtPrecoMedioPago"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="@+id/txtPrecoMedioPago"
-                    app:layout_constraintTop_toBottomOf="@+id/txtPrecoMedioPago" />
+                    android:text="Valor Investido"
+                    app:layout_constraintStart_toStartOf="@+id/txtLabelValorTotalInvestido"
+                    app:layout_constraintTop_toBottomOf="@+id/txtLabelValorTotalInvestido" />
 
                 <TextView
-                    android:id="@+id/txtVariacaoTotalPrecoMedioMoeda"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/txtLabelPrecoMedio"
+                    style="@style/txtAtivoCarteiraLabelPrecoMedio"
                     android:layout_marginTop="8dp"
                     android:focusable="false"
                     android:importantForAccessibility="no"
-                    android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="?android:attr/textColorSecondary"
-
-                    app:layout_constraintEnd_toEndOf="@+id/txtValorTotalPago"
+                    android:text="@string/labelPrecoMedio"
                     app:layout_constraintStart_toStartOf="@+id/txtValorTotalPago"
                     app:layout_constraintTop_toBottomOf="@+id/txtValorTotalPago" />
 
+
+                <TextView
+                    android:id="@+id/txtLabelVariacaoPorcentagem"
+                    style="@style/txtAtivoCarteiraVariacaoValorTotal"
+                    android:focusable="false"
+                    android:importantForAccessibility="no"
+                    android:text="@string/txtVariacaoPatrimonio"
+                    app:layout_constraintEnd_toEndOf="@+id/txtQuantidadeMoeda"
+                    app:layout_constraintTop_toBottomOf="@+id/txtValorTotalPago" />
+
+                <TextView
+                    android:id="@+id/txtVariacaoTotalPrecoMedioMoeda"
+                    style="@style/txtAtivoCarteiraLabelVariacaoNeutra"
+                    android:layout_marginTop="8dp"
+                    android:focusable="false"
+                    android:importantForAccessibility="no"
+                    android:text="Variacao Moeda"
+                    app:layout_constraintEnd_toEndOf="@+id/txtLabelVariacaoPorcentagem"
+                    app:layout_constraintTop_toBottomOf="@+id/txtLabelVariacaoPorcentagem" />
+
+                <ImageView
+                    android:id="@+id/iconeAtivo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:scaleType="center"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_currency_not_found" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

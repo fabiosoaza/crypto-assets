@@ -10,7 +10,6 @@ import com.example.cryptoassets.ui.view.listview.AdaptableListItemsView
 import com.example.cryptoassets.ui.view.listview.ListTransacoesView
 import com.example.cryptoassets.ui.view.listview.TransacaoListViewItem
 import kotlinx.android.synthetic.main.transacao_item.view.*
-import kotlinx.android.synthetic.main.transacao_item_header.view.*
 
 class ListTransacoesAdapter(private var listTransacoesView: ListTransacoesView) :
     BaseListItemsAdapter() {
@@ -101,13 +100,9 @@ class ListTransacoesAdapter(private var listTransacoesView: ListTransacoesView) 
     }
 
     class AtivoHeaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private var txtTotalTransacionadoPeriodo: TextView = itemView.txtTotalTransacionadoPeriodo
 
         fun update(listTransacoesView: ListTransacoesView) {
-            updateTextViewCounter(
-                this.txtTotalTransacionadoPeriodo,
-                listTransacoesView.getValorTotalFormatado()
-            )
+
         }
 
         private fun updateTextViewCounter(viewTotal: TextView?, value: String?) {
