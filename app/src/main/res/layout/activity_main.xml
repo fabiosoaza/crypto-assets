@@ -1,43 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    >
 
     <include layout="@layout/progress_bar" />
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/container"
-        >
-
-        <ScrollView
-            android:id="@+id/scrollTotalCrypto"
-            style="@style/scrollTotalCrypto"
-            android:fitsSystemWindows="true"
-            app:layout_constraintBottom_toTopOf="@+id/containerMenu"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+   >
 
             <FrameLayout
                 android:id="@+id/main_container"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"/>
 
-        </ScrollView>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/fabContainer"
-            style="@style/fabContainer"
-            app:layout_constraintBottom_toTopOf="@+id/containerMenu"
-            app:layout_constraintEnd_toEndOf="parent">
+
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/sellFab"
@@ -46,47 +36,37 @@
                 android:contentDescription="@string/contentDescriptionAddAsset"
                 android:src="@drawable/ic_remove_shopping_cart_black_24dp"
                 android:text="@string/txtSellAsset"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/buyFab"
+
                 app:pressedTranslationZ="12dp"
                 app:rippleColor="@color/colorSecondary"
                 app:fabSize="auto"
                  />
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/buyFab"
-                style="@style/defaultFabButton"
-                android:clickable="true"
-                android:contentDescription="@string/contentDescriptionAddAsset"
-                android:src="@drawable/ic_add_shopping_cart_black_24dp"
-                android:text="@string/txtBuyAsset"
-                app:elevation="6dp"
-                app:fabSize="auto"
-                app:layout_constraintBottom_toBottomOf="parent"
 
-                app:layout_constraintEnd_toEndOf="parent"
-                app:pressedTranslationZ="12dp"
-                app:rippleColor="@color/colorSecondary" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/buyFab"
+        style="@style/defaultFabButton"
+        android:clickable="true"
+        android:contentDescription="@string/contentDescriptionAddAsset"
+        android:src="@drawable/ic_add_shopping_cart_black_24dp"
+        android:text="@string/txtBuyAsset"
+        app:elevation="6dp"
+        app:fabSize="auto"
 
+        app:pressedTranslationZ="12dp"
+        app:rippleColor="@color/colorSecondary" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        <LinearLayout
-            android:id="@+id/containerMenu"
-            style="@style/bottomBarContainer"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-           >
-
-            <com.google.android.material.bottomnavigation.BottomNavigationView
+    <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottom_navigation"
                 style="@style/bottomNavigationMenu"
-                app:menu="@menu/bottom_navigation_menu" />
+                app:menu="@menu/bottom_navigation_menu"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
+                />
 
-        </LinearLayout>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
