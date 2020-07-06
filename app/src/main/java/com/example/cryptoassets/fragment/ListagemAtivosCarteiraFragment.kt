@@ -10,6 +10,7 @@ import com.example.cryptoassets.context.ApplicationComponentsContext
 import com.example.cryptoassets.core.interactor.listener.OnBuscarCotacao
 import com.example.cryptoassets.core.model.entidade.AtivoCarteira
 import com.example.cryptoassets.core.model.entidade.Cotacao
+import com.example.cryptoassets.core.model.entidade.TipoTransacao
 import com.example.cryptoassets.ui.adapter.ListAtivosCarteiraAdapter
 import com.example.cryptoassets.ui.component.ProgressBarComponent
 import com.example.cryptoassets.ui.view.listview.ListAtivosCarteiraView
@@ -31,6 +32,16 @@ class ListagemAtivosCarteiraFragment : OnBuscarCotacao, ListItemsFragmentBase() 
         progressBarComponent = ProgressBarComponent(activity as ComponentActivity, R.id.container, R.id.progressOverlay )
     }
 
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val root = super.onCreateView(inflater, container, savedInstanceState)
+        configureFloatActionButton(root!!.findViewById(R.id.buyFab), TipoTransacao.COMPRA)
+        configureFloatActionButton(root!!.findViewById(R.id.sellFab), TipoTransacao.VENDA)
+        return root
+    }
+
     override fun recyclerViewId() = R.id.rvListagemMoedas
 
     override fun fragmentLayoutId() = R.layout.fragment_resumo
@@ -41,6 +52,17 @@ class ListagemAtivosCarteiraFragment : OnBuscarCotacao, ListItemsFragmentBase() 
         beanFactory().buscaCotacaoInteractor().buscarCotacoes(this)
         return ListAtivosCarteiraViewBuilder()
             .build()
+    }
+
+    private fun configureFloatActionButton(fab: View, tipoOperacao: TipoTransacao) {
+        fab.setOnClickListener {
+            val fragment = AdicaoTransacaoFragment()
+            val bundle = Bundle()
+            bundle.putInt("tipoTransacao", tipoOperacao.codigo)
+            fragment.arguments = bundle
+            showFragment(fragment)
+
+        }
     }
 
     private fun ativos(): MutableList<AtivoCarteira> {

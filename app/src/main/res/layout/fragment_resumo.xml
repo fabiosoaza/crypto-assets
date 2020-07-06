@@ -1,13 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.ListagemAtivosCarteiraFragment">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvListagemMoedas"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent">
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvListagemMoedas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginBottom="32dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.498"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.7" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/fabContainer"
+                    style="@style/fabContainer"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.9">
+
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/sellFab"
+                            style="@style/defaultFabButton"
+                            android:clickable="true"
+                            android:contentDescription="@string/contentDescriptionAddAsset"
+                            android:src="@drawable/ic_remove_shopping_cart_black_24dp"
+                            android:text="@string/txtSellAsset"
+                            app:fabSize="auto"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/buyFab"
+                            app:pressedTranslationZ="12dp"
+                            app:rippleColor="@color/colorSecondary" />
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/buyFab"
+                            style="@style/defaultFabButton"
+                            android:clickable="true"
+                            android:contentDescription="@string/contentDescriptionAddAsset"
+                            android:src="@drawable/ic_add_shopping_cart_black_24dp"
+                            android:text="@string/txtBuyAsset"
+                            app:elevation="6dp"
+                            app:fabSize="auto"
+                            app:layout_constraintBottom_toBottomOf="parent"
+
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:pressedTranslationZ="12dp"
+                            app:rippleColor="@color/colorSecondary" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

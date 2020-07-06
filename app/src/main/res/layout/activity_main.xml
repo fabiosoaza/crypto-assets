@@ -28,34 +28,6 @@
 
 
 
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/sellFab"
-                style="@style/defaultFabButton"
-                android:clickable="true"
-                android:contentDescription="@string/contentDescriptionAddAsset"
-                android:src="@drawable/ic_remove_shopping_cart_black_24dp"
-                android:text="@string/txtSellAsset"
-
-                app:pressedTranslationZ="12dp"
-                app:rippleColor="@color/colorSecondary"
-                app:fabSize="auto"
-                 />
-
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/buyFab"
-        style="@style/defaultFabButton"
-        android:clickable="true"
-        android:contentDescription="@string/contentDescriptionAddAsset"
-        android:src="@drawable/ic_add_shopping_cart_black_24dp"
-        android:text="@string/txtBuyAsset"
-        app:elevation="6dp"
-        app:fabSize="auto"
-
-        app:pressedTranslationZ="12dp"
-        app:rippleColor="@color/colorSecondary" />
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottom_navigation"
                 style="@style/bottomNavigationMenu"

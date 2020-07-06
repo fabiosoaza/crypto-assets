@@ -34,8 +34,6 @@ class MainActivity : AppCompatActivity() {
 
         bottom_navigation.selectedItemId = R.id.pageHome
 
-        configureFloatActionButton(findViewById(R.id.buyFab), TipoTransacao.COMPRA)
-        configureFloatActionButton(findViewById(R.id.sellFab), TipoTransacao.VENDA)
 
     }
 
@@ -43,16 +41,7 @@ class MainActivity : AppCompatActivity() {
         UiUtils.showFragment(supportFragmentManager, R.id.main_container,  fragment)
     }
 
-    private fun configureFloatActionButton(fab: View, tipoOperacao: TipoTransacao) {
-        fab.setOnClickListener {
-            val fragment = AdicaoTransacaoFragment()
-            val bundle = Bundle()
-            bundle.putInt("tipoTransacao", tipoOperacao.codigo)
-            fragment.arguments = bundle
-            showFragment(fragment)
 
-        }
-    }
 
     override fun onBackPressed() {
         val fragments = supportFragmentManager.backStackEntryCount
