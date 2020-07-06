@@ -8,7 +8,7 @@
     <string name="labelValor">Valor</string>
     <string name="contentDescriptionQuantidade">Quantidade</string>
     <string name="labelQuantidade">Quantidade</string>
-    <string name="labelCotacao">Preço</string>
+    <string name="labelCotacao">Valor da Cotação: </string>
     <string name="labelValorTotal">Total</string>
     <string name="contentDescriptionAtivo">Ativo</string>
     <string name="labelAtivo">Ativo</string>
@@ -51,4 +51,5 @@
     <string name="labelPrecoMedio">Preço Médio</string>
     <string name="labelOrders">Ordens</string>
     <string name="labelAvailableAssets">Ativos Disponíveis</string>
+    <string name="labelFieldGreatherThanZero">Você deve informar um valor maior que 0 para o campo {0}</string>
 </resources>

@@ -2,14 +2,11 @@ package com.example.cryptoassets
 
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.cryptoassets.core.model.entidade.TipoTransacao
-import com.example.cryptoassets.fragment.AdicaoTransacaoFragment
+import com.example.cryptoassets.fragment.ListagemAtivosCarteiraFragment
 import com.example.cryptoassets.fragment.ListagemAtivosFragment
 import com.example.cryptoassets.fragment.ListagemTransacoesFragment
-import com.example.cryptoassets.fragment.ListagemAtivosCarteiraFragment
 import com.example.cryptoassets.util.UiUtils
 import kotlinx.android.synthetic.main.activity_main.*
 

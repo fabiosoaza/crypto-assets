@@ -3,9 +3,11 @@ package com.example.cryptoassets.fragment
 import android.content.Context
 import android.os.Bundle
 import android.text.Editable
+import android.text.TextUtils
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnFocusChangeListener
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
@@ -23,10 +25,12 @@ import com.example.cryptoassets.core.model.entidade.TipoTransacao
 import com.example.cryptoassets.presenter.EdicaoTransacaoPresenter
 import com.example.cryptoassets.ui.component.ProgressBarComponent
 import com.example.cryptoassets.ui.view.TransacaoView
+import com.example.cryptoassets.util.BigDecimalUtils
 import com.example.cryptoassets.util.FormatadorUtils
 import com.example.cryptoassets.util.UiUtils
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import java.math.BigDecimal
 import java.time.LocalDateTime
 
 
@@ -78,6 +82,12 @@ class AdicaoTransacaoFragment : TransacaoView, OnBuscarCotacao, Fragment() {
             override fun afterTextChanged(s: Editable) {}
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                val ticker = Ticker.criar(ticker())
+                val cotacao: Cotacao? = cotacao(ticker)
+                if(cotacao!=null){
+                    val cotacaoFinal = cotacao.valor.numberStripped
+                    editPrecoMedio()?.setText(cotacaoFinal.toPlainString())
+                }
                 updateTotais()
             }
         })
@@ -86,20 +96,46 @@ class AdicaoTransacaoFragment : TransacaoView, OnBuscarCotacao, Fragment() {
         val editPrecoMedio = root.findViewById<TextInputEditText>(R.id.editPrecoMedio)
         val layoutPrecoMedio = root.findViewById<TextInputLayout>(R.id.layoutEditPrecoMedio)
         editPrecoMedio.addTextChangedListener(UiUtils.createClearInputErrorMessageListener(layoutPrecoMedio))
+        editPrecoMedio.onFocusChangeListener = OnFocusChangeListener { v, hasFocus ->
+            if (!hasFocus) {
+                updateTotais()
+            }
+        }
+
+
 
         val editQuantidade = root.findViewById<TextInputEditText>(R.id.editQuantidade)
         val layoutQuantidade = root.findViewById<TextInputLayout>(R.id.layoutEditQuantidade)
         editQuantidade.addTextChangedListener(UiUtils.createClearInputErrorMessageListener(layoutQuantidade))
 
+        editQuantidade.onFocusChangeListener = OnFocusChangeListener { v, hasFocus ->
+            if (!hasFocus) {
+                updateTotais()
+            }
+        }
         progressBarComponent = ProgressBarComponent(activity as ComponentActivity, R.id.container, R.id.progressOverlay )
         beanFactory.buscaCotacaoInteractor().buscarCotacoes(this)
 
         return root
     }
 
+    private fun calcularQuantidade(preco:BigDecimal, cotacao:BigDecimal): BigDecimal {
+            val valorCotacao = BigDecimalUtils.ofBigDecimal(cotacao)
+            return  BigDecimalUtils.divide(preco, valorCotacao)
+    }
+
+    private fun calcularPrecoMedio(quantidade:BigDecimal, valor: BigDecimal): BigDecimal {
+        val valorCotacao = BigDecimalUtils.ofBigDecimal(valor)
+        return  BigDecimalUtils.multiply(quantidade, valorCotacao)
+    }
+
 
     private fun txtValorCotacao(): TextView? {
         return view?.findViewById<TextView>(R.id.txtValorCotacao)
+    }
+
+    private fun txtValorTotal(): TextView? {
+        return view?.findViewById<TextView>(R.id.txtValorTotal)
     }
 
     private fun layoutEditTicker(): TextInputLayout? {
@@ -226,11 +262,31 @@ class AdicaoTransacaoFragment : TransacaoView, OnBuscarCotacao, Fragment() {
 
     private fun updateTotais(){
         val ticker = Ticker.criar(ticker())
-        if(ticker!=null){
-            val cotacao = cotacoes.filter { cotacao -> cotacao.ticker ==  ticker}.first()
-            txtValorCotacao()?.text = FormatadorUtils.formatarValor(cotacao.valor.numberStripped)
+        val cotacao: Cotacao? = cotacao(ticker)
+        val precoMedio = precoMedio()
+        val quantidade = quantidade()
+        var precoFinal = BigDecimal.ZERO
+        var cotacaoFinal = BigDecimal.ZERO
+        if(cotacao!=null){
+            cotacaoFinal = cotacao.valor.numberStripped
         }
+        if (!TextUtils.isEmpty(precoMedio) && !TextUtils.isEmpty(quantidade)){
+            val qtd = BigDecimalUtils.ofString(quantidade)
+            val preco = BigDecimalUtils.ofString(precoMedio)
+            precoFinal = calcularPrecoMedio(qtd, preco)
 
+        }
+        txtValorCotacao()?.text = cotacaoFinal.stripTrailingZeros().toPlainString()
+        txtValorTotal()?.text = precoFinal.stripTrailingZeros().toPlainString()
+
+    }
+
+    private fun cotacao(ticker: Ticker?): Cotacao? {
+        var cotacao: Cotacao? = null
+        if (ticker != null) {
+            cotacao = cotacoes.filter { cotacao -> cotacao.ticker == ticker }.first()
+        }
+        return cotacao
     }
 
 }

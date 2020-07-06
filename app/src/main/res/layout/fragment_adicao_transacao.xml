@@ -13,8 +13,7 @@
         android:paddingLeft="24dp"
         android:paddingTop="16dp"
         android:paddingRight="24dp"
-        android:paddingBottom="24dp"
-        >
+        android:paddingBottom="24dp">
 
         <TextView
             android:id="@+id/textViewTituloForm"
@@ -28,13 +27,13 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layoutSpinnerAtivo"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:hint="@string/contentDescriptionAtivo"
-            android:text="@string/labelAtivo"
             android:labelFor="@id/editPrecoMedio"
+            android:text="@string/labelAtivo"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="@+id/textViewTituloForm"
             app:layout_constraintHorizontal_bias="0.0"
@@ -45,12 +44,11 @@
                 android:id="@+id/spinnerAtivo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="none"
-                />
-
+                android:inputType="none" />
 
 
         </com.google.android.material.textfield.TextInputLayout>
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layoutEditPrecoMedio"
@@ -58,13 +56,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:hint="@string/contentDescriptionValor"
-            android:text="@string/labelValor"
             android:labelFor="@id/editPrecoMedio"
+            android:text="@string/labelValor"
             app:errorEnabled="true"
-            app:layout_constraintEnd_toEndOf="@+id/layoutSpinnerAtivo"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/layoutSpinnerAtivo"
-            app:layout_constraintTop_toBottomOf="@+id/layoutSpinnerAtivo">
+            app:layout_constraintStart_toStartOf="@+id/layoutEditQuantidade"
+            app:layout_constraintTop_toBottomOf="@+id/layoutEditQuantidade">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editPrecoMedio"
@@ -74,20 +70,18 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layoutEditQuantidade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:hint="@string/contentDescriptionQuantidade"
-            android:text="@string/labelQuantidade"
             android:labelFor="@id/editQuantidade"
+            android:text="@string/labelQuantidade"
             app:errorEnabled="true"
-            app:layout_constraintEnd_toEndOf="@+id/layoutEditPrecoMedio"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/layoutEditPrecoMedio"
-            app:layout_constraintTop_toBottomOf="@+id/layoutEditPrecoMedio">
+            app:layout_constraintEnd_toEndOf="@+id/layoutSpinnerAtivo"
+            app:layout_constraintStart_toStartOf="@+id/layoutSpinnerAtivo"
+            app:layout_constraintTop_toBottomOf="@+id/layoutSpinnerAtivo">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editQuantidade"
@@ -104,53 +98,46 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/labelCotacao"
-            app:layout_constraintEnd_toEndOf="@+id/layoutEditQuantidade"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/layoutEditQuantidade"
-            app:layout_constraintTop_toBottomOf="@+id/layoutEditQuantidade" />
+            app:layout_constraintStart_toStartOf="@+id/layoutEditPrecoMedio"
+            app:layout_constraintTop_toBottomOf="@+id/layoutEditPrecoMedio" />
+
 
         <TextView
             android:id="@+id/txtValorCotacao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/labelCotacao"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/labelCotacao"
-            app:layout_constraintTop_toBottomOf="@+id/labelCotacao" />
+            android:layout_marginStart="8dp"
+            android:text="Valor Cotação"
+            app:layout_constraintStart_toEndOf="@+id/labelCotacao"
+            app:layout_constraintTop_toTopOf="@+id/labelCotacao" />
 
         <TextView
             android:id="@+id/labelValorTotal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:text="@string/labelValorTotal"
-            app:layout_constraintEnd_toEndOf="@+id/txtValorCotacao"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/txtValorCotacao"
-            app:layout_constraintTop_toBottomOf="@+id/txtValorCotacao" />
+            app:layout_constraintEnd_toStartOf="@+id/txtValorTotal"
+            app:layout_constraintTop_toTopOf="@+id/txtValorCotacao" />
 
         <TextView
             android:id="@+id/txtValorTotal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/labelValorTotal"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/labelValorTotal"
-            app:layout_constraintTop_toBottomOf="@+id/labelValorTotal" />
-
+            android:layout_marginEnd="8dp"
+            android:text="Valor Total"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/labelValorTotal" />
 
         <Button
             android:id="@+id/btnAdicionar"
             style="@style/styleContainedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="32dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txtValorTotal" />
+            app:layout_constraintTop_toBottomOf="@+id/txtValorCotacao" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

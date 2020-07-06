@@ -14,6 +14,7 @@ import com.example.cryptoassets.core.repository.TransacaoRepository
 import com.example.cryptoassets.util.BigDecimalUtils
 import com.example.cryptoassets.util.MoneyUtils
 import com.example.cryptoassets.util.ResourceUtils
+import java.math.BigDecimal
 import java.text.MessageFormat
 import java.time.LocalDateTime
 
@@ -88,14 +89,27 @@ class TransacaoInteractor(
             listener.onErrorTickerInvalido(formatarMensagemErro(R.string.labelTickerAtivo))
             return false
         }
-        if(isEmpty(precoMedio)){
-            listener.onErrorPrecoMedioInvalido(formatarMensagemErro(R.string.labelValor))
-            return false
-        }
+
         if(isEmpty(quantidade)){
             listener.onErrorQuantidadeInvalida(formatarMensagemErro(R.string.labelQuantidade))
             return false
         }
+
+        if((BigDecimal(quantidade) == BigDecimal.ZERO)){
+            listener.onErrorQuantidadeInvalida(formatarMensagemErroValorMaiorZero(R.string.labelQuantidade))
+            return false
+        }
+
+        if(isEmpty(precoMedio) ){
+            listener.onErrorPrecoMedioInvalido(formatarMensagemErro(R.string.labelValor))
+            return false
+        }
+
+        if(BigDecimal(precoMedio) == BigDecimal.ZERO){
+            listener.onErrorPrecoMedioInvalido(formatarMensagemErroValorMaiorZero(R.string.labelValor))
+            return false
+        }
+
         if(data == null){
             listener.onErrorDataTransacaoInvalida(formatarMensagemErro(R.string.labelDataTransacao))
             return false
@@ -113,6 +127,12 @@ class TransacaoInteractor(
     private fun formatarMensagemErro(fieldResourceId:Int) : String{
         val campo = ResourceUtils.getString(context, fieldResourceId)
         val message = ResourceUtils.getString(context, R.string.labelMessageErrorMandatory)
+        return  MessageFormat.format(message!!, campo!!)
+    }
+
+    private fun formatarMensagemErroValorMaiorZero(fieldResourceId:Int) : String{
+        val campo = ResourceUtils.getString(context, fieldResourceId)
+        val message = ResourceUtils.getString(context, R.string.labelFieldGreatherThanZero)
         return  MessageFormat.format(message!!, campo!!)
     }
 

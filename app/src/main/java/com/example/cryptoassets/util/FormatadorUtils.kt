@@ -1,6 +1,5 @@
 package com.example.cryptoassets.util
 
-import com.example.cryptoassets.util.MoneyUtils
 import org.javamoney.moneta.Money
 import java.math.BigDecimal
 import java.text.DecimalFormat
@@ -16,6 +15,8 @@ class FormatadorUtils {
             val decimalFormatSymbols: DecimalFormatSymbols = DecimalFormatSymbols.getInstance(Locale.getDefault())
             return DecimalFormat(pattern, decimalFormatSymbols).format(valor)
         }
+
+
 
         fun formatarValor(valor: Money) : String {
                 return MoneyUtils.getFormat().format(valor)

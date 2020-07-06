@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.ComponentActivity
 import com.example.cryptoassets.R
-import com.example.cryptoassets.context.ApplicationComponentsContext
 import com.example.cryptoassets.core.interactor.listener.OnBuscarCotacao
 import com.example.cryptoassets.core.model.entidade.AtivoCarteira
 import com.example.cryptoassets.core.model.entidade.Cotacao

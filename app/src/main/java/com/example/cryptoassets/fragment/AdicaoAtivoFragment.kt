@@ -10,12 +10,12 @@ import android.widget.AutoCompleteTextView
 import android.widget.Button
 import androidx.activity.ComponentActivity
 import androidx.fragment.app.Fragment
-import com.example.cryptoassets.presenter.EdicaoAtivoPresenter
 import com.example.cryptoassets.R
 import com.example.cryptoassets.context.ApplicationComponentsContext
 import com.example.cryptoassets.core.model.entidade.Ticker
-import com.example.cryptoassets.util.UiUtils
+import com.example.cryptoassets.presenter.EdicaoAtivoPresenter
 import com.example.cryptoassets.ui.view.AtivoView
+import com.example.cryptoassets.util.UiUtils
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 

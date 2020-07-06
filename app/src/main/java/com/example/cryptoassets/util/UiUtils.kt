@@ -44,11 +44,18 @@ class UiUtils {
         }
 
          fun createClearInputErrorMessageListener(text: TextInputLayout): TextWatcher {
+             val listener: (CharSequence, Int, Int, Int) -> Unit = { _, _, _, _ -> text.error = "" }
+             return createOnTexChangeListener(text, listener)
+         }
+
+
+
+        fun createOnTexChangeListener(text: TextInputLayout, listener: (CharSequence, Int, Int, Int) -> Unit ): TextWatcher {
             return object : TextWatcher {
                 override fun afterTextChanged(s: Editable) {}
                 override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int ) { }
                 override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int ) {
-                    text.error = ""
+                    listener(s, start, before, count)
                 }
             }
         }

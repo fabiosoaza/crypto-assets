@@ -7,7 +7,7 @@
     <string name="labelValor">Amount</string>
     <string name="contentDescriptionQuantidade">Quantity</string>
     <string name="labelQuantidade">Quantity</string>
-    <string name="labelCotacao">Price</string>
+    <string name="labelCotacao">Price: </string>
     <string name="labelValorTotal">Total Amount</string>
     <string name="contentDescriptionAtivo">Asset</string>
     <string name="labelAtivo">Asset</string>
@@ -54,4 +54,6 @@
     <string name="labelPrecoMedio">Average Price</string>
     <string name="labelOrders">Ordens</string>
     <string name="labelAvailableAssets">Available Assets</string>
+    <string name="labelFieldGreatherThanZero">You must inform a value greater than 0 in field {0}</string>
+
 </resources>

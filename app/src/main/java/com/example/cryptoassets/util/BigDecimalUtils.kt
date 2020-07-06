@@ -41,6 +41,11 @@ class BigDecimalUtils {
             return valor.setScale(casas, RoundingMode.DOWN)
         }
 
+        fun multiply(valor1 : BigDecimal, valor2: BigDecimal) : BigDecimal {
+            val result = ofBigDecimal(valor1).multiply(ofBigDecimal(valor2) )
+            return ofBigDecimal(result)
+        }
+
         fun divide(valor1 : BigDecimal, valor2: BigDecimal) : BigDecimal {
             val bigDecimal = ofBigDecimal(
                 valor1
