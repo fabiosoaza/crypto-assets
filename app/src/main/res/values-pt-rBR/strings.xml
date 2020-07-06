@@ -52,4 +52,10 @@
     <string name="labelOrders">Ordens</string>
     <string name="labelAvailableAssets">Ativos Disponíveis</string>
     <string name="labelFieldGreatherThanZero">Você deve informar um valor maior que 0 para o campo {0}</string>
+    <string name="tituloMensagemConfirmacaoExclusaoAtivo">Você deseja excluir o ativo {0}?</string>
+    <string name="mensagemConfirmacaoExclusaoAtivo">Ao excluir o ativo {0}, você removerá todas as transações relacionadas.</string>
+    <string name="labelDelete">Excluir</string>
+    <string name="labelDecline">Cancelar</string>
+    <string name="mensagemExclusaoSucesso">Ativo {0} excluído com sucesso.</string>
+    <string name="mensagemExclusaoErro">Falha ao remover o ativo {0}.</string>
 </resources>

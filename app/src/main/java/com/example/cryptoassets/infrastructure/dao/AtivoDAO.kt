@@ -35,14 +35,12 @@ class AtivoDAO(private val dbHelper : DbHelper) : AtivoRepository {
 
     override fun excluir(ativo: Ativo) {
         val db = dbHelper.writableDatabase
-        val contentValues = ContentValues().apply {
-            put(ATIVO_EXCLUIDO, 1)
-        }
-        val selection = "$ATIVO_TICKER LIKE ?"
-        val selectionArgs = arrayOf(ativo.ticker.name)
-        db.update(TABLE_ATIVO, contentValues, selection, selectionArgs)
+        val whereClause = "$ATIVO_ID=?"
+        val whereArgs = arrayOf<String>(java.lang.String.valueOf(ativo.id))
+        db.delete(TABLE_ATIVO, whereClause, whereArgs)
         db.close()
     }
+
 
     override fun findByTicker(ticker: Ticker): Ativo? {
         val db = dbHelper.writableDatabase

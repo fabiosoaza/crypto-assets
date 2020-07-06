@@ -1,12 +1,8 @@
 package com.example.cryptoassets.fragment
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
 import com.example.cryptoassets.R
 import com.example.cryptoassets.core.model.entidade.Ativo
+import com.example.cryptoassets.presenter.EdicaoAtivoPresenter
 import com.example.cryptoassets.ui.adapter.ListAtivosAdapter
 import com.example.cryptoassets.ui.view.listview.ListAtivosView
 import com.example.cryptoassets.ui.view.listview.impl.builder.ListAtivosViewBuilder
@@ -15,22 +11,14 @@ import com.example.cryptoassets.ui.view.listview.impl.builder.ListAtivosViewBuil
 class ListagemAtivosFragment : ListItemsFragmentBase() {
 
 
-    private var listAdapter = ListAtivosAdapter(
-        ListAtivosViewBuilder()
-            .build()
-    )
+    private lateinit var listAdapter :ListAtivosAdapter
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val root = super.onCreateView(inflater, container, savedInstanceState)
-        val btn = root?.findViewById<Button>(R.id.btnNovoAtivo)
-        btn?.setOnClickListener {
-           showFragment(AdicaoAtivoFragment())
-        };
+    override fun onPreCreateView() {
+        super.onPreCreateView()
+        listAdapter = ListAtivosAdapter(
+            builder().build())
 
-        return root
+
     }
 
     override fun recyclerViewId() = R.id.rvListagemAtivos
@@ -40,9 +28,19 @@ class ListagemAtivosFragment : ListItemsFragmentBase() {
     override fun listAdapter() = listAdapter
 
     override fun dataSet(): ListAtivosView {
+        return builder()
+            .build()
+    }
+
+    private fun builder(): ListAtivosViewBuilder {
         return ListAtivosViewBuilder()
             .ativos(ativos())
-            .build()
+            .context(fragmentContext())
+            .presenter(
+                EdicaoAtivoPresenter(
+                    beanFactory().ativoInteractor()
+                )
+            )
     }
 
     private fun ativos(): MutableList<Ativo> {

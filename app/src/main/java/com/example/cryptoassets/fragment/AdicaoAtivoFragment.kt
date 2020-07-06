@@ -12,6 +12,7 @@ import androidx.activity.ComponentActivity
 import androidx.fragment.app.Fragment
 import com.example.cryptoassets.R
 import com.example.cryptoassets.context.ApplicationComponentsContext
+import com.example.cryptoassets.core.interactor.listener.OnSalvarAtivo
 import com.example.cryptoassets.core.model.entidade.Ticker
 import com.example.cryptoassets.presenter.EdicaoAtivoPresenter
 import com.example.cryptoassets.ui.view.AtivoView
@@ -20,7 +21,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
 
-class AdicaoAtivoFragment : AtivoView, Fragment() {
+class AdicaoAtivoFragment : AtivoView, OnSalvarAtivo, Fragment() {
 
     private lateinit var fragmentContext : Context
 
@@ -33,7 +34,6 @@ class AdicaoAtivoFragment : AtivoView, Fragment() {
         val root = inflater.inflate(R.layout.fragment_adicao_ativo, container, false)
 
         val presenter = EdicaoAtivoPresenter(
-            this,
             beanFactory.ativoInteractor()
         )
 
@@ -43,7 +43,7 @@ class AdicaoAtivoFragment : AtivoView, Fragment() {
         val btn = root.findViewById<Button>(R.id.btnAdicionar)
 
         btn.setOnClickListener {
-            presenter.salvar(ticker(), nome())
+            presenter.salvar(ticker(), nome(), this)
         };
 
         val spinnerTicker = root.findViewById<AutoCompleteTextView>(R.id.spinnerAtivo)
@@ -95,7 +95,7 @@ class AdicaoAtivoFragment : AtivoView, Fragment() {
 
     override fun onSuccess(msg: String) {
         UiUtils.message(activity as ComponentActivity, msg )
-        UiUtils.closeAndGoBack(fragmentManager, this)
+        UiUtils.showFragment(fragmentManager, R.id.main_container, ListagemAtivosFragment())
     }
 
     private fun layoutEditNomeAtivo() = view?.findViewById<TextInputLayout>(R.id.layoutEditNome)

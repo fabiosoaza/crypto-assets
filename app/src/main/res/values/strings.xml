@@ -55,5 +55,10 @@
     <string name="labelOrders">Ordens</string>
     <string name="labelAvailableAssets">Available Assets</string>
     <string name="labelFieldGreatherThanZero">You must inform a value greater than 0 in field {0}</string>
-
+    <string name="tituloMensagemConfirmacaoExclusaoAtivo">Delete Asset {0}?</string>
+    <string name="mensagemConfirmacaoExclusaoAtivo">Removing the asset {0} you will erase all transactions related.</string>
+    <string name="mensagemExclusaoSucesso">Asset {0} removed successfully.</string>
+    <string name="mensagemExclusaoErro">Error removing Asset {0}.</string>
+    <string name="labelDelete">Delete</string>
+    <string name="labelDecline">Decline</string>
 </resources>

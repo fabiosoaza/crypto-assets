@@ -28,25 +28,10 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-
-                <TextView
-                    android:id="@+id/txtTotalAtivos"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:focusable="false"
-                    android:importantForAccessibility="no"
-                    android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="?android:attr/textColorSecondary"
-                    android:visibility="visible"
-                    app:layout_constraintStart_toStartOf="@+id/txtLabelTotalBalance"
-                    app:layout_constraintTop_toBottomOf="@+id/txtLabelTotalBalance" />
-
-
                 <View
                     style="@style/horizontalDivider"
-                    app:layout_constraintStart_toStartOf="@+id/txtTotalAtivos"
-                    app:layout_constraintTop_toBottomOf="@+id/txtTotalAtivos" />
+                    app:layout_constraintStart_toStartOf="@+id/txtLabelTotalBalance"
+                    app:layout_constraintTop_toBottomOf="@+id/txtLabelTotalBalance" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

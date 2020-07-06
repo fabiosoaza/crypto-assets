@@ -33,7 +33,7 @@ class ApplicationComponentsContext(private val context: Context) {
     private val transacaoDAO = TransacaoDAO(dbHelper())
     private val ativoCarteiraDAO = AtivoCarteiraDAO(dbHelper())
     private val cotacaoApi = CotacaoApi(context, mercadoBitcoinApiClient())
-    private val ativoInteractor = AtivoInteractor(ativoRepository(), context)
+    private val ativoInteractor = AtivoInteractor(context, ativoRepository(), transacaoRepository(), ativoCarteiraRepository())
     private val transacaoInteractor = TransacaoInteractor(
         context,
         transacaoRepository(),

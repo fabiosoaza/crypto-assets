@@ -52,6 +52,14 @@ class AtivoCarteiraDAO(private val dbHelper : DbHelper) : AtivoCarteiraRepositor
         return ativo
     }
 
+    override fun excluir(ativo: Ativo) {
+        val db = dbHelper.writableDatabase
+        val whereClause = "$CARTEIRA_ATIVO_ID=?"
+        val whereArgs = arrayOf<String>(java.lang.String.valueOf(ativo.id))
+        db.delete(TABLE_CARTEIRA, whereClause, whereArgs)
+        db.close()
+    }
+
 
     private fun ativoCarteiraFromCursor(cursor: Cursor): AtivoCarteira {
         val id = cursor.getInt(cursor.getColumnIndex(CARTEIRA_ID))

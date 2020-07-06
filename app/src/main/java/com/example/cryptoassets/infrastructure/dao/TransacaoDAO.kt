@@ -45,6 +45,13 @@ class TransacaoDAO(private val dbHelper : DbHelper) : TransacaoRepository {
 
     }
 
+    override fun excluirTodas(ativo: Ativo) {
+            val db = dbHelper.writableDatabase
+            val whereClause = "$TRANSACAO_ATIVO_ID=?"
+            val whereArgs = arrayOf<String>(java.lang.String.valueOf(ativo.id))
+            db.delete(TABLE_TRANSACAO, whereClause, whereArgs)
+            db.close()
+    }
 
 
     private fun transacaoFromCursor(cursor: Cursor): Transacao {
