@@ -22,7 +22,7 @@
 
                 <TextView
                     android:id="@+id/txtNomeAtivo"
-                    style="@style/txtAtivoCarteiraNomeAtivo"
+                    style="@style/txtItemValue"
                     android:layout_marginStart="8dp"
                     android:focusable="true"
                     android:importantForAccessibility="yes"
@@ -32,27 +32,27 @@
 
                 <TextView
                     android:id="@+id/txtCotacaoMoeda"
-                    style="@style/txtAtivoCarteiraCotacaoAtivo"
+                    style="@style/txtItemValue"
                     android:layout_marginEnd="8dp"
                     android:focusable="false"
                     android:importantForAccessibility="no"
                     android:text="Cotacao Moeda"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/txtNomeAtivo" />
+                    app:layout_constraintTop_toTopOf="@+id/iconeAtivo" />
 
 
                 <TextView
                     android:id="@+id/txtLabelQuantidadeMoeda"
-                    style="@style/txtAtivoCarteiraLabelQuantidadeMoeda"
+                    style="@style/txtItemLabel"
                     android:focusable="false"
                     android:importantForAccessibility="no"
                     android:text="@string/quantidadeAtivosAbreviado"
                     app:layout_constraintEnd_toEndOf="@+id/txtCotacaoMoeda"
-                    app:layout_constraintTop_toTopOf="@+id/txtLabelPrecoMedio" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtCotacaoMoeda" />
 
                 <TextView
                     android:id="@+id/txtQuantidadeMoeda"
-                    style="@style/txtAtivoCarteiraQuantidadeMoeda"
+                    style="@style/txtItemValue"
                     android:focusable="false"
                     android:importantForAccessibility="no"
                     android:text="Qtd Moeda"
@@ -61,7 +61,7 @@
 
                 <TextView
                     android:id="@+id/txtPrecoMedioPago"
-                    style="@style/txtAtivoCarteiraValorPrecoMedio"
+                    style="@style/txtItemValue"
                     android:focusable="false"
                     android:importantForAccessibility="no"
                     android:text="Valor Preco Medio"
@@ -70,7 +70,7 @@
 
                 <TextView
                     android:id="@+id/txtLabelValorTotalInvestido"
-                    style="@style/txtLabelAtivoCarteiraValorTotalInvestido"
+                    style="@style/txtItemLabel"
                     android:layout_marginTop="8dp"
                     android:focusable="false"
                     android:text="@string/txtTotalInvestido"
@@ -79,7 +79,7 @@
 
                 <TextView
                     android:id="@+id/txtValorTotalPago"
-                    style="@style/txtAtivoCarteiraValorTotalInvestido"
+                    style="@style/txtItemValue"
                     android:focusable="false"
                     android:importantForAccessibility="no"
                     android:text="Valor Investido"
@@ -89,7 +89,7 @@
 
                 <TextView
                     android:id="@+id/txtLabelPrecoMedio"
-                    style="@style/txtAtivoCarteiraLabelPrecoMedio"
+                    style="@style/txtItemLabel"
                     android:layout_marginTop="8dp"
                     android:focusable="false"
                     android:importantForAccessibility="no"
@@ -99,16 +99,16 @@
 
                 <TextView
                     android:id="@+id/txtLabelVariacaoPorcentagem"
-                    style="@style/txtAtivoCarteiraVariacaoValorTotal"
+                    style="@style/txtItemLabel"
                     android:focusable="false"
                     android:importantForAccessibility="no"
                     android:text="@string/txtVariacaoPatrimonio"
                     app:layout_constraintEnd_toEndOf="@+id/txtQuantidadeMoeda"
-                    app:layout_constraintTop_toTopOf="@+id/txtLabelValorTotalInvestido" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtQuantidadeMoeda" />
 
                 <TextView
                     android:id="@+id/txtVariacaoTotalPrecoMedioMoeda"
-                    style="@style/txtAtivoCarteiraLabelVariacaoNeutra"
+                    style="@style/txtItemValue"
                     android:focusable="false"
                     android:importantForAccessibility="no"
                     android:text="Variacao Moeda"

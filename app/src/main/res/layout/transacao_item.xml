@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/containerTotalItemTransacao"
-    style="@style/containerTotalItemTransacao"
-    >
+    style="@style/containerTotalItemTransacao">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardTotalItemTransacao"
@@ -36,7 +35,7 @@
 
             <TextView
                 android:id="@+id/txtNomeAtivo"
-                style="@style/txtAtivoCarteiraNomeAtivo"
+                style="@style/txtItemValue"
                 android:layout_marginStart="8dp"
                 android:focusable="true"
                 android:importantForAccessibility="yes"
@@ -46,18 +45,18 @@
 
             <TextView
                 android:id="@+id/txtTipoTransacao"
-                style="@style/txtAtivoCarteiraCotacaoAtivo"
+                style="@style/txtItemValue"
                 android:layout_marginEnd="8dp"
                 android:focusable="false"
                 android:importantForAccessibility="no"
                 android:text="Tipo Transação"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/txtNomeAtivo" />
+                app:layout_constraintTop_toTopOf="@+id/iconeAtivo" />
 
 
             <TextView
                 android:id="@+id/txtLabelPrecoMedio"
-                style="@style/txtAtivoCarteiraLabelPrecoMedio"
+                style="@style/txtItemLabel"
                 android:layout_marginTop="8dp"
                 android:focusable="false"
                 android:importantForAccessibility="no"
@@ -67,7 +66,7 @@
 
             <TextView
                 android:id="@+id/txtPrecoMedio"
-                style="@style/txtAtivoCarteiraValorPrecoMedio"
+                style="@style/txtItemValue"
                 android:focusable="false"
                 android:importantForAccessibility="no"
                 android:text="Valor Preco Medio"
@@ -77,7 +76,7 @@
 
             <TextView
                 android:id="@+id/txtLabelValorTotalInvestido"
-                style="@style/txtLabelAtivoCarteiraValorTotalInvestido"
+                style="@style/txtItemLabel"
                 android:layout_marginTop="8dp"
                 android:focusable="false"
                 android:text="@string/txtTotalInvestido"
@@ -87,16 +86,16 @@
 
             <TextView
                 android:id="@+id/txtLabelQuantidadeMoeda"
-                style="@style/txtAtivoCarteiraLabelQuantidadeMoeda"
+                style="@style/txtItemLabel"
                 android:focusable="false"
                 android:importantForAccessibility="no"
                 android:text="@string/quantidadeAtivosAbreviado"
                 app:layout_constraintEnd_toEndOf="@+id/txtTipoTransacao"
-                app:layout_constraintTop_toTopOf="@+id/txtLabelPrecoMedio" />
+                app:layout_constraintTop_toBottomOf="@+id/txtTipoTransacao" />
 
             <TextView
                 android:id="@+id/txtQuantidade"
-                style="@style/txtAtivoCarteiraLabelQuantidadeMoeda"
+                style="@style/txtItemValue"
                 android:focusable="false"
                 android:importantForAccessibility="no"
                 android:text="Valor Quantidade"
@@ -105,7 +104,7 @@
 
             <TextView
                 android:id="@+id/txtValorTotal"
-                style="@style/txtValorTotalInvestido"
+                style="@style/txtItemValue"
                 android:focusable="false"
                 android:importantForAccessibility="no"
                 android:text="Valor Total"
@@ -115,16 +114,16 @@
 
             <TextView
                 android:id="@+id/txtLabelDataTransacao"
-                style="@style/txtLabelTransacaoData"
+                style="@style/txtItemLabel"
                 android:focusable="false"
                 android:importantForAccessibility="no"
                 android:text="@string/labelDataTransacao"
                 app:layout_constraintEnd_toEndOf="@+id/txtQuantidade"
-                app:layout_constraintTop_toTopOf="@+id/txtLabelValorTotalInvestido" />
+                app:layout_constraintTop_toBottomOf="@+id/txtQuantidade" />
 
             <TextView
                 android:id="@+id/txtData"
-                style="@style/txtTransacaoData"
+                style="@style/txtItemValue"
                 android:focusable="false"
                 android:importantForAccessibility="no"
                 android:text="Data transação"

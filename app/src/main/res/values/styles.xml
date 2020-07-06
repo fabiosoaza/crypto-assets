@@ -24,6 +24,44 @@
         <item name="android:textAppearance">?attr/textAppearanceHeadline6</item>
     </style>
 
+    <style name="txtTitulo" parent="@style/Widget.MaterialComponents.TextView">
+        <item name="android:textAppearance">?attr/textAppearanceHeadline6</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">18sp</item>
+
+    </style>
+
+    <style name="txtHeaderValue" parent="txtTitulo">
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+        <item name="android:textAppearance">?attr/textAppearanceHeadline6</item>    </style>
+
+    <style name="txtHeaderLabel" parent="txtTitulo">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textAppearance">?attr/textAppearanceHeadline6</item>
+    </style>
+
+
+    <style name="txtItemValue" parent="txtTitulo">
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="txtItemLabel" parent="txtTitulo">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+
+    <style name="txtDefault" parent="@style/Widget.MaterialComponents.TextView">
+        <item name="android:textAppearance">?attr/textAppearanceBody2</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+    </style>
+
     <style name="styleContainedButton" parent="@style/Widget.MaterialComponents.Button">
         <!--
         <item name="android:textSize">@dimen/text_view_size_normal</item>

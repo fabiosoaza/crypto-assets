@@ -45,7 +45,7 @@
     <string name="noInternetPermissionWarning">Você precisa habilitar as permissões de internet para que os resultados possam ser exibidos.</string>
     <string name="cantConnectToHost">Não foi possível buscar os dados no servidor. Por favor tente mais tarde.</string>
     <string name="txtTotalTransactionsBalance">Saldo</string>
-    <string name="txtTotalInvestido">Total investido</string>
+    <string name="txtTotalInvestido">Total investido:</string>
     <string name="txtVariacaoPatrimonio">Variacão: </string>
     <string name="quantidadeAtivosAbreviado">Qtd </string>
     <string name="labelPrecoMedio">Preço Médio</string>

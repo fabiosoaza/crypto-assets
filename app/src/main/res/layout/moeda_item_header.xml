@@ -22,7 +22,7 @@
 
                 <TextView
                     android:id="@+id/txtLabelTotalBalance"
-                    style="@style/txtLabelTotalBalance"
+                    style="@style/txtHeaderLabel"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:focusable="false"
@@ -33,7 +33,7 @@
 
                 <TextView
                     android:id="@+id/txtTotalBalance"
-                    style="@style/txtValorLabelTotalBalance"
+                    style="@style/txtHeaderValue"
                     android:layout_marginTop="8dp"
                     android:focusable="false"
                     android:importantForAccessibility="no"
@@ -44,7 +44,7 @@
 
                 <TextView
                     android:id="@+id/txtLabelTotalInvestido"
-                    style="@style/txtLabelTotalInvestido"
+                    style="@style/txtHeaderLabel"
                     android:focusable="false"
                     android:importantForAccessibility="no"
                     android:text="@string/txtTotalInvestido"
@@ -53,19 +53,19 @@
 
                 <TextView
                     android:id="@+id/txtTotalInvestido"
-                    style="@style/txtValorTotalInvestido"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/txtHeaderValue"
                     android:layout_marginStart="8dp"
                     android:focusable="false"
                     android:importantForAccessibility="no"
                     android:text="Valor Investido"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtLabelTotalInvestido"
                     app:layout_constraintStart_toEndOf="@+id/txtLabelTotalInvestido"
-                    app:layout_constraintTop_toTopOf="@+id/txtLabelTotalInvestido" />
+                    app:layout_constraintTop_toTopOf="@+id/txtLabelTotalInvestido"
+                    app:layout_constraintVertical_bias="1.0" />
 
                 <TextView
                     android:id="@+id/txtLabelVariacaoPrecoMedio"
-                    style="@style/txtLabelVariacaoPatrimonio"
+                    style="@style/txtHeaderLabel"
                     android:layout_marginTop="8dp"
                     android:focusable="false"
                     android:importantForAccessibility="no"
@@ -75,31 +75,27 @@
 
                 <TextView
                     android:id="@+id/txtVariacaoPorcentagem"
-                    style="@style/txtLabelVariacaoPrecoMedioNeutra"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/txtHeaderValue"
                     android:layout_marginStart="8dp"
                     android:focusable="false"
                     android:importantForAccessibility="no"
                     android:text="Var Porcentagem"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtVariacaoPatrimonio"
                     app:layout_constraintStart_toEndOf="@+id/txtVariacaoPatrimonio"
-                    app:layout_constraintTop_toTopOf="@+id/txtLabelVariacaoPrecoMedio" />
+                    app:layout_constraintTop_toTopOf="@+id/txtVariacaoPatrimonio"
+                    app:layout_constraintVertical_bias="1.0" />
 
                 <TextView
                     android:id="@+id/txtVariacaoPatrimonio"
-                    style="@style/txtLabelVariacaoPrecoMedioNeutra"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/txtHeaderValue"
                     android:layout_marginStart="8dp"
                     android:focusable="false"
                     android:importantForAccessibility="no"
                     android:text="Var Preco Medio"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtLabelVariacaoPrecoMedio"
                     app:layout_constraintStart_toEndOf="@+id/txtLabelVariacaoPrecoMedio"
-                    app:layout_constraintTop_toTopOf="@+id/txtLabelVariacaoPrecoMedio" />
-
-
-
-
+                    app:layout_constraintTop_toTopOf="@+id/txtLabelVariacaoPrecoMedio"
+                    app:layout_constraintVertical_bias="1.0" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
