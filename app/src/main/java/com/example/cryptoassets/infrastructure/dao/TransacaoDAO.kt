@@ -17,14 +17,29 @@ class TransacaoDAO(private val dbHelper : DbHelper) : TransacaoRepository {
         val db = dbHelper.writableDatabase
         val  sql = "SELECT t.*, a.$ATIVO_NOME, a.$ATIVO_TICKER FROM $TABLE_TRANSACAO AS t INNER JOIN $TABLE_ATIVO AS a ON t.$TRANSACAO_ATIVO_ID = a.$ATIVO_ID ORDER BY $TRANSACAO_DATA ASC"
         val cursor = db.rawQuery(sql ,null)
-        val transacaos =ArrayList<Transacao>()
+        val transacoes =ArrayList<Transacao>()
         while (cursor.moveToNext()){
             val transacao= transacaoFromCursor(cursor)
-            transacaos.add(transacao)
+            transacoes.add(transacao)
         }
         cursor.close()
         db.close()
-        return transacaos.toSet()
+        return transacoes.toSet()
+    }
+
+    override fun transacoes(ativo: Ativo): Set<Transacao> {
+        val db = dbHelper.writableDatabase
+        val  sql = "SELECT t.*, a.$ATIVO_NOME, a.$ATIVO_TICKER FROM $TABLE_TRANSACAO AS t INNER JOIN $TABLE_ATIVO AS a ON t.$TRANSACAO_ATIVO_ID = a.$ATIVO_ID WHERE t.$ATIVO_ID = ? ORDER BY $TRANSACAO_DATA DESC"
+        val selectionArgs = arrayOf(ativo.id.toString())
+        val cursor = db.rawQuery(sql ,selectionArgs)
+        val transacoes =ArrayList<Transacao>()
+        while (cursor.moveToNext()){
+            val transacao= transacaoFromCursor(cursor)
+            transacoes.add(transacao)
+        }
+        cursor.close()
+        db.close()
+        return transacoes.toSet()
     }
 
     override fun salvar(transacao: Transacao) {
@@ -42,7 +57,11 @@ class TransacaoDAO(private val dbHelper : DbHelper) : TransacaoRepository {
     }
 
     override fun excluir(transacao: Transacao) {
-
+        val db = dbHelper.writableDatabase
+        val whereClause = "$TRANSACAO_ID=?"
+        val whereArgs = arrayOf<String>(java.lang.String.valueOf(transacao.id))
+        db.delete(TABLE_TRANSACAO, whereClause, whereArgs)
+        db.close()
     }
 
     override fun excluirTodas(ativo: Ativo) {

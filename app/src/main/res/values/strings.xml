@@ -61,4 +61,8 @@
     <string name="mensagemExclusaoErro">Error removing Asset {0}.</string>
     <string name="labelDelete">Delete</string>
     <string name="labelDecline">Decline</string>
+    <string name="tituloMensagemConfirmacaoExclusaoTransacao">Delete transaction of Asset {0}?</string>
+    <string name="mensagemConfirmacaoExclusaoTransacao">Are you sure you want remove the transaction {0} of Asset {1}?</string>
+    <string name="mensagemExclusaoTransacaoSucesso">Transaction of type {1} of Asset {1} removed successfully.</string>
+    <string name="mensagemExclusaoTransacaoErro">Error removing transaction of Asset {0}.</string>
 </resources>

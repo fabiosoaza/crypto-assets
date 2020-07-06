@@ -19,7 +19,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
 
             <ImageView
@@ -42,8 +42,7 @@
                 android:importantForAccessibility="yes"
                 android:text="Nome Ativo"
                 app:layout_constraintStart_toEndOf="@+id/iconeAtivo"
-                app:layout_constraintTop_toTopOf="@+id/iconeAtivo"
-                 />
+                app:layout_constraintTop_toTopOf="@+id/iconeAtivo" />
 
             <TextView
                 android:id="@+id/txtTipoTransacao"
@@ -111,8 +110,7 @@
                 android:importantForAccessibility="no"
                 android:text="Valor Total"
                 app:layout_constraintStart_toStartOf="@+id/txtLabelValorTotalInvestido"
-                app:layout_constraintTop_toBottomOf="@+id/txtLabelValorTotalInvestido"
-                />
+                app:layout_constraintTop_toBottomOf="@+id/txtLabelValorTotalInvestido" />
 
 
             <TextView
@@ -130,8 +128,19 @@
                 android:focusable="false"
                 android:importantForAccessibility="no"
                 android:text="Data transação"
+                app:layout_constraintBottom_toBottomOf="@+id/txtValorTotal"
                 app:layout_constraintEnd_toEndOf="@+id/txtLabelDataTransacao"
                 app:layout_constraintTop_toBottomOf="@+id/txtLabelDataTransacao" />
+
+            <ImageButton
+                android:id="@+id/imageButtonExcluirTransacao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtValorTotal"
+                app:srcCompat="@drawable/ic_baseline_delete_forever_48" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -58,4 +58,8 @@
     <string name="labelDecline">Cancelar</string>
     <string name="mensagemExclusaoSucesso">Ativo {0} excluído com sucesso.</string>
     <string name="mensagemExclusaoErro">Falha ao remover o ativo {0}.</string>
+    <string name="tituloMensagemConfirmacaoExclusaoTransacao">Excluir transação do ativo {0}?</string>
+    <string name="mensagemConfirmacaoExclusaoTransacao">Você deseja excluir a transação de {0} do ativo {1}?</string>
+    <string name="mensagemExclusaoTransacaoSucesso">Transação de {0} do ativo {1} excluída com sucesso.</string>
+    <string name="mensagemExclusaoTransacaoErro">Falha ao remover a transação do ativo {0}.</string>
 </resources>

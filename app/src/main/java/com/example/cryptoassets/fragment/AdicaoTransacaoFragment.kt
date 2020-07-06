@@ -18,6 +18,7 @@ import androidx.fragment.app.Fragment
 import com.example.cryptoassets.R
 import com.example.cryptoassets.context.ApplicationComponentsContext
 import com.example.cryptoassets.core.interactor.listener.OnBuscarCotacao
+import com.example.cryptoassets.core.interactor.listener.OnSalvarTransacao
 import com.example.cryptoassets.core.model.entidade.Ativo
 import com.example.cryptoassets.core.model.entidade.Cotacao
 import com.example.cryptoassets.core.model.entidade.Ticker
@@ -26,7 +27,6 @@ import com.example.cryptoassets.presenter.EdicaoTransacaoPresenter
 import com.example.cryptoassets.ui.component.ProgressBarComponent
 import com.example.cryptoassets.ui.view.TransacaoView
 import com.example.cryptoassets.util.BigDecimalUtils
-import com.example.cryptoassets.util.FormatadorUtils
 import com.example.cryptoassets.util.UiUtils
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -34,7 +34,7 @@ import java.math.BigDecimal
 import java.time.LocalDateTime
 
 
-class AdicaoTransacaoFragment : TransacaoView, OnBuscarCotacao, Fragment() {
+class AdicaoTransacaoFragment : TransacaoView, OnBuscarCotacao, OnSalvarTransacao, Fragment() {
 
     private lateinit var fragmentContext: Context
     private var progressBarComponent: ProgressBarComponent?=null
@@ -50,7 +50,6 @@ class AdicaoTransacaoFragment : TransacaoView, OnBuscarCotacao, Fragment() {
 
         val presenter =
             EdicaoTransacaoPresenter(
-                this,
                 beanFactory.transacaoInteractor()
             )
 
@@ -70,7 +69,8 @@ class AdicaoTransacaoFragment : TransacaoView, OnBuscarCotacao, Fragment() {
                 precoMedio(),
                 quantidade(),
                 LocalDateTime.now(),
-                tipoTransacao()
+                tipoTransacao(),
+                this
             )
         };
 

@@ -52,7 +52,7 @@ class AtivoListViewItemImpl(private val ativo: Ativo, private val context: Conte
                 }
                 .show()
 
-        };
+        }
 
     }
 

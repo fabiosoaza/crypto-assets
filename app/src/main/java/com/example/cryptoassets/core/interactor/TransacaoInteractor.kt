@@ -3,17 +3,17 @@ package com.example.cryptoassets.core.interactor
 import android.content.Context
 import android.text.TextUtils.isEmpty
 import com.example.cryptoassets.R
+import com.example.cryptoassets.core.interactor.listener.OnExcluirTransacao
 import com.example.cryptoassets.core.interactor.listener.OnSalvarTransacao
-import com.example.cryptoassets.core.model.entidade.AtivoCarteira
-import com.example.cryptoassets.core.model.entidade.Ticker
-import com.example.cryptoassets.core.model.entidade.TipoTransacao
-import com.example.cryptoassets.core.model.entidade.Transacao
+import com.example.cryptoassets.core.model.calculador.CalculadorTransacoes
+import com.example.cryptoassets.core.model.entidade.*
 import com.example.cryptoassets.core.repository.AtivoCarteiraRepository
 import com.example.cryptoassets.core.repository.AtivoRepository
 import com.example.cryptoassets.core.repository.TransacaoRepository
 import com.example.cryptoassets.util.BigDecimalUtils
 import com.example.cryptoassets.util.MoneyUtils
 import com.example.cryptoassets.util.ResourceUtils
+import java.lang.Exception
 import java.math.BigDecimal
 import java.text.MessageFormat
 import java.time.LocalDateTime
@@ -25,6 +25,27 @@ class TransacaoInteractor(
     private val ativoCarteiraRepository: AtivoCarteiraRepository
 ) {
 
+    fun excluir(transacao: Transacao, listener: OnExcluirTransacao) {
+        try{
+            transacaoRepository.excluir(transacao)
+            ativoCarteiraRepository.excluir(transacao.ativo.ativo)
+            val transacoes = transacaoRepository.transacoes(transacao.ativo.ativo)
+            transacoes.forEach {
+                val carteiraSalvar = carteiraSalvar(
+                    it.ativo,
+                    it.tipo
+                )
+                ativoCarteiraRepository.salvar(carteiraSalvar)
+            }
+            val mensagemSucesso = mensagemExclusaoSucesso(transacao.ativo.ativo.nome, transacao.tipo.name)
+            listener.onSuccess(mensagemSucesso)
+        }catch(ex:Exception){
+            val mensagemErro = mensagemExclusaoErro(transacao.ativo.ativo.nome)
+            listener.onError(mensagemErro)
+        }
+
+
+    }
 
 
     fun salvar(codigoTicker: String?, precoMedio: String?, quantidade: String?, data:LocalDateTime?, tipoTransacao: TipoTransacao?, listener: OnSalvarTransacao){
@@ -140,5 +161,16 @@ class TransacaoInteractor(
         val message = ResourceUtils.getString(context, messageResourceId)
         return  MessageFormat.format(message!!, campo)
     }
+
+
+    private fun mensagemExclusaoSucesso(ativo:String?="", tipoTransacao: String?="") : String{
+        val message = ResourceUtils.getString(context, R.string.mensagemExclusaoTransacaoSucesso)
+        return  MessageFormat.format(message!!, tipoTransacao, ativo)
+    }
+    private fun mensagemExclusaoErro(ativo:String?="") : String{
+        val message = ResourceUtils.getString(context, R.string.mensagemExclusaoTransacaoErro)
+        return  MessageFormat.format(message!!, ativo)
+    }
+
 
 }

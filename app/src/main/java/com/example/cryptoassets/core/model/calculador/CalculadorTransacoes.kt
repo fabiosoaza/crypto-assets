@@ -20,6 +20,7 @@ class CalculadorTransacoes {
             }[0] ?: MoneyUtils.zero()
     }
 
+
     private fun valor(transacao: Transacao): Money {
         val valor = transacao.ativo.calcularTotalPago()
         return if (transacao.tipo == TipoTransacao.VENDA) {
@@ -28,6 +29,8 @@ class CalculadorTransacoes {
             valor.plus()
         }
     }
+
+
 
 
 }
