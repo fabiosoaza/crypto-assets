@@ -41,16 +41,14 @@ class ListAtivosCarteiraViewImpl(private val carteira: Carteira, private val cot
         updateTextViewCounter(txtVariacaoPatrimonio, getVariacaoTotalFormatada())
         updateTextViewCounter(txtVariacaoPorcentagem, getVariacaoPorcentagemFormatada())
         var textStyle = R.style.txtLabelVariacaoPrecoMedioNeutra
-        if(variacaoPorcentagem().signum() < 0){
+        if(variacaoValorTotal().isNegative){
             textStyle =  R.style.txtLabelVariacaoPrecoNegativa
         }
-        else if(variacaoPorcentagem().signum() > 0){
+        else if(variacaoValorTotal().isPositive){
             textStyle =  R.style.txtLabelVariacaoPrecoPositiva
         }
         txtVariacaoPatrimonio.setTextAppearance( textStyle)
         txtVariacaoPorcentagem.setTextAppearance(textStyle)
-
-
 
 
             /* CasosCovidUtil.updateContentDecriptionSummary(
@@ -78,9 +76,12 @@ class ListAtivosCarteiraViewImpl(private val carteira: Carteira, private val cot
 
     private fun getVariacaoTotalFormatada(): String {
         return formatar(
-            CalculadorCarteira()
-                .calcularVariacaoValor(carteira, cotacoes))
+            variacaoValorTotal()
+        )
     }
+
+    private fun variacaoValorTotal() = CalculadorCarteira()
+        .calcularVariacaoValor(carteira, cotacoes)
 
     private fun getVariacaoPorcentagemFormatada(): String {
         val variacaoPorcentagem = formatar(variacaoPorcentagem())

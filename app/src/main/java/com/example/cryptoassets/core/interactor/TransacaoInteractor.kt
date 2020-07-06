@@ -88,11 +88,13 @@ class TransacaoInteractor(
            return ativoCarteira
         }
         else{
+            val valorTotalCarteira =  carteiraAtualizar.calcularTotalPago()
+            val novoValorTotal = ativoCarteira.calcularTotalPago()
             val novaQuantidade = if(tipoTransacao == TipoTransacao.COMPRA) carteiraAtualizar.quantidade + ativoCarteira.quantidade
                                  else carteiraAtualizar.quantidade - ativoCarteira.quantidade
-            val somaPrecoMedio = if(tipoTransacao == TipoTransacao.COMPRA) carteiraAtualizar.precoMedio.add(ativoCarteira.precoMedio)
-                                 else  carteiraAtualizar.precoMedio.subtract(ativoCarteira.precoMedio)
-            val novoPrecoMedio = somaPrecoMedio.divide(novaQuantidade)
+            val somaPrecoMedio = if(tipoTransacao == TipoTransacao.COMPRA) valorTotalCarteira.add(novoValorTotal)
+                                 else  valorTotalCarteira.subtract(novoValorTotal)
+            val novoPrecoMedio = (somaPrecoMedio).divide(novaQuantidade)
             val novaCarteira =
                 AtivoCarteira(
                     carteiraAtualizar.id,

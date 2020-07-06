@@ -33,13 +33,15 @@ class AtivoCarteiraListViewItemImpl(private val ativoCarteira: AtivoCarteira, pr
 
     private fun getVariacaoValorTotalPagoFormatada(): String {
         val variacaoPrecoPago = formatar(
-            CalculadorVariacaoCotacao()
-                .calcularVariacaoValorTotalPago(ativoCarteira, cotacao)
+            variacaoPrecoPago()
         )
         val variacaoPorcentagem = formatar(variacaoPorcentagem())
 
         return "$variacaoPrecoPago($variacaoPorcentagem%)"
     }
+
+    private fun variacaoPrecoPago() = CalculadorVariacaoCotacao()
+        .calcularVariacaoValorTotalPago(ativoCarteira, cotacao)
 
     private fun variacaoPorcentagem() = CalculadorVariacaoCotacao()
         .calcularVariacaoPorcentagem(ativoCarteira, cotacao)
@@ -70,10 +72,10 @@ class AtivoCarteiraListViewItemImpl(private val ativoCarteira: AtivoCarteira, pr
 
 
         var textStyle = R.style.txtAtivoCarteiraLabelVariacaoNeutra
-        if(variacaoPorcentagem().signum() < 0){
+        if(  variacaoPrecoPago().isNegative){
             textStyle =  R.style.txtAtivoCarteiraLabelVariacaoNegativa
         }
-        else if(variacaoPorcentagem().signum() > 0){
+        else if(variacaoPrecoPago().isPositive){
             textStyle =  R.style.txtAtivoCarteiraLabelVariacaoPositiva
         }
         txtVariacaoTotalPrecoMedioMoeda.setTextAppearance( textStyle)

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Crypto Assets</string>
+    <string name="app_name">Carteira Crypto Pila</string>
     <string name="txtTotalBalance">Seu patrimônio total é de: </string>
     <string name="txtToday">Hoje</string>
 
